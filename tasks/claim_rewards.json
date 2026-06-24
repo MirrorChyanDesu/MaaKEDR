@@ -65,10 +65,7 @@
                     "name": "No",
                     "pipeline_override": {
                         "Mailbox.Start": {
-                            "recognition": "DirectHit",
-                            "action": {"type": "DoNothing"},
-                            "next": [],
-                            "on_error": []
+                            "enabled": false
                         }
                     }
                 }
