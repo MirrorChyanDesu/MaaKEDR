@@ -4,11 +4,33 @@
             "name": "资源刷取",
             "entry": "FarmResources.CheckHomePage",
             "option": [
-                "farm_category"
+                "farm_category",
+                "farm_battle_mode"
             ]
         }
     ],
     "option": {
+        "farm_battle_mode": {
+            "type": "switch",
+            "label": "清空体力",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "FarmResources.QuickBattle": {
+                            "next": ["FarmResources.SetBattleCountMax"]
+                        },
+                        "FarmResources.BattleLoop": {
+                            "next": ["FarmResources.SetBattleCountMax"]
+                        }
+                    }
+                }
+            ]
+        },
         "farm_battle_count": {
             "type": "select",
             "label": "战斗次数",

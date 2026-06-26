@@ -20,15 +20,12 @@
         "roi": [1, 91, 86, 83],
         "template": "claim_rewards/reward_interface.png",
         "threshold": 0.75,
+        "timeout": 5000,
         "max_hit": 10,
         "action": {
             "type": "DoNothing"
         },
-        "next": [
-            "ClaimRewards.CheckDaily",
-            "ClaimRewards.CheckWeekly",
-            "ClaimRewards.CheckMilitary"
-        ],
+        "next": ["ClaimRewards.CheckDaily", "ClaimRewards.CheckWeekly", "ClaimRewards.CheckMilitary"],
         "on_error": ["ClaimRewards.ExitRewardInterface"]
     },
     "ClaimRewards.CheckDaily": {
@@ -91,10 +88,7 @@
         "action": {
             "type": "Click"
         },
-        "next": [
-            "ClaimRewards.CheckItemObtained",
-            "ClaimRewards.ConfirmInterface"
-        ]
+        "next": ["ClaimRewards.CheckItemObtained", "ClaimRewards.ConfirmInterface"]
     },
 
     "ClaimRewards.CheckItemObtained": {
@@ -155,7 +149,7 @@
     "BattlePass.ExitToMailbox": {
         "desc": "退出战令界面，前往邮箱",
         "recognition": "TemplateMatch",
-        "roi": [15,30,86,43],
+        "roi": [15, 30, 86, 43],
         "template": "back_button.png",
         "threshold": 0.75,
         "action": {
@@ -208,10 +202,10 @@
         "roi": [600, 73, 36, 39],
         "template": "claim_rewards/battlepass_reward_available.png",
         "threshold": 0.75,
+        "timeout": 5000,
         "max_hit": 5,
         "action": {
-            "type": "Click",
-            "target": [-50, 0]
+            "type": "Click"
         },
         "next": ["BattlePass.ClaimRewardButton"],
         "on_error": ["Common.BackButton"]
@@ -226,10 +220,7 @@
         "action": {
             "type": "Click"
         },
-        "next": [
-            "BattlePass.CheckItemObtainedReward",
-            "BattlePass.CheckRewardList"
-        ]
+        "next": ["BattlePass.CheckItemObtainedReward", "BattlePass.CheckRewardList"]
     },
 
     "BattlePass.CheckItemObtainedReward": {

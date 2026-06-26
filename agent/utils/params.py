@@ -1,9 +1,11 @@
 import json
+from utils.logger import logger
 
 
 def parse_params(raw: str | None, *required_keys: str) -> dict:
     """
     解析 custom_action_param / custom_recognition_param JSON 字符串。
+    支持多层转义的 JSON 字符串。
 
     Args:
         raw: 原始 JSON 字符串，可为 None 或空串
@@ -19,14 +21,22 @@ def parse_params(raw: str | None, *required_keys: str) -> dict:
         if required_keys:
             raise ValueError(f"参数为空，需要字段: {list(required_keys)}")
         return {}
-    try:
-        params = json.loads(raw)
-    except json.JSONDecodeError as e:
-        raise ValueError(f"JSON解析失败: {e}") from e
+
+    # 处理多层转义的 JSON 字符串
+    params = raw
+    while isinstance(params, str):
+        try:
+            params = json.loads(params)
+        except json.JSONDecodeError:
+            break
+
     if not isinstance(params, dict):
+        logger.warning(f"parse_params: 参数不是对象，类型: {type(params).__name__}, 值: {params}")
         raise ValueError(f"参数必须是对象，得到: {type(params).__name__}")
+
     if required_keys:
         missing = [k for k in required_keys if k not in params]
         if missing:
             raise ValueError(f"缺少必填字段: {missing}")
+
     return params

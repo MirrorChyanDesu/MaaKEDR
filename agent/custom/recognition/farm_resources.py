@@ -28,7 +28,7 @@ RESOURCE_STAGES = {
         5: [803, 481, 55, 44],
     },
     "兵种能力评级": {
-        1: [26, 475, 184, 56],
+        1: [164, 481, 62, 44],
         2: [516, 523, 185, 56],
         3: [1005, 476, 185, 56],
         4: [315, 532, 57, 42],
@@ -145,6 +145,8 @@ class SetBattleCount(CustomAction):
         count_roi = params.get("count_roi", COUNT_ROI)
         plus_x, plus_y = params.get("plus_button", PLUS_BUTTON)
         max_template = params.get("max_template", MAX_BUTTON_TEMPLATE)
+
+        logger.info(f"[SetBattleCount] 参数: target_count={target_count}, type={type(target_count)}")
 
         # 获取当前截图
         image = context.tasker.controller.cached_image
