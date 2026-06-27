@@ -7,7 +7,7 @@
     },
     "features": {
         "ci": {
-            "enabled": false
+            "enabled": true
         },
         "quality": {
             "enabled": false
