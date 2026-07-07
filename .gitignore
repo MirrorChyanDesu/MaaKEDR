@@ -51,6 +51,13 @@ DependencySetup_*.bat
 # 测试文件
 test_*.json
 
+# Node.js
+node_modules/
+pnpm-lock.yaml
+
+# 项目文档（仅本地保留）
+PROJECT_SUMMARY.md
+
 # 系统文件
 .DS_Store
 Thumbs.db
