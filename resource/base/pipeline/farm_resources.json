@@ -271,8 +271,9 @@
         "action": {
             "type": "Custom",
             "custom_action": "SetBattleCount",
-            "custom_action_param": "{\"target_count\": 1, \"count_roi\": [903, 441, 27, 43], \"plus_button\": [1086, 470], \"max_template\": \"farm_resources/max_count.png\"}"
-        }
+            "custom_action_param": "{\"target_count\": 1, \"count_roi\": [903, 441, 27, 43], \"plus_button\": [1086, 470], \"minus_button\": [739, 470], \"max_template\": \"farm_resources/max_count.png\"}"
+        },
+        "next": ["FarmResources.PrepareBattle"]
     },
     "FarmResources.SetBattleCountMax": {
         "desc": "设置战斗次数为最大(清空体力模式)",
@@ -304,13 +305,15 @@
         "threshold": 0.8,
         "roi": [1014, 197, 100, 76],
         "action": {
-            "type": "DoNothing"
+            "type": "Click",
+            "target": [323, 611]
         },
+        "post_delay": 200,
         "focus": {
             "Node.Recognition.Succeeded": "体力不足，退出界面减少次数重试"
         },
         "on_error": ["FarmResources.StartBattle"],
-        "next": ["FarmResources.ExitStage"]
+        "next": ["FarmResources.ReturnMainFromFarm"]
     },
     "FarmResources.ReduceCount": {
         "desc": "减少战斗次数",
@@ -332,7 +335,7 @@
             "type": "Custom",
             "custom_action": "ResetBattleCountTarget"
         },
-        "next": ["FarmResources.QuickBattle"]
+        "next": ["FarmResources.QuickBattle", "FarmResources.PrepareBattle"]
     },
     "FarmResources.NoStamina": {
         "desc": "体力不足，无法继续",
@@ -392,11 +395,24 @@
         "action": {
             "type": "Click"
         },
-        "next": ["FarmResources.BattleVictory"],
+        "next": ["FarmResources.BattleStage"],
         "pre_delay": 500
     },
-    "FarmResources.BattleVictory": {
-        "desc": "点击战斗胜利界面",
+    "FarmResources.BattleStage": {
+        "desc": "战斗循环父节点：循环检测胜利画面/物品对话框/快速战斗按钮",
+        "recognition": "DirectHit",
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "[JumpBack]FarmResources.ClickVictory",
+            "[JumpBack]FarmResources.ClickItemDialog",
+            "FarmResources.QuickBattle"
+        ],
+        "on_error": ["FarmResources.PrepareBattle"]
+    },
+    "FarmResources.ClickVictory": {
+        "desc": "检测并点击战斗胜利画面",
         "recognition": "TemplateMatch",
         "roi": [14, 6, 270, 119],
         "template": "farm_resources/battle_victory.png",
@@ -404,11 +420,10 @@
         "action": {
             "type": "Click"
         },
-        "next": ["FarmResources.ItemObtained"],
         "pre_delay": 500
     },
-    "FarmResources.ItemObtained": {
-        "desc": "点击获得物品界面",
+    "FarmResources.ClickItemDialog": {
+        "desc": "检测并点击获得物品对话框",
         "recognition": "TemplateMatch",
         "roi": [534, 210, 198, 85],
         "template": "item_obtained_dialog.png",
@@ -416,35 +431,6 @@
         "action": {
             "type": "Click"
         },
-        "next": ["FarmResources.BattleLoop"],
-        "pre_delay": 500
-    },
-    "FarmResources.BattleLoop": {
-        "desc": "战斗循环节点（默认：检查快速战斗状态）",
-        "recognition": "TemplateMatch",
-        "roi": [917, 509, 84, 49],
-        "template": "farm_resources/quick_battle.png",
-        "threshold": 0.9,
-        "action": {
-            "type": "DoNothing"
-        },
-        "next": ["FarmResources.QuickBattle"],
-        "on_error": ["FarmResources.PrepareBattle"],
-        "pre_delay": 500
-    },
-
-    "FarmResources.BattleLoopStamina": {
-        "desc": "战斗循环节点（清体力模式：检查快速战斗状态）",
-        "recognition": "TemplateMatch",
-        "roi": [917, 509, 84, 49],
-        "template": "farm_resources/quick_battle.png",
-        "threshold": 0.9,
-        "max_hit": 3,
-        "action": {
-            "type": "DoNothing"
-        },
-        "next": ["FarmResources.ResetCountTarget"],
-        "on_error": ["FarmResources.SetBattleCountMax"],
         "pre_delay": 500
     },
     "FarmResources.StageLocked": {

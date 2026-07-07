@@ -194,30 +194,14 @@ class SetBattleCount(CustomAction):
                     "",
                 )
         elif clicks_needed < 0:
-            # 需要减少次数，先点击最大，再点击加号到目标次数
-            context.run_action_direct(
-                JActionType.Click,
-                JClick(target=(0, 0, 0, 0)),
-                (0, 0, 0, 0),
-                "",
-            )
-            # 重新识别当前次数
-            ocr_detail = context.run_recognition_direct(
-                JRecognitionType.OCR,
-                JOCR(expected=["1", "2", "3", "4", "5", "6"], roi=count_roi),
-                image,
-            )
-            if ocr_detail and ocr_detail.hit and ocr_detail.all_results:
-                try:
-                    current_count = int(ocr_detail.all_results[0].text.strip())
-                except ValueError:
-                    current_count = 1
-            clicks_needed = target_count - current_count
-            for _ in range(clicks_needed):
+            # 需要减少次数，点击减号按钮
+            minus_x, minus_y = params.get("minus_button", MINUS_BUTTON)
+            logger.info(f"[SetBattleCount] 当前次数 {current_count} > 目标 {target_count}，点击减号 {abs(clicks_needed)} 次")
+            for _ in range(abs(clicks_needed)):
                 context.run_action_direct(
                     JActionType.Click,
-                    JClick(target=(plus_x, plus_y, 0, 0)),
-                    (0, 0, 0, 0),
+                    JClick(),
+                    (minus_x, minus_y, 10, 10),
                     "",
                 )
 
