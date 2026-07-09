@@ -1,10 +1,10 @@
 [tool.black]
 line-length = 100
-target-version = ["py312"]
+target-version = ["py314"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py312"
+target-version = "py314"
 exclude = [".venv", "agent/__pycache__"]
 
 [tool.ruff.lint]
@@ -21,6 +21,6 @@ ignore = [
 ]
 
 [tool.pyright]
-pythonVersion = "3.12"
+pythonVersion = "3.14"
 typeCheckingMode = "basic"
 exclude = [".venv", "**/__pycache__"]

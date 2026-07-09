@@ -7,7 +7,7 @@ logger.remove()
 
 # 设置 stdout 编码为 UTF-8
 if hasattr(sys.stdout, 'reconfigure'):
-    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stdout.reconfigure(encoding='utf-8')  # pyright: ignore[reportAttributeAccessIssue]
 
 # 添加控制台输出（带颜色）
 logger.add(
