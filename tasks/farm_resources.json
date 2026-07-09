@@ -573,13 +573,13 @@
                     "label": "基础训练1",
                     "pipeline_override": {
                         "FarmResources.ClickSkillStage": {
-                            "expected": "基础训练1",
                             "roi": [
                                 130,
                                 381,
                                 126,
                                 28
-                            ]
+                            ],
+                            "expected": "基础训练1"
                         },
                         "FarmResources.SelectSkillStage": {
                             "next": [
@@ -596,13 +596,13 @@
                     "label": "基础训练2",
                     "pipeline_override": {
                         "FarmResources.ClickSkillStage": {
-                            "expected": "基础训练2",
                             "roi": [
                                 437,
                                 381,
                                 126,
                                 28
-                            ]
+                            ],
+                            "expected": "基础训练2"
                         },
                         "FarmResources.CheckSkillLocked": {
                             "roi": [
@@ -622,13 +622,13 @@
                     "label": "基础训练3",
                     "pipeline_override": {
                         "FarmResources.ClickSkillStage": {
-                            "expected": "基础训练3",
                             "roi": [
                                 742,
                                 381,
                                 126,
                                 28
-                            ]
+                            ],
+                            "expected": "基础训练3"
                         },
                         "FarmResources.CheckSkillLocked": {
                             "roi": [
@@ -655,13 +655,13 @@
                     "label": "专业训练1",
                     "pipeline_override": {
                         "FarmResources.ClickSkillStage": {
-                            "expected": "专业训练1",
                             "roi": [
                                 130,
                                 381,
                                 126,
                                 28
-                            ]
+                            ],
+                            "expected": "专业训练1"
                         },
                         "FarmResources.SelectSkillStage": {
                             "next": [
@@ -678,13 +678,13 @@
                     "label": "专业训练2",
                     "pipeline_override": {
                         "FarmResources.ClickSkillStage": {
-                            "expected": "专业训练2",
                             "roi": [
                                 437,
                                 381,
                                 126,
                                 28
-                            ]
+                            ],
+                            "expected": "专业训练2"
                         },
                         "FarmResources.CheckSkillLocked": {
                             "roi": [
@@ -704,13 +704,13 @@
                     "label": "专业训练3",
                     "pipeline_override": {
                         "FarmResources.ClickSkillStage": {
-                            "expected": "专业训练3",
                             "roi": [
                                 742,
                                 381,
                                 126,
                                 28
-                            ]
+                            ],
+                            "expected": "专业训练3"
                         },
                         "FarmResources.CheckSkillLocked": {
                             "roi": [

@@ -8,7 +8,11 @@
             }
         },
         "post_delay": 5000,
-        "next": ["ClickToStart", "DailyLoginReward", "CheckHomePage"]
+        "next": [
+            "ClickToStart",
+            "DailyLoginReward",
+            "CheckHomePage"
+        ]
     },
     "ClickToStart": {
         "recognition": "TemplateMatch",
@@ -17,14 +21,25 @@
         "action": {
             "type": "Click",
             "target": true,
-            "target_offset": [120, 0]
+            "target_offset": [
+                120,
+                0
+            ]
         },
-        "next": ["DailyLoginReward", "CheckHomePage"]
+        "next": [
+            "DailyLoginReward",
+            "CheckHomePage"
+        ]
     },
     "DailyLoginReward": {
         "desc": "处理每日登录奖励",
         "recognition": "TemplateMatch",
-        "roi": [379, 91, 168, 150],
+        "roi": [
+            379,
+            91,
+            168,
+            150
+        ],
         "template": "daily_login_reward.png",
         "threshold": 0.8,
         "action": {
@@ -38,7 +53,12 @@
     "CheckHomePage": {
         "desc": "检查是否在主页",
         "recognition": "TemplateMatch",
-        "roi": [1199, 6, 77, 83],
+        "roi": [
+            1199,
+            6,
+            77,
+            83
+        ],
         "template": "main_option.png",
         "threshold": 0.75,
         "action": {
@@ -52,7 +72,12 @@
         "recognition": "DirectHit",
         "action": {
             "type": "Click",
-            "target": [640, 360, 0, 0],
+            "target": [
+                640,
+                360,
+                0,
+                0
+            ],
             "target_count": 5,
             "post_delay": 500
         }

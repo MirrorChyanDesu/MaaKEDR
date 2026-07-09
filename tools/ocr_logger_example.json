@@ -2,8 +2,16 @@
     "OCR识别示例": {
         "desc": "OCR识别节点示例",
         "recognition": "OCR",
-        "expected": ["收集物资战", "特别军费行动"],
-        "roi": [100, 100, 200, 50],
+        "expected": [
+            "收集物资战",
+            "特别军费行动"
+        ],
+        "roi": [
+            100,
+            100,
+            200,
+            50
+        ],
         "action": {
             "type": "DoNothing"
         }
@@ -47,7 +55,12 @@
                 "recognition_name": "OCR识别示例",
                 "action_key": "Click",
                 "return_text": "点击指定位置",
-                "click_target": [100, 200, 50, 30]
+                "click_target": [
+                    100,
+                    200,
+                    50,
+                    30
+                ]
             }
         }
     }

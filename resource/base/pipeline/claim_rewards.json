@@ -1,38 +1,57 @@
 {
     "ClaimRewards.Start": {
         "desc": "检测并点击奖励徽章图标",
+        "max_hit": 5,
         "recognition": "TemplateMatch",
-        "roi": [894, 190, 48, 43],
+        "roi": [
+            894,
+            190,
+            48,
+            43
+        ],
         "template": "claim_rewards/reward_badge.png",
         "threshold": 0.8,
-        "timeout": 5000,
-        "max_hit": 5,
         "action": {
             "type": "Click",
             "target_count": 2
         },
+        "timeout": 5000,
         "next": ["ClaimRewards.ConfirmInterface"],
         "on_error": ["BattlePass.Start"]
     },
     "ClaimRewards.ConfirmInterface": {
         "desc": "确认进入奖励界面",
+        "max_hit": 10,
         "recognition": "TemplateMatch",
-        "roi": [1, 91, 86, 83],
+        "roi": [
+            1,
+            91,
+            86,
+            83
+        ],
         "template": "claim_rewards/reward_interface.png",
         "threshold": 0.75,
-        "timeout": 5000,
-        "max_hit": 10,
         "action": {
             "type": "DoNothing"
         },
-        "next": ["ClaimRewards.CheckDaily", "ClaimRewards.CheckWeekly", "ClaimRewards.CheckMilitary"],
+        "timeout": 5000,
+        "next": [
+            "ClaimRewards.CheckDaily",
+            "ClaimRewards.CheckWeekly",
+            "ClaimRewards.CheckMilitary"
+        ],
         "on_error": ["ClaimRewards.ExitRewardInterface"]
     },
     "ClaimRewards.CheckDaily": {
         "desc": "检查每日奖励徽章",
-        "recognition": "TemplateMatch",
-        "roi": [498, 101, 60, 38],
         "max_hit": 5,
+        "recognition": "TemplateMatch",
+        "roi": [
+            498,
+            101,
+            60,
+            38
+        ],
         "template": "claim_rewards/common_reward_badge.png",
         "threshold": 0.75,
         "action": {
@@ -43,9 +62,14 @@
     },
     "ClaimRewards.CheckWeekly": {
         "desc": "检查每周奖励徽章",
-        "recognition": "TemplateMatch",
-        "roi": [841, 103, 60, 39],
         "max_hit": 5,
+        "recognition": "TemplateMatch",
+        "roi": [
+            841,
+            103,
+            60,
+            39
+        ],
         "template": "claim_rewards/common_reward_badge.png",
         "threshold": 0.75,
         "action": {
@@ -56,9 +80,14 @@
     },
     "ClaimRewards.CheckMilitary": {
         "desc": "检查军旅成就奖励徽章",
-        "recognition": "TemplateMatch",
-        "roi": [1176, 105, 60, 39],
         "max_hit": 5,
+        "recognition": "TemplateMatch",
+        "roi": [
+            1176,
+            105,
+            60,
+            39
+        ],
         "template": "claim_rewards/common_reward_badge.png",
         "threshold": 0.75,
         "action": {
@@ -71,7 +100,12 @@
     "ClaimRewards.ExitRewardInterface": {
         "desc": "退出奖励界面",
         "recognition": "TemplateMatch",
-        "roi": [15, 30, 86, 43],
+        "roi": [
+            15,
+            30,
+            86,
+            43
+        ],
         "template": "back_button.png",
         "threshold": 0.75,
         "action": {
@@ -82,19 +116,32 @@
     "ClaimRewards.ClaimButton": {
         "desc": "点击领取奖励按钮",
         "recognition": "TemplateMatch",
-        "roi": [1062, 656, 197, 36],
+        "roi": [
+            1062,
+            656,
+            197,
+            36
+        ],
         "template": "claim_rewards/claim_button.png",
         "threshold": 0.75,
         "action": {
             "type": "Click"
         },
-        "next": ["ClaimRewards.CheckItemObtained", "ClaimRewards.ConfirmInterface"]
+        "next": [
+            "ClaimRewards.CheckItemObtained",
+            "ClaimRewards.ConfirmInterface"
+        ]
     },
 
     "ClaimRewards.CheckItemObtained": {
         "desc": "检查并点击获得物品提示（领取奖励专用）",
         "recognition": "TemplateMatch",
-        "roi": [573, 237, 136, 40],
+        "roi": [
+            573,
+            237,
+            136,
+            40
+        ],
         "template": "item_obtained_dialog.png",
         "threshold": 0.75,
         "action": {
@@ -106,7 +153,12 @@
     "BattlePass.Start": {
         "desc": "检查战令通行证徽章",
         "recognition": "TemplateMatch",
-        "roi": [902, 245, 33, 36],
+        "roi": [
+            902,
+            245,
+            33,
+            36
+        ],
         "template": "claim_rewards/battlepass_badge.png",
         "threshold": 0.75,
         "action": {
@@ -119,37 +171,60 @@
     "BattlePass.ClickEntry": {
         "desc": "点击战令通行证入口",
         "recognition": "TemplateMatch",
+        "roi": [
+            902,
+            245,
+            33,
+            36
+        ],
         "template": "claim_rewards/battlepass_badge.png",
-        "roi": [902, 245, 33, 36],
         "threshold": 0.75,
-        "post_delay": 2000,
         "action": {
             "type": "Click",
             "target": true,
-            "target_offset": [70, 0, 0, 0],
+            "target_offset": [
+                70,
+                0,
+                0,
+                0
+            ],
             "target_count": 3
         },
+        "post_delay": 2000,
         "next": ["BattlePass.ConfirmInterface"]
     },
 
     "BattlePass.ConfirmInterface": {
         "desc": "确认进入战令通行证界面",
+        "max_hit": 10,
         "recognition": "TemplateMatch",
-        "roi": [313, 15, 76, 86],
+        "roi": [
+            313,
+            15,
+            76,
+            86
+        ],
         "template": "claim_rewards/battlepass_interface.png",
         "threshold": 0.75,
-        "max_hit": 10,
         "action": {
             "type": "DoNothing"
         },
-        "next": ["BattlePass.CheckTaskComplete", "BattlePass.CheckRewardList"],
+        "next": [
+            "BattlePass.CheckTaskComplete",
+            "BattlePass.CheckRewardList"
+        ],
         "on_error": ["BattlePass.ExitToMailbox"]
     },
 
     "BattlePass.ExitToMailbox": {
         "desc": "退出战令界面，前往邮箱",
         "recognition": "TemplateMatch",
-        "roi": [15, 30, 86, 43],
+        "roi": [
+            15,
+            30,
+            86,
+            43
+        ],
         "template": "back_button.png",
         "threshold": 0.75,
         "action": {
@@ -160,11 +235,16 @@
 
     "BattlePass.CheckTaskComplete": {
         "desc": "检查战令任务是否有可领取项",
+        "max_hit": 5,
         "recognition": "TemplateMatch",
-        "roi": [731, 75, 62, 51],
+        "roi": [
+            731,
+            75,
+            62,
+            51
+        ],
         "template": "claim_rewards/battlepass_task_complete.png",
         "threshold": 0.75,
-        "max_hit": 5,
         "action": {
             "type": "Click"
         },
@@ -175,7 +255,12 @@
     "BattlePass.ClaimTaskReward": {
         "desc": "点击领取战令任务奖励",
         "recognition": "TemplateMatch",
-        "roi": [1147, 612, 87, 54],
+        "roi": [
+            1147,
+            612,
+            87,
+            54
+        ],
         "template": "claim_rewards/battlepass_claim_button.png",
         "threshold": 0.75,
         "action": {
@@ -187,7 +272,12 @@
     "BattlePass.CheckItemObtainedTask": {
         "desc": "检查并点击获得物品提示（战令任务专用）",
         "recognition": "TemplateMatch",
-        "roi": [573, 237, 136, 40],
+        "roi": [
+            573,
+            237,
+            136,
+            40
+        ],
         "template": "item_obtained_dialog.png",
         "threshold": 0.75,
         "action": {
@@ -198,15 +288,20 @@
 
     "BattlePass.CheckRewardList": {
         "desc": "检查奖励列表是否有可领取项",
+        "max_hit": 5,
         "recognition": "TemplateMatch",
-        "roi": [600, 73, 36, 39],
+        "roi": [
+            600,
+            73,
+            36,
+            39
+        ],
         "template": "claim_rewards/battlepass_reward_available.png",
         "threshold": 0.75,
-        "timeout": 5000,
-        "max_hit": 5,
         "action": {
             "type": "Click"
         },
+        "timeout": 5000,
         "next": ["BattlePass.ClaimRewardButton"],
         "on_error": ["Common.BackButton"]
     },
@@ -216,30 +311,43 @@
         "recognition": "TemplateMatch",
         "template": "claim_rewards/battlepass_claim_button.png",
         "threshold": 0.75,
-        "post_wait_freezes": 500,
         "action": {
             "type": "Click"
         },
-        "next": ["BattlePass.CheckItemObtainedReward", "BattlePass.CheckRewardList"]
+        "post_wait_freezes": 500,
+        "next": [
+            "BattlePass.CheckItemObtainedReward",
+            "BattlePass.CheckRewardList"
+        ]
     },
 
     "BattlePass.CheckItemObtainedReward": {
         "desc": "检查并点击获得物品提示（战令奖励专用）",
         "recognition": "TemplateMatch",
-        "roi": [573, 237, 136, 40],
+        "roi": [
+            573,
+            237,
+            136,
+            40
+        ],
         "template": "item_obtained_dialog.png",
         "threshold": 0.75,
-        "post_wait_freezes": 500,
         "action": {
             "type": "Click"
         },
+        "post_wait_freezes": 500,
         "next": ["BattlePass.CheckRewardList"]
     },
 
     "Common.BackButton": {
         "desc": "点击返回按钮",
         "recognition": "TemplateMatch",
-        "roi": [15, 30, 86, 43],
+        "roi": [
+            15,
+            30,
+            86,
+            43
+        ],
         "template": "back_button.png",
         "threshold": 0.75,
         "action": {
@@ -250,7 +358,12 @@
     "Common.CheckItemObtained": {
         "desc": "模板匹配获得物品提示并点击（通用）",
         "recognition": "TemplateMatch",
-        "roi": [546, 221, 183, 73],
+        "roi": [
+            546,
+            221,
+            183,
+            73
+        ],
         "template": "item_obtained_dialog.png",
         "threshold": 0.75,
         "action": {
@@ -260,11 +373,16 @@
 
     "Mailbox.Start": {
         "desc": "检测邮箱图标",
+        "max_hit": 5,
         "recognition": "TemplateMatch",
-        "roi": [1140, 25, 64, 45],
+        "roi": [
+            1140,
+            25,
+            64,
+            45
+        ],
         "template": "claim_rewards/mailbox.png",
         "threshold": 0.75,
-        "max_hit": 5,
         "action": {
             "type": "DoNothing"
         },
@@ -273,11 +391,16 @@
 
     "Mailbox.ClickEntry": {
         "desc": "点击邮箱图标",
+        "max_hit": 5,
         "recognition": "TemplateMatch",
-        "roi": [1140, 25, 64, 45],
+        "roi": [
+            1140,
+            25,
+            64,
+            45
+        ],
         "template": "claim_rewards/mailbox.png",
         "threshold": 0.75,
-        "max_hit": 5,
         "action": {
             "type": "Click"
         },
@@ -287,7 +410,12 @@
     "Mailbox.ConfirmInterface": {
         "desc": "确认进入邮箱界面",
         "recognition": "TemplateMatch",
-        "roi": [155, 68, 74, 42],
+        "roi": [
+            155,
+            68,
+            74,
+            42
+        ],
         "template": "claim_rewards/mailbox_interface.png",
         "threshold": 0.75,
         "action": {
@@ -298,21 +426,34 @@
 
     "Mailbox.ClaimButton": {
         "desc": "OCR识别并点击一键领取按钮",
-        "recognition": "OCR",
-        "expected": "一键领取",
-        "roi": [145, 587, 133, 42],
         "max_hit": 1,
+        "recognition": "OCR",
+        "roi": [
+            145,
+            587,
+            133,
+            42
+        ],
+        "expected": "一键领取",
         "action": {
             "type": "Click"
         },
-        "next": ["Common.CheckItemObtained", "Mailbox.BackButton"],
+        "next": [
+            "Common.CheckItemObtained",
+            "Mailbox.BackButton"
+        ],
         "on_error": ["Mailbox.BackButton"]
     },
 
     "Mailbox.BackButton": {
         "desc": "点击邮箱界面返回按钮",
         "recognition": "TemplateMatch",
-        "roi": [1120, 64, 53, 51],
+        "roi": [
+            1120,
+            64,
+            53,
+            51
+        ],
         "template": "claim_rewards/mailbox_back_button.png",
         "threshold": 0.75,
         "action": {

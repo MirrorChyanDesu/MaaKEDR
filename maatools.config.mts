@@ -3,7 +3,7 @@ export default {
   maaVersion: 'latest',
   interfacePath: 'interface.json',
   resource: [
-    './resource/base'
+    './resource/base',
   ],
-  check: {}
+  check: {},
 }
