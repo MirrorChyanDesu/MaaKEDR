@@ -1,6 +1,6 @@
 from importlib import import_module
 
-ACTION_MODULES = ("ocr_logger",)
+ACTION_MODULES = ("general", "ocr_logger")
 
 
 def register_all() -> None:
