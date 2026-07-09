@@ -1,3 +1,19 @@
+[project]
+name = "maakedr"
+version = "0.1.0"
+description = "MaaKEDR — MaaFramework KEDR automation project"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "loguru",
+    "maafw>=5.0",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.400",
+    "ruff>=0.11.0",
+]
+
 [tool.black]
 line-length = 100
 target-version = ["py314"]
@@ -22,5 +38,13 @@ ignore = [
 
 [tool.pyright]
 pythonVersion = "3.14"
-typeCheckingMode = "basic"
+typeCheckingMode = "strict"
 exclude = [".venv", "**/__pycache__"]
+extraPaths = ["agent"]
+include = ["agent", "tools"]
+reportMissingTypeStubs = "none"
+reportUnknownMemberType = "none"
+reportUnknownArgumentType = "none"
+reportUnknownVariableType = "none"
+reportUnknownParameterType = "none"
+reportUnknownLambdaType = "none"
