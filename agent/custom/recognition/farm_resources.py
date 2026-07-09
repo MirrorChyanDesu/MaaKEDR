@@ -84,7 +84,7 @@ class CheckResourceStage(CustomRecognition):
         stage_name_no_dash = stage_name.replace("-", "")
         ocr_detail = context.run_recognition_direct(
             JRecognitionType.OCR,
-            JOCR(expected=[stage_name, stage_name_no_dash], roi=stage_roi),
+            JOCR(expected=[stage_name, stage_name_no_dash], roi=(stage_roi[0], stage_roi[1], stage_roi[2], stage_roi[3])),
             argv.image,
         )
 
@@ -92,12 +92,12 @@ class CheckResourceStage(CustomRecognition):
             return None
 
         # 检查高级账号标志干扰
-        if hasattr(ocr_detail, 'text') and '奖励' in ocr_detail.text:
+        if hasattr(ocr_detail, 'text') and '奖励' in ocr_detail.text:  # pyright: ignore[reportAttributeAccessIssue]
             x, y, w, h = stage_roi
             adjusted_roi = [x, y, int(w * 0.7), h]
             ocr_detail = context.run_recognition_direct(
                 JRecognitionType.OCR,
-                JOCR(expected=[stage_name, stage_name_no_dash], roi=adjusted_roi),
+                JOCR(expected=[stage_name, stage_name_no_dash], roi=(adjusted_roi[0], adjusted_roi[1], adjusted_roi[2], adjusted_roi[3])),
                 argv.image,
             )
             if not ocr_detail or not ocr_detail.box:
@@ -110,7 +110,7 @@ class CheckResourceStage(CustomRecognition):
                 lock_roi = [max(0, x - 20), max(0, y - 20), w + 40, h + 40]
                 lock_detail = context.run_recognition_direct(
                     JRecognitionType.TemplateMatch,
-                    JTemplateMatch(template=lock_template, roi=lock_roi, threshold=lock_threshold),
+                    JTemplateMatch(template=lock_template, roi=(lock_roi[0], lock_roi[1], lock_roi[2], lock_roi[3]), threshold=lock_threshold),
                     argv.image,
                 )
                 if lock_detail and lock_detail.box:
@@ -120,7 +120,7 @@ class CheckResourceStage(CustomRecognition):
             pass
 
         logger.info(f"[资源刷取] 找到关卡 {stage_name}，位置: {ocr_detail.box}")
-        return CustomRecognition.AnalyzeResult(box=ocr_detail.box, detail="found")
+        return CustomRecognition.AnalyzeResult(box=ocr_detail.box, detail={"status": "found"})
 
 
 @AgentServer.custom_action("SetBattleCount")
@@ -155,7 +155,7 @@ class SetBattleCount(CustomAction):
         if target_count == "max":
             max_detail = context.run_recognition_direct(
                 JRecognitionType.TemplateMatch,
-                JTemplateMatch(template=max_template, threshold=0.8),
+                JTemplateMatch(template=max_template, threshold=[0.8, 0.8, 0.8]),
                 image,
             )
             if max_detail and max_detail.box:
@@ -177,7 +177,7 @@ class SetBattleCount(CustomAction):
         current_count = 1
         if ocr_detail and ocr_detail.hit and ocr_detail.all_results:
             try:
-                current_count = int(ocr_detail.all_results[0].text.strip())
+                current_count = int(ocr_detail.all_results[0].text.strip())  # pyright: ignore[reportAttributeAccessIssue]
             except ValueError:
                 current_count = 1
 
@@ -244,7 +244,7 @@ class ReduceBattleCount(CustomAction):
             current_count = -1
             if ocr_detail and ocr_detail.hit and ocr_detail.all_results:
                 try:
-                    current_count = int(ocr_detail.all_results[0].text.strip())
+                    current_count = int(ocr_detail.all_results[0].text.strip())  # pyright: ignore[reportAttributeAccessIssue]
                 except ValueError:
                     current_count = -1
 
