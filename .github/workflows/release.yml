@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  package:
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            artifact_os: win
+            arch: x86_64
+            ext: zip
+            runtime_os: win
+            runtime_arch: x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        if: hashFiles('pyproject.toml') != ''
+        with:
+          python-version: "3.13"
+      - uses: astral-sh/setup-uv@v8.1.0
+        if: hashFiles('pyproject.toml') != ''
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: node tools/check-project.mjs
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm check:py
+        if: hashFiles('pyproject.toml') != ''
+      - run: pnpm release:dry-run
+        if: github.event_name == 'workflow_dispatch'
+      - run: pnpm sync:runtime
+        if: github.event_name != 'workflow_dispatch'
+        env:
+          CREATE_MAA_PROJECT_RUNTIME_PLATFORM: ${{ matrix.runtime_os }}-${{ matrix.runtime_arch }}
+          GITHUB_TOKEN: ${{ github.token }}
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: package
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v7
+        with:
+          path: release-assets
+          merge-multiple: true
+      - uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            release-assets/*.zip

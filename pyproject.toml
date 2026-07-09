@@ -48,3 +48,6 @@ reportUnknownArgumentType = "none"
 reportUnknownVariableType = "none"
 reportUnknownParameterType = "none"
 reportUnknownLambdaType = "none"
+
+[tool.hatch.build.targets.wheel]
+packages = ["agent"]

@@ -35,8 +35,9 @@
     "project": {
         "displayName": "MaaKEDR",
         "initialTemplate": "pipeline",
-        "slug": "MaaKEDR",
-        "version": "0.1.0"
+        "slug": "maakedr",
+        "version": "0.1.0",
+        "interfaceUnmanaged": true
     },
     "resources": [
         {

@@ -1,6 +1,6 @@
 {
     "interface_version": 2,
-    "name": "MaaKEDR",
+    "name": "maakedr",
     "label": "MaaKEDR",
     "version": "v0.1.0",
     "icon": "logo.ico",
@@ -22,11 +22,13 @@
             ]
         }
     ],
-    "agent": {
-        "child_exec": "python",
-        "child_args": ["-u", "./agent/bootstrap.py"],
-        "identifier": "maakedr_agent"
-    },
+    "agent": [
+        {
+            "child_exec": "python",
+            "child_args": ["-u", "./agent/bootstrap.py"],
+            "identifier": "maakedr_agent"
+        }
+    ],
     "import": [
         "./tasks/startup.json",
         "./tasks/claim_rewards.json",
