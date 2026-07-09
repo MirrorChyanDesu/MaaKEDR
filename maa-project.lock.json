@@ -4,6 +4,18 @@
             "createdAt": "2026-06-22T09:05:47.056Z",
             "managed": false
         },
+        ".prettierignore": {
+            "createdAt": "2026-07-09T11:54:42.994Z",
+            "managed": false
+        },
+        ".vscode/extensions.json": {
+            "createdAt": "2026-07-09T11:54:42.994Z",
+            "managed": false
+        },
+        ".vscode/settings.json": {
+            "createdAt": "2026-07-09T11:54:42.994Z",
+            "managed": false
+        },
         "LICENSE": {
             "createdAt": "2026-06-22T09:05:47.056Z",
             "managed": false
@@ -21,11 +33,19 @@
             "managed": false
         },
         "maa-project.json": {
-            "createdAt": "2026-06-22T09:05:47.056Z",
+            "createdAt": "2026-07-09T11:54:42.994Z",
             "managed": false
         },
         "maatools.config.mts": {
             "createdAt": "2026-06-22T09:05:47.056Z",
+            "managed": false
+        },
+        "package.json": {
+            "createdAt": "2026-07-09T11:54:42.994Z",
+            "managed": false
+        },
+        "pnpm-workspace.yaml": {
+            "createdAt": "2026-07-09T11:54:42.994Z",
             "managed": false
         },
         "resource/base/default_pipeline.json": {
@@ -63,6 +83,14 @@
         "tasks/tutorial.json": {
             "createdAt": "2026-06-22T09:05:47.056Z",
             "managed": false
+        },
+        "tools/schema/custom.action.schema.json": {
+            "createdAt": "2026-07-09T11:54:42.994Z",
+            "managed": false
+        },
+        "tools/schema/custom.recognition.schema.json": {
+            "createdAt": "2026-07-09T11:54:42.994Z",
+            "managed": false
         }
     },
     "managedFiles": {
@@ -73,6 +101,46 @@
         ".gitattributes": {
             "hash": "7a4b8e4c2efa2036473526e0e4de5c09327ff3df189c62b1a1f320a1f23c7692",
             "templateHash": "7a4b8e4c2efa2036473526e0e4de5c09327ff3df189c62b1a1f320a1f23c7692"
+        },
+        ".node-version": {
+            "hash": "68ca3fba3b7e864770cb61aeb306d4bd4354b68ab4dd38450860c5d823e42a53",
+            "templateHash": "68ca3fba3b7e864770cb61aeb306d4bd4354b68ab4dd38450860c5d823e42a53"
+        },
+        ".prettierrc.mjs": {
+            "hash": "1373a409da8add16690b95000ad26ad2c96f8498cc2db4e4a27ad182286acef7",
+            "templateHash": "1373a409da8add16690b95000ad26ad2c96f8498cc2db4e4a27ad182286acef7"
+        },
+        ".vscode/tasks.json": {
+            "hash": "2cb187d1bc4a6a2ad18145adc161dc58c61545208e2e407087aa2570a4e01646",
+            "templateHash": "2cb187d1bc4a6a2ad18145adc161dc58c61545208e2e407087aa2570a4e01646"
+        },
+        "tools/check-project.mjs": {
+            "hash": "064d87915d7b877ca6ccfadb143f3e3d77a4cfcf29cf65952fb031f12a4cbe6d",
+            "templateHash": "064d87915d7b877ca6ccfadb143f3e3d77a4cfcf29cf65952fb031f12a4cbe6d"
+        },
+        "tools/schema/interface.schema.json": {
+            "hash": "4305d4cb804c1598feef224457d428a9b8acde58b868845c850eb124930d9ef5",
+            "templateHash": "4305d4cb804c1598feef224457d428a9b8acde58b868845c850eb124930d9ef5"
+        },
+        "tools/schema/interface_config.schema.json": {
+            "hash": "af6fcc7d76b5da0292e67b615e52edf98e541be75f9becbd3cbcdc7710b521b6",
+            "templateHash": "af6fcc7d76b5da0292e67b615e52edf98e541be75f9becbd3cbcdc7710b521b6"
+        },
+        "tools/schema/interface_import.schema.json": {
+            "hash": "3fccaa1a4a65832af3a57638bf2be8884e2fc732c7aa8b2c9aa537805bac809f",
+            "templateHash": "3fccaa1a4a65832af3a57638bf2be8884e2fc732c7aa8b2c9aa537805bac809f"
+        },
+        "tools/schema/pipeline.schema.json": {
+            "hash": "8a27882185191e8cd951afccd9a2f88183c492b9c64ce203c70236ade81a947b",
+            "templateHash": "8a27882185191e8cd951afccd9a2f88183c492b9c64ce203c70236ade81a947b"
+        },
+        "tools/schema/schema-manifest.json": {
+            "hash": "3d74d39a564dec1648a0aa1b945bc48ca5607e4a73e3ce7af433b362c7f63493",
+            "templateHash": "3d74d39a564dec1648a0aa1b945bc48ca5607e4a73e3ce7af433b362c7f63493"
+        },
+        "tools/validate-schema.mjs": {
+            "hash": "485965647a13626e880c0d306c3845752649475548a029afbb88e11aa65f4e66",
+            "templateHash": "485965647a13626e880c0d306c3845752649475548a029afbb88e11aa65f4e66"
         }
     },
     "pending": [],
