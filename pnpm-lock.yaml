@@ -29,6 +29,9 @@ importers:
       prettier-plugin-multiline-arrays:
         specifier: 4.1.9
         version: 4.1.9(prettier@3.8.4)
+      pyright:
+        specifier: ^1.1.400
+        version: 1.1.411
 
 packages:
 
@@ -301,6 +304,11 @@ packages:
     resolution: {integrity: sha512-XUBA9XClHbnJWSfBzjkm6RvPsyg3sryZt06BEQoXcF7EK/xpGaQYJgQKDJSUH5SGZ76Y7pFx1QBnXz09rU5Fbw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
+  fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+
   glob@13.0.6:
     resolution: {integrity: sha512-Wjlyrolmm8uDpm/ogGyXZXb1Z+Ca2B8NbJwqBVg0axK9GbBeoS7yGV6vjXnYdGm6X53iehEuxxbyiKp8QmN4Vw==}
     engines: {node: 18 || 20 || >=22}
@@ -497,6 +505,11 @@ packages:
   proxy-vir@2.0.3:
     resolution: {integrity: sha512-T5u7sc6QcCUSdpUeh6BeW8QkjQ9XqNWwCCID76ry9A1OzsXVnEA4FEVr1q638KDoGSBj3veML9avb/7Qer2RkQ==}
     engines: {node: '>=22'}
+
+  pyright@1.1.411:
+    resolution: {integrity: sha512-03S/vmS5lF1S/tVbKc2WNXCMq8JWCwta/qIYjj1jvqbQhoy+N3NgBzHTSmUlbYD6DJwqQ5XHf108QujoqeURvw==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
 
   readdirp@5.0.0:
     resolution: {integrity: sha512-9u/XQ1pvrQtYyMpZe7DXKv2p5CNvyVwzUB6uhLAnQwHMSgKMBR62lc7AHljaeteeHXn11XTAaLLUVZYVZyuRBQ==}
@@ -920,6 +933,9 @@ snapshots:
     dependencies:
       minipass: 7.1.3
 
+  fsevents@2.3.3:
+    optional: true
+
   glob@13.0.6:
     dependencies:
       minimatch: 10.2.5
@@ -1149,6 +1165,10 @@ snapshots:
     dependencies:
       '@augment-vir/assert': 31.73.5
       '@augment-vir/common': 31.73.5
+
+  pyright@1.1.411:
+    optionalDependencies:
+      fsevents: 2.3.3
 
   readdirp@5.0.0: {}
 
