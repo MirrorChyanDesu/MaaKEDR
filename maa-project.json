@@ -20,7 +20,7 @@
             "enabled": false
         },
         "vscode": {
-            "enabled": false
+            "enabled": true
         }
     },
     "license": {

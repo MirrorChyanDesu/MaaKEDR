@@ -16,7 +16,6 @@ dist/
 *.egg-info/
 
 # IDE 配置
-.vscode/
 .idea/
 *.swp
 *.swo
