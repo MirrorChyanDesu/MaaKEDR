@@ -53,7 +53,6 @@ test_*.json
 
 # Node.js
 node_modules/
-pnpm-lock.yaml
 
 # 项目文档（仅本地保留）
 PROJECT_SUMMARY.md
