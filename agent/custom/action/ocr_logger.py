@@ -69,8 +69,10 @@ class LogOCRResult(CustomAction):
         # 处理 OCR 识别结果
         if reco_result and reco_result.hit:
             best_result = reco_result.best_result
+            if best_result is None:
+                return CustomAction.RunResult(success=True)
             # 输出到 UI 界面
-            logger.info(f"{return_text}: {best_result.text}")
+            logger.info(f"{return_text}: {best_result.text}")  # pyright: ignore[reportAttributeAccessIssue]
 
             # 根据 action_key 执行不同的动作
             if action_key == "Click":
