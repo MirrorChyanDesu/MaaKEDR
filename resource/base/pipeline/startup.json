@@ -20,11 +20,14 @@
         "threshold": 0.8,
         "action": {
             "type": "Click",
-            "target": true,
-            "target_offset": [
-                120,
-                0
-            ]
+            "param": {
+                "target_offset": [
+                    120,
+                    0,
+                    0,
+                    0
+                ]
+            }
         },
         "next": [
             "DailyLoginReward",
@@ -44,11 +47,14 @@
         "threshold": 0.8,
         "action": {
             "type": "Click",
-            "target_count": 3,
-            "post_delay": 500
+            "param": {
+                "target_count": 3
+            }
         },
         "post_delay": 1000,
-        "next": ["CheckHomePage"]
+        "next": [
+            "CheckHomePage"
+        ]
     },
     "CheckHomePage": {
         "desc": "检查是否在主页",
@@ -64,22 +70,25 @@
         "action": {
             "type": "DoNothing"
         },
-        "next": ["ClickHomePage"]
+        "next": [
+            "ClickHomePage"
+        ]
     },
-
     "ClickHomePage": {
         "desc": "点击主页屏幕中心5次",
         "recognition": "DirectHit",
         "action": {
             "type": "Click",
-            "target": [
-                640,
-                360,
-                0,
-                0
-            ],
-            "target_count": 5,
-            "post_delay": 500
+            "param": {
+                "target": [
+                    640,
+                    360,
+                    0,
+                    0
+                ],
+                "target_count": 5,
+                "post_delay": 500
+            }
         }
     }
 }

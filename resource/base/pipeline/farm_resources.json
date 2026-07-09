@@ -14,7 +14,9 @@
         "action": {
             "type": "Click"
         },
-        "next": ["ReturnMain.CheckHomePage"]
+        "next": [
+            "ReturnMain.CheckHomePage"
+        ]
     },
     "ReturnMain.CheckHomePage": {
         "desc": "确认是否已回到主页",
@@ -31,8 +33,12 @@
         "action": {
             "type": "DoNothing"
         },
-        "next": ["FarmResources.Start"],
-        "on_error": ["ReturnMain"]
+        "next": [
+            "FarmResources.Start"
+        ],
+        "on_error": [
+            "ReturnMain"
+        ]
     },
     "FarmResources.CheckHomePage": {
         "desc": "确认当前是否在游戏主页",
@@ -50,8 +56,12 @@
             "type": "DoNothing"
         },
         "timeout": 5000,
-        "next": ["FarmResources.Start"],
-        "on_error": ["ReturnMain"]
+        "next": [
+            "FarmResources.Start"
+        ],
+        "on_error": [
+            "ReturnMain"
+        ]
     },
     "FarmResources.Start": {
         "desc": "从主页进入作战界面",
@@ -74,7 +84,9 @@
             "FarmResources.ResourceCollect",
             "FarmResources.SkillTraining"
         ],
-        "on_error": ["ReturnMain"]
+        "on_error": [
+            "ReturnMain"
+        ]
     },
     "FarmResources.ResourceCollect": {
         "desc": "进入资源收集板块",
@@ -92,7 +104,9 @@
             "type": "Click"
         },
         "post_delay": 1000,
-        "next": ["FarmResources.SelectResourceType"]
+        "next": [
+            "FarmResources.SelectResourceType"
+        ]
     },
     "FarmResources.SkillTraining": {
         "desc": "进入技能演练板块",
@@ -110,7 +124,9 @@
             "type": "Click"
         },
         "post_delay": 2000,
-        "next": ["FarmResources.SelectSkillType"]
+        "next": [
+            "FarmResources.SelectSkillType"
+        ]
     },
     "FarmResources.SelectResourceType": {
         "desc": "选择资源类型(由选项控制跳转)",
@@ -118,7 +134,9 @@
         "action": {
             "type": "DoNothing"
         },
-        "next": ["FarmResources.SelectSpecialFunds"]
+        "next": [
+            "FarmResources.SelectSpecialFunds"
+        ]
     },
     "FarmResources.SelectSpecialFunds": {
         "desc": "选择特别军费行动",
@@ -136,7 +154,9 @@
             "type": "Click"
         },
         "post_delay": 1000,
-        "next": ["FarmResources.SelectStage"]
+        "next": [
+            "FarmResources.SelectStage"
+        ]
     },
     "FarmResources.SelectPhysicalTraining": {
         "desc": "选择作战体能训练",
@@ -154,7 +174,9 @@
             "type": "Click"
         },
         "post_delay": 1000,
-        "next": ["FarmResources.SelectStage"]
+        "next": [
+            "FarmResources.SelectStage"
+        ]
     },
     "FarmResources.SelectUnitRating": {
         "desc": "选择兵种能力评级",
@@ -172,7 +194,9 @@
             "type": "Click"
         },
         "post_delay": 1000,
-        "next": ["FarmResources.SelectStage"]
+        "next": [
+            "FarmResources.SelectStage"
+        ]
     },
     "FarmResources.SelectVehicleDrill": {
         "desc": "选择载具对抗演练",
@@ -190,7 +214,9 @@
             "type": "Click"
         },
         "post_delay": 1000,
-        "next": ["FarmResources.SelectStage"]
+        "next": [
+            "FarmResources.SelectStage"
+        ]
     },
     "FarmResources.SelectSkillType": {
         "desc": "选择技能类型(由选项控制跳转)",
@@ -198,7 +224,9 @@
         "action": {
             "type": "DoNothing"
         },
-        "next": ["FarmResources.SelectBasicSkill"]
+        "next": [
+            "FarmResources.SelectBasicSkill"
+        ]
     },
     "FarmResources.SelectBasicSkill": {
         "desc": "选择基础技能演练",
@@ -216,7 +244,9 @@
             "type": "Click"
         },
         "post_delay": 1000,
-        "next": ["FarmResources.SelectSkillStage"]
+        "next": [
+            "FarmResources.SelectSkillStage"
+        ]
     },
     "FarmResources.SelectAdvancedSkill": {
         "desc": "选择专业技能演练",
@@ -234,7 +264,9 @@
             "type": "Click"
         },
         "post_delay": 1000,
-        "next": ["FarmResources.SelectSkillStage"]
+        "next": [
+            "FarmResources.SelectSkillStage"
+        ]
     },
     "FarmResources.SelectSkillStage": {
         "desc": "选择技能关卡(由选项控制)",
@@ -242,7 +274,9 @@
         "action": {
             "type": "DoNothing"
         },
-        "next": ["FarmResources.CheckSkillLocked"]
+        "next": [
+            "FarmResources.CheckSkillLocked"
+        ]
     },
     "FarmResources.CheckSkillLocked": {
         "desc": "检查技能关卡是否被锁定(roi由选项动态设置)",
@@ -255,7 +289,9 @@
             "type": "DoNothing"
         },
         "timeout": 5000,
-        "on_error": ["FarmResources.ClickSkillStage"],
+        "on_error": [
+            "FarmResources.ClickSkillStage"
+        ],
         "focus": {
             "Node.Recognition.Succeeded": "关卡未解锁，请先解锁后再尝试"
         }
@@ -268,7 +304,9 @@
         "action": {
             "type": "Click"
         },
-        "next": ["FarmResources.QuickBattle"]
+        "next": [
+            "FarmResources.QuickBattle"
+        ]
     },
     "FarmResources.SelectStage": {
         "desc": "选择关卡(由选项控制)",
@@ -276,24 +314,30 @@
         "action": {
             "type": "DoNothing"
         },
-        "next": ["FarmResources.ClickStage"]
+        "next": [
+            "FarmResources.ClickStage"
+        ]
     },
     "FarmResources.SwipeToRight": {
         "desc": "滑动到最右边(关卡4、5需要)",
         "recognition": "DirectHit",
         "action": {
             "type": "Swipe",
-            "begin": [
-                900,
-                400
-            ],
-            "end": [
-                300,
-                400
-            ],
-            "duration": 500
+            "param": {
+                "begin": [
+                    900,
+                    400
+                ],
+                "end": [
+                    300,
+                    400
+                ],
+                "duration": 500
+            }
         },
-        "next": ["FarmResources.ClickStage"]
+        "next": [
+            "FarmResources.ClickStage"
+        ]
     },
     "FarmResources.ClickStage": {
         "desc": "点击关卡(使用Agent动态识别)",
@@ -304,8 +348,12 @@
             "type": "Click"
         },
         "timeout": 10000,
-        "next": ["FarmResources.QuickBattle"],
-        "on_error": ["FarmResources.StageLocked"]
+        "next": [
+            "FarmResources.QuickBattle"
+        ],
+        "on_error": [
+            "FarmResources.StageLocked"
+        ]
     },
     "FarmResources.QuickBattle": {
         "desc": "点击快速战斗按钮",
@@ -323,8 +371,12 @@
         "action": {
             "type": "Click"
         },
-        "next": ["FarmResources.SetBattleCount"],
-        "on_error": ["FarmResources.QuickBattleLocked"]
+        "next": [
+            "FarmResources.SetBattleCount"
+        ],
+        "on_error": [
+            "FarmResources.QuickBattleLocked"
+        ]
     },
     "FarmResources.QuickBattleLocked": {
         "desc": "关卡未解锁快速战斗提示",
@@ -347,20 +399,58 @@
         "recognition": "DirectHit",
         "action": {
             "type": "Custom",
-            "custom_action": "SetBattleCount",
-            "custom_action_param": "{\"target_count\": 1, \"count_roi\": [903, 441, 27, 43], \"plus_button\": [1086, 470], \"minus_button\": [739, 470], \"max_template\": \"farm_resources/max_count.png\"}"
+            "param": {
+                "custom_action": "SetBattleCount",
+                "custom_action_param": {
+                    "target_count": 1,
+                    "count_roi": [
+                        903,
+                        441,
+                        27,
+                        43
+                    ],
+                    "plus_button": [
+                        1086,
+                        470
+                    ],
+                    "minus_button": [
+                        739,
+                        470
+                    ],
+                    "max_template": "farm_resources/max_count.png"
+                }
+            }
         },
-        "next": ["FarmResources.PrepareBattle"]
+        "next": [
+            "FarmResources.PrepareBattle"
+        ]
     },
     "FarmResources.SetBattleCountMax": {
         "desc": "设置战斗次数为最大(清空体力模式)",
         "recognition": "DirectHit",
         "action": {
             "type": "Custom",
-            "custom_action": "SetBattleCount",
-            "custom_action_param": "{\"target_count\": \"max\", \"count_roi\": [903, 441, 27, 43], \"plus_button\": [1086, 470], \"max_template\": \"farm_resources/max_count.png\"}"
+            "param": {
+                "custom_action": "SetBattleCount",
+                "custom_action_param": {
+                    "target_count": "max",
+                    "count_roi": [
+                        903,
+                        441,
+                        27,
+                        43
+                    ],
+                    "plus_button": [
+                        1086,
+                        470
+                    ],
+                    "max_template": "farm_resources/max_count.png"
+                }
+            }
         },
-        "next": ["FarmResources.PrepareBattle"]
+        "next": [
+            "FarmResources.PrepareBattle"
+        ]
     },
     "FarmResources.PrepareBattle": {
         "desc": "点击准备快速战斗",
@@ -396,14 +486,22 @@
         "threshold": 0.8,
         "action": {
             "type": "Click",
-            "target": [
-                323,
-                611
-            ]
+            "param": {
+                "target": [
+                    323,
+                    611,
+                    0,
+                    0
+                ]
+            }
         },
         "post_delay": 200,
-        "next": ["FarmResources.ReturnMainFromFarm"],
-        "on_error": ["FarmResources.StartBattle"],
+        "next": [
+            "FarmResources.ReturnMainFromFarm"
+        ],
+        "on_error": [
+            "FarmResources.StartBattle"
+        ],
         "focus": {
             "Node.Recognition.Succeeded": "体力不足，退出界面减少次数重试"
         }
@@ -413,20 +511,38 @@
         "recognition": "DirectHit",
         "action": {
             "type": "Custom",
-            "custom_action": "ReduceBattleCount",
-            "custom_action_param": "{\"minus_button\": [739, 470], \"count_roi\": [903, 441, 27, 43]}"
+            "param": {
+                "custom_action": "ReduceBattleCount",
+                "custom_action_param": {
+                    "minus_button": [
+                        739,
+                        470
+                    ],
+                    "count_roi": [
+                        903,
+                        441,
+                        27,
+                        43
+                    ]
+                }
+            }
         },
         "post_delay": 1000,
-        "next": ["FarmResources.PrepareBattle"],
-        "on_error": ["FarmResources.NoStamina"]
+        "next": [
+            "FarmResources.PrepareBattle"
+        ],
+        "on_error": [
+            "FarmResources.NoStamina"
+        ]
     },
-
     "FarmResources.ResetCountTarget": {
         "desc": "重置目标次数",
         "recognition": "DirectHit",
         "action": {
             "type": "Custom",
-            "custom_action": "ResetBattleCountTarget"
+            "param": {
+                "custom_action": "ResetBattleCountTarget"
+            }
         },
         "next": [
             "FarmResources.QuickBattle",
@@ -439,7 +555,9 @@
         "action": {
             "type": "DoNothing"
         },
-        "next": ["FarmResources.ExitStage"],
+        "next": [
+            "FarmResources.ExitStage"
+        ],
         "focus": {
             "Node.Action.Starting": "体力不足，停止刷取"
         }
@@ -461,7 +579,9 @@
             "type": "Click"
         },
         "post_delay": 1000,
-        "next": ["FarmResources.ExitStageConfirm"]
+        "next": [
+            "FarmResources.ExitStageConfirm"
+        ]
     },
     "FarmResources.ExitStageConfirm": {
         "desc": "点击关卡界面退出键",
@@ -478,7 +598,9 @@
         "action": {
             "type": "Click"
         },
-        "next": ["FarmResources.ReturnMainFromFarm"]
+        "next": [
+            "FarmResources.ReturnMainFromFarm"
+        ]
     },
     "FarmResources.ReturnMainFromFarm": {
         "desc": "返回主页",
@@ -512,7 +634,9 @@
             "type": "Click"
         },
         "post_delay": 7500,
-        "next": ["FarmResources.BattleStage"]
+        "next": [
+            "FarmResources.BattleStage"
+        ]
     },
     "FarmResources.BattleStage": {
         "desc": "战斗循环父节点：循环检测胜利画面/物品对话框/快速战斗按钮",
@@ -525,7 +649,9 @@
             "[JumpBack]FarmResources.ClickItemDialog",
             "FarmResources.QuickBattle"
         ],
-        "on_error": ["FarmResources.PrepareBattle"]
+        "on_error": [
+            "FarmResources.PrepareBattle"
+        ]
     },
     "FarmResources.ClickVictory": {
         "desc": "检测并点击战斗胜利画面",
