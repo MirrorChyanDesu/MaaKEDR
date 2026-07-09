@@ -24,6 +24,8 @@ OCR 结果日志输出模块
 - click_target: 点击坐标 [x, y, w, h]（可选，仅在 action_key=Click 时使用）
 """
 
+from typing import Any
+
 from maa.agent.agent_server import AgentServer
 from maa.custom_action import CustomAction
 from maa.context import Context
@@ -47,7 +49,7 @@ class LogOCRResult(CustomAction):
     ) -> CustomAction.RunResult:
         # 解析自定义参数
         try:
-            argv_dict: dict = json.loads(argv.custom_action_param)
+            argv_dict: dict[str, Any] = json.loads(argv.custom_action_param)
         except json.JSONDecodeError as e:
             logger.error(f"LogOCRResult 参数解析失败: {e}")
             return CustomAction.RunResult(success=False)
@@ -86,7 +88,7 @@ class LogOCRResult(CustomAction):
 
         return CustomAction.RunResult(success=True)
 
-    def _handle_click(self, context: Context, best_result, click_target: list):
+    def _handle_click(self, context: Context, best_result: Any, click_target: list[int]):
         """处理点击动作"""
         if click_target:
             # 点击传入参数中的坐标位置

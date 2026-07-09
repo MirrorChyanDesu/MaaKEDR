@@ -1,8 +1,10 @@
 import json
+from typing import Any
+
 from utils.logger import logger
 
 
-def parse_params(raw: str | None, *required_keys: str) -> dict:
+def parse_params(raw: str | None, *required_keys: str) -> dict[str, Any]:
     """
     解析 custom_action_param / custom_recognition_param JSON 字符串。
     支持多层转义的 JSON 字符串。
