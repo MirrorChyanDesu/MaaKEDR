@@ -5,8 +5,6 @@ from maa.context import Context
 from maa.define import RectType
 from maa.pipeline import JRecognitionType, JOCR, JTemplateMatch, JActionType, JClick
 
-from typing import Optional, Union
-import json
 from utils.logger import logger
 from utils.params import parse_params
 
@@ -59,7 +57,7 @@ class CheckResourceStage(CustomRecognition):
 
     def analyze(
         self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> Union[CustomRecognition.AnalyzeResult, Optional[RectType]]:
+    ) -> CustomRecognition.AnalyzeResult | RectType | None:
         # 获取参数
         params = parse_params(argv.custom_recognition_param)
 
@@ -208,8 +206,12 @@ class SetBattleCount(CustomAction):
         return CustomAction.RunResult(success=True)
 
 
-# 全局变量记录当前目标次数
-_current_target_count = 6
+# 共享计数器状态：在 ReduceBattleCount 和
+# ResetBattleCountTarget 之间传递目标战斗次数。
+# None 表示"本轮未初始化"，ReduceBattleCount 在首次调用时自动设为 6。
+_current_target_count: int | None = None
+_current_run_epoch = 0
+
 
 
 @AgentServer.custom_action("ReduceBattleCount")
@@ -233,6 +235,11 @@ class ReduceBattleCount(CustomAction):
             minus_x, minus_y = params.get("minus_button", MINUS_BUTTON)
             count_roi = params.get("count_roi", COUNT_ROI)
 
+            # 如果计数器未初始化（ResetBattleCountTarget 没被调用过），自动设为 6
+            if _current_target_count is None:
+                _current_target_count = 6
+                logger.info("[ReduceBattleCount] 计数器未初始化，自动设为 6")
+
             # OCR识别当前次数
             image = context.tasker.controller.cached_image
             ocr_detail = context.run_recognition_direct(
@@ -250,16 +257,16 @@ class ReduceBattleCount(CustomAction):
 
             # 减少目标次数（每次减少1）
             _current_target_count -= 1
-            logger.info(f"[ReduceBattleCount] 当前次数: {current_count}, 新目标次数: {_current_target_count}")
+            logger.info("[ReduceBattleCount] 当前次数: {}, 新目标次数: {}", current_count, _current_target_count)
 
             # 如果目标次数已经小于1，返回失败
             if _current_target_count < 1:
-                logger.warning(f"[ReduceBattleCount] 目标次数已到最小，无法继续")
-                _current_target_count = 6  # 重置
+                logger.warning("[ReduceBattleCount] 目标次数已到最小，无法继续")
+                _current_target_count = None  # 重置，让下次重新初始化
                 return CustomAction.RunResult(success=False)
 
             # 点击减号按钮1次
-            logger.info(f"[ReduceBattleCount] 点击减号按钮")
+            logger.info("[ReduceBattleCount] 点击减号按钮")
             context.run_action_direct(
                 JActionType.Click,
                 JClick(),
@@ -269,8 +276,8 @@ class ReduceBattleCount(CustomAction):
 
             return CustomAction.RunResult(success=True)
         except Exception as e:
-            logger.error(f"[ReduceBattleCount] 执行异常: {e}")
-            _current_target_count = 6  # 重置
+            logger.error("[ReduceBattleCount] 执行异常: {}", e)
+            _current_target_count = None  # 重置，让下次重新初始化
             return CustomAction.RunResult(success=False)
 
 
@@ -285,5 +292,5 @@ class ResetBattleCountTarget(CustomAction):
     ) -> CustomAction.RunResult:
         global _current_target_count
         _current_target_count = 6
-        logger.info(f"[ResetBattleCountTarget] 目标次数重置为: {_current_target_count}")
+        logger.info("[ResetBattleCountTarget] 目标次数重置为: {}", _current_target_count)
         return CustomAction.RunResult(success=True)
