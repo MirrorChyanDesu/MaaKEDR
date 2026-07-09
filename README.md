@@ -111,6 +111,11 @@ MaaKEDR/
 - [MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia)  
   基于 Avalonia UI 构建的 MaaFramework 通用 GUI 解决方案
 
+### 社区项目
+
+- [M9A](https://github.com/MAA1999/M9A)  
+  优秀的 MaaFramework 自动化项目，开发过程中多有参考
+
 ### 工具链
 
 - [create-maa-project](https://github.com/Windsland52/create-maa-project) — 项目脚手架

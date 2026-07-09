@@ -112,6 +112,11 @@ For more documentation, visit the [MaaFramework](https://github.com/MaaXYZ/MaaFr
 - [MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia)  
   Universal MaaFramework GUI solution built with Avalonia UI
 
+### Community Project
+
+- [M9A](https://github.com/MAA1999/M9A)  
+  An excellent MaaFramework automation project — referenced during development
+
 ### Toolchain
 
 - [create-maa-project](https://github.com/Windsland52/create-maa-project) — Project scaffolding
