@@ -6,7 +6,6 @@ Schema 验证工具
 import json
 import os
 import sys
-from pathlib import Path
 
 
 def validate_json_file(filepath: str) -> dict:
@@ -20,7 +19,7 @@ def validate_json_file(filepath: str) -> dict:
         验证结果 {"valid": bool, "error": str}
     """
     try:
-        with open(filepath, 'r', encoding='utf-8') as f:
+        with open(filepath, encoding='utf-8') as f:
             json.load(f)
         return {"valid": True, "error": None}
     except json.JSONDecodeError as e:

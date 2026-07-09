@@ -24,13 +24,12 @@ OCR 结果日志输出模块
 - click_target: 点击坐标 [x, y, w, h]（可选，仅在 action_key=Click 时使用）
 """
 
+import json
 from typing import Any
 
 from maa.agent.agent_server import AgentServer
-from maa.custom_action import CustomAction
 from maa.context import Context
-import json
-
+from maa.custom_action import CustomAction
 from utils.logger import logger
 
 
@@ -80,7 +79,7 @@ class LogOCRResult(CustomAction):
             if action_key == "Click":
                 self._handle_click(context, best_result, click_target)
             elif action_key == "":
-                logger.debug(f"仅返回 OCR 数据，不执行动作")
+                logger.debug("仅返回 OCR 数据，不执行动作")
             else:
                 logger.warning(f"未知的 action_key: {action_key}")
         else:

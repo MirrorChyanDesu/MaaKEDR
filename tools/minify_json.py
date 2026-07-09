@@ -6,7 +6,6 @@ JSON 压缩工具
 import json
 import os
 import sys
-from pathlib import Path
 
 
 def minify_json_file(input_path: str, output_path: str = None) -> bool:
@@ -21,7 +20,7 @@ def minify_json_file(input_path: str, output_path: str = None) -> bool:
         是否成功
     """
     try:
-        with open(input_path, 'r', encoding='utf-8') as f:
+        with open(input_path, encoding='utf-8') as f:
             data = json.load(f)
 
         if output_path is None:

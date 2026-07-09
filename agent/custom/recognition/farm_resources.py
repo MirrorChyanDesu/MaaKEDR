@@ -1,13 +1,11 @@
 from maa.agent.agent_server import AgentServer
-from maa.custom_recognition import CustomRecognition
-from maa.custom_action import CustomAction
 from maa.context import Context
+from maa.custom_action import CustomAction
+from maa.custom_recognition import CustomRecognition
 from maa.define import RectType
-from maa.pipeline import JRecognitionType, JOCR, JTemplateMatch, JActionType, JClick
-
+from maa.pipeline import JOCR, JActionType, JClick, JRecognitionType, JTemplateMatch
 from utils.logger import logger
 from utils.params import parse_params
-
 
 # 资源收集关卡边框配置（按资源类型分类）
 RESOURCE_STAGES = {

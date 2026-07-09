@@ -1,4 +1,4 @@
-from typing import TypeVar, TypeGuard
+from typing import TypeGuard, TypeVar
 
 from maa.define import (
     BoxAndCountResult,

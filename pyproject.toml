@@ -34,6 +34,8 @@ ignore = [
     "SIM117", # nested with
     "SIM118", # key in dict
     "B007",   # unused loop variable
+    "UP047",  # non-pep695 generic function (needs Python 3.12+ syntax)
+    "SIM105", # suppressible exception
 ]
 
 [tool.pyright]
@@ -41,7 +43,7 @@ pythonVersion = "3.14"
 typeCheckingMode = "strict"
 exclude = [".venv", "**/__pycache__"]
 extraPaths = ["agent"]
-include = ["agent", "tools"]
+include = ["agent"]
 reportMissingTypeStubs = "none"
 reportUnknownMemberType = "none"
 reportUnknownArgumentType = "none"

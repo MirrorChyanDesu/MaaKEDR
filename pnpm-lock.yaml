@@ -32,6 +32,9 @@ importers:
       pyright:
         specifier: ^1.1.400
         version: 1.1.411
+      ruff:
+        specifier: ^1.5.0
+        version: 1.5.4
 
 packages:
 
@@ -270,6 +273,9 @@ packages:
   diff@9.0.0:
     resolution: {integrity: sha512-svtcdpS8CgJyqAjEQIXdb3OjhFVVYjzGAPO8WGCmRbrml64SPw/jJD4GoE98aR7r25A0XcgrK3F02yw9R/vhQw==}
     engines: {node: '>=0.3.1'}
+
+  emitify@3.1.0:
+    resolution: {integrity: sha512-pucUCyaeC8TJoRXniRiNb81Odoqlf2lMaFARA8tci2PaORFIeXBoIQHEzuA3dxPsU1l7AVb7xmFra4iJwVU8wg==}
 
   env-paths@2.2.1:
     resolution: {integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==}
@@ -522,6 +528,9 @@ packages:
   retry@0.12.0:
     resolution: {integrity: sha512-9LkiTwjUh6rT555DtE9rTX+BKByPfrMzEAtnlEtdEwr3Nkffwiihqe2bWADg+OQRjt9gl6ICdmB/ZFDCGAtSow==}
     engines: {node: '>= 4'}
+
+  ruff@1.5.4:
+    resolution: {integrity: sha512-42kBjp78DFDAgZw8ywPpB3bo0oZrSifukCRMB49dnFeGPbg1s4jdtXZug06mkxue1JrD3dP/ng2mxPYg7gx3Jw==}
 
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
@@ -913,6 +922,8 @@ snapshots:
 
   diff@9.0.0: {}
 
+  emitify@3.1.0: {}
+
   env-paths@2.2.1: {}
 
   error-causes@3.0.2: {}
@@ -1175,6 +1186,10 @@ snapshots:
   require-from-string@2.0.2: {}
 
   retry@0.12.0: {}
+
+  ruff@1.5.4:
+    dependencies:
+      emitify: 3.1.0
 
   safer-buffer@2.1.2:
     optional: true
