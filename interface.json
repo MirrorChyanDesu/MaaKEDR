@@ -24,7 +24,7 @@
     ],
     "agent": {
         "child_exec": "python",
-        "child_args": ["-u", "./agent/main.py"],
+        "child_args": ["-u", "./agent/bootstrap.py"],
         "identifier": "maakedr_agent"
     },
     "import": [
