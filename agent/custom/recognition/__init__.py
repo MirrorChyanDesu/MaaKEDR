@@ -1,3 +1,11 @@
-from . import farm_resources
+from importlib import import_module
 
-__all__ = ["farm_resources"]
+RECOGNITION_MODULES = ("farm_resources",)
+
+
+def register_all() -> None:
+    for module_name in RECOGNITION_MODULES:
+        import_module(f"custom.recognition.{module_name}")
+
+
+__all__ = ["register_all"]
