@@ -25,10 +25,15 @@ Powered by [MaaFramework](https://github.com/MaaXYZ/MaaFramework)!
 
 </div>
 
-> ⚠️ **Project Status: Under Development**
+> ⚠️ **Project Status: Semi-Abandoned**
 >
-> This project is in early development and not yet stable for daily use. Active development is ongoing.
-> The team is very small with limited bandwidth. Issues are welcome but may not receive timely responses. Thanks for your understanding!
+> The developer is lazy and recently discovered a similar open-source project
+> [MaaAssistantKedrgame (MAK)](https://github.com/Hollow-YK/MaaAssistantKedrgame)
+> with more complete features and active maintenance.
+> If you need a reliable tool, please use [MAK](https://github.com/Hollow-YK/MaaAssistantKedrgame) instead.
+>
+> This project is now **semi-abandoned** and will no longer be maintained as a primary tool,
+> but may receive occasional updates as the developer's personal practice project.
 
 ---
 

@@ -25,10 +25,14 @@
 
 </div>
 
-> ⚠️ **项目状态：开发中**
+> ⚠️ **项目状态：半废弃**
 >
-> 本项目目前完成度较低，尚不能稳定使用，正在积极开发中。
-> 开发者成员极少且精力有限，遇到问题欢迎提交 Issue，但可能无法及时响应和修复。感谢理解与支持！
+> 开发者比较懒，最近发现已有同类开源软件
+> [MaaAssistantKedrgame (MAK)](https://github.com/Hollow-YK/MaaAssistantKedrgame)，
+> 功能更完善、维护更积极，建议有需要的朋友优先使用 [MAK](https://github.com/Hollow-YK/MaaAssistantKedrgame)。
+>
+> 本项目转为**半废弃状态**，不再作为主力工具维护，
+> 但会作为开发者的练手项目继续不定期更新。
 
 ---
 
