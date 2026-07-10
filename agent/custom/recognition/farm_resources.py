@@ -1,3 +1,5 @@
+from typing import Any
+
 from maa.agent.agent_server import AgentServer
 from maa.context import Context
 from maa.custom_action import CustomAction
@@ -21,14 +23,12 @@ RESOURCE_STAGES = {
         2: [516, 523, 185, 56],
         3: [1005, 476, 185, 56],
         4: [315, 532, 57, 42],
-        5: [803, 481, 55, 44],
     },
     "兵种能力评级": {
         1: [164, 481, 62, 44],
         2: [516, 523, 185, 56],
         3: [1005, 476, 185, 56],
         4: [315, 532, 57, 42],
-        5: [803, 481, 55, 44],
     },
     "载具对抗演练": {
         1: [170, 482, 50, 42],
@@ -53,10 +53,31 @@ MAX_BUTTON_TEMPLATE = "farm_resources/max_count.png"
 class CheckResourceStage(CustomRecognition):
     """检测资源收集关卡"""
 
+    def _check_locked(
+        self, context: Context, image: Any, stage_roi: list[int], lock_template: str, lock_threshold: float
+    ) -> bool:
+        """在关卡识别区域内检测锁定图标"""
+        if not lock_template:
+            return False
+        try:
+            lock_detail = context.run_recognition_direct(
+                JRecognitionType.TemplateMatch,
+                JTemplateMatch(
+                    template=lock_template,
+                    roi=(stage_roi[0], stage_roi[1], stage_roi[2], stage_roi[3]),
+                    threshold=lock_threshold,
+                ),
+                image,
+            )
+            if lock_detail and lock_detail.box:
+                return True
+        except Exception:
+            return False
+        return False
+
     def analyze(
         self, context: Context, argv: CustomRecognition.AnalyzeArg
     ) -> CustomRecognition.AnalyzeResult | RectType | None:
-        # 获取参数
         params = parse_params(argv.custom_recognition_param)
 
         stage_name = params.get("stage_name", "")
@@ -65,7 +86,6 @@ class CheckResourceStage(CustomRecognition):
         lock_template = params.get("lock_template", "farm_resources/lock_icon.png")
         lock_threshold = params.get("lock_threshold", 0.7)
 
-        # 根据资源类型和关卡编号获取ROI
         if resource_type and resource_type in RESOURCE_STAGES:
             type_stages = RESOURCE_STAGES[resource_type]
         else:
@@ -76,12 +96,19 @@ class CheckResourceStage(CustomRecognition):
             return None
         stage_roi = type_stages[stage_index]
 
-        # OCR识别目标关卡（同时匹配带横杠和不带横杠的格式）
+        image = argv.image
+
+        # 检测关卡是否锁定（第一关默认开放，跳过检测）
+        if stage_index > 1 and self._check_locked(context, image, stage_roi, lock_template, lock_threshold):
+            logger.warning(f"[资源刷取] {stage_name} 关卡被锁定")
+            return None
+
+        # OCR识别目标关卡
         stage_name_no_dash = stage_name.replace("-", "")
         ocr_detail = context.run_recognition_direct(
             JRecognitionType.OCR,
             JOCR(expected=[stage_name, stage_name_no_dash], roi=(stage_roi[0], stage_roi[1], stage_roi[2], stage_roi[3])),
-            argv.image,
+            image,
         )
 
         if not ocr_detail or not ocr_detail.box:
@@ -94,26 +121,10 @@ class CheckResourceStage(CustomRecognition):
             ocr_detail = context.run_recognition_direct(
                 JRecognitionType.OCR,
                 JOCR(expected=[stage_name, stage_name_no_dash], roi=(adjusted_roi[0], adjusted_roi[1], adjusted_roi[2], adjusted_roi[3])),
-                argv.image,
+                image,
             )
             if not ocr_detail or not ocr_detail.box:
                 return None
-
-        # 检查锁定图标
-        try:
-            if lock_template:
-                x, y, w, h = ocr_detail.box
-                lock_roi = [max(0, x - 20), max(0, y - 20), w + 40, h + 40]
-                lock_detail = context.run_recognition_direct(
-                    JRecognitionType.TemplateMatch,
-                    JTemplateMatch(template=lock_template, roi=(lock_roi[0], lock_roi[1], lock_roi[2], lock_roi[3]), threshold=lock_threshold),
-                    argv.image,
-                )
-                if lock_detail and lock_detail.box:
-                    logger.warning(f"[资源刷取] {stage_name}关卡被锁定")
-                    return None
-        except Exception:
-            pass
 
         logger.info(f"[资源刷取] 找到关卡 {stage_name}，位置: {ocr_detail.box}")
         return CustomRecognition.AnalyzeResult(box=ocr_detail.box, detail={"status": "found"})

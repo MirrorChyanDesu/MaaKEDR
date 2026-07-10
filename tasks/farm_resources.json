@@ -389,23 +389,6 @@
                     "option": [
                         "farm_battle_count"
                     ]
-                },
-                {
-                    "name": "2-5",
-                    "label": "2-5",
-                    "pipeline_override": {
-                        "FarmResources.SelectStage": {
-                            "next": [
-                                "FarmResources.SwipeToRight"
-                            ]
-                        },
-                        "FarmResources.ClickStage": {
-                            "custom_recognition_param": "{\"stage_name\": \"2-5\", \"stage_index\": 5, \"resource_type\": \"作战体能训练\"}"
-                        }
-                    },
-                    "option": [
-                        "farm_battle_count"
-                    ]
                 }
             ]
         },
@@ -461,23 +444,6 @@
                         },
                         "FarmResources.ClickStage": {
                             "custom_recognition_param": "{\"stage_name\": \"3-4\", \"stage_index\": 4, \"resource_type\": \"兵种能力评级\"}"
-                        }
-                    },
-                    "option": [
-                        "farm_battle_count"
-                    ]
-                },
-                {
-                    "name": "3-5",
-                    "label": "3-5",
-                    "pipeline_override": {
-                        "FarmResources.SelectStage": {
-                            "next": [
-                                "FarmResources.SwipeToRight"
-                            ]
-                        },
-                        "FarmResources.ClickStage": {
-                            "custom_recognition_param": "{\"stage_name\": \"3-5\", \"stage_index\": 5, \"resource_type\": \"兵种能力评级\"}"
                         }
                     },
                     "option": [
