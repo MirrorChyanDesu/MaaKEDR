@@ -135,8 +135,8 @@
             "templateHash": "1c475f27cd91987b4a8e82a99ee2054f673fe5c344c2c2facc0c4c80778317bc"
         },
         ".github/workflows/release.yml": {
-            "hash": "a1c7138b96db38110a803e9d614b37fcf15a078f888379b9eb881fe8da9e8551",
-            "templateHash": "a1c7138b96db38110a803e9d614b37fcf15a078f888379b9eb881fe8da9e8551"
+            "hash": "208c45340bba5a2e6e66fe4adaa1a1c06879712b13770037a76587d2a2263441",
+            "templateHash": "208c45340bba5a2e6e66fe4adaa1a1c06879712b13770037a76587d2a2263441"
         },
         ".github/workflows/schema-sync.yml": {
             "hash": "49bb37756a12155cfe4fdbdc7fd0d9a619f1b4b6f7271d12e0cf0ca7d552a261",
