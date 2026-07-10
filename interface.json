@@ -4,6 +4,7 @@
     "label": "MaaKEDR",
     "version": "v0.1.0",
     "icon": "logo.ico",
+    "welcome": "./resource/base/WELCOME.md",
     "description": "MaaKEDR MaaFW project",
     "controller": [
         {
