@@ -51,10 +51,10 @@ reportUnknownVariableType = "none"
 reportUnknownParameterType = "none"
 reportUnknownLambdaType = "none"
 
-[tool.hatch.build.targets.wheel]
-packages = ["agent"]
-
 [[tool.uv.index]]
 name = "tuna"
 url = "https://pypi.tuna.tsinghua.edu.cn/simple"
 default = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["agent"]
