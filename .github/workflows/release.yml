@@ -38,18 +38,6 @@ jobs:
             runtime_os: linux
             runtime_arch: arm64
             ext: tar.gz
-          - os: macos-15-intel
-            artifact_os: macos
-            arch: x86_64
-            runtime_os: osx
-            runtime_arch: x64
-            ext: tar.gz
-          - os: macos-latest
-            artifact_os: macos
-            arch: aarch64
-            runtime_os: osx
-            runtime_arch: arm64
-            ext: tar.gz
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v6
