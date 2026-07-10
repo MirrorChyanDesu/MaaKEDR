@@ -63,9 +63,9 @@ class CheckResourceStage(CustomRecognition):
             lock_detail = context.run_recognition_direct(
                 JRecognitionType.TemplateMatch,
                 JTemplateMatch(
-                    template=lock_template,
+                    template=[lock_template],
                     roi=(stage_roi[0], stage_roi[1], stage_roi[2], stage_roi[3]),
-                    threshold=lock_threshold,
+                    threshold=[lock_threshold],
                 ),
                 image,
             )
@@ -163,7 +163,7 @@ class SetBattleCount(CustomAction):
         if target_count == "max":
             max_detail = context.run_recognition_direct(
                 JRecognitionType.TemplateMatch,
-                JTemplateMatch(template=max_template, threshold=[0.8, 0.8, 0.8]),
+                JTemplateMatch(template=[max_template], threshold=[0.8, 0.8, 0.8]),
                 image,
             )
             if max_detail and max_detail.box:
