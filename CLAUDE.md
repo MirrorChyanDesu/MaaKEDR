@@ -629,7 +629,8 @@ DependencySetup_依赖库安装_win.bat
 
 ## User Preferences
 
-- **Commit style:** Keep commit messages short and general (e.g., "fix: 调整每日登录弹窗 ROI"), not overly detailed.
+- **Commit style:** Keep commit messages short and general, not overly detailed.
+- **Commit format:** 一句简短但逻辑清晰的话，体现修改的功能和内容（如 `fix: 资源刷取检测锁定后立即停止`）
 - **Push only on approval:** Present commit message for review before pushing. Only push when explicitly told to.
 - **Do not push unilaterally** after making changes — wait for user confirmation.
 
