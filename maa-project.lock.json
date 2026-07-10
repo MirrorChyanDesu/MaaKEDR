@@ -155,8 +155,8 @@
             "templateHash": "2cb187d1bc4a6a2ad18145adc161dc58c61545208e2e407087aa2570a4e01646"
         },
         "tools/build-release.mjs": {
-            "hash": "bf6683343c7c131f42038c70c67412bc25cb395d7d350445778a88cc93f1fc93",
-            "templateHash": "bf6683343c7c131f42038c70c67412bc25cb395d7d350445778a88cc93f1fc93"
+            "hash": "7fd7683a60d650f1a3625faaa8a71010a18eba226a28ee6c4ccbbeab64a4b8a2",
+            "templateHash": "7fd7683a60d650f1a3625faaa8a71010a18eba226a28ee6c4ccbbeab64a4b8a2"
         },
         "tools/check-project.mjs": {
             "hash": "064d87915d7b877ca6ccfadb143f3e3d77a4cfcf29cf65952fb031f12a4cbe6d",
