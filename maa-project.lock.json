@@ -135,8 +135,8 @@
             "templateHash": "1c475f27cd91987b4a8e82a99ee2054f673fe5c344c2c2facc0c4c80778317bc"
         },
         ".github/workflows/release.yml": {
-            "hash": "a1c7138b96db38110a803e9d614b37fcf15a078f888379b9eb881fe8da9e8551",
-            "templateHash": "a1c7138b96db38110a803e9d614b37fcf15a078f888379b9eb881fe8da9e8551"
+            "hash": "f66bfde0a3f781e0b64ec44f8d41514f83fdd6b8b0aa977a4637e9f9b505cf61",
+            "templateHash": "f66bfde0a3f781e0b64ec44f8d41514f83fdd6b8b0aa977a4637e9f9b505cf61"
         },
         ".github/workflows/schema-sync.yml": {
             "hash": "49bb37756a12155cfe4fdbdc7fd0d9a619f1b4b6f7271d12e0cf0ca7d552a261",
@@ -155,8 +155,8 @@
             "templateHash": "2cb187d1bc4a6a2ad18145adc161dc58c61545208e2e407087aa2570a4e01646"
         },
         "tools/build-release.mjs": {
-            "hash": "7fd7683a60d650f1a3625faaa8a71010a18eba226a28ee6c4ccbbeab64a4b8a2",
-            "templateHash": "7fd7683a60d650f1a3625faaa8a71010a18eba226a28ee6c4ccbbeab64a4b8a2"
+            "hash": "bf6683343c7c131f42038c70c67412bc25cb395d7d350445778a88cc93f1fc93",
+            "templateHash": "bf6683343c7c131f42038c70c67412bc25cb395d7d350445778a88cc93f1fc93"
         },
         "tools/check-project.mjs": {
             "hash": "064d87915d7b877ca6ccfadb143f3e3d77a4cfcf29cf65952fb031f12a4cbe6d",
