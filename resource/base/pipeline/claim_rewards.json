@@ -497,5 +497,80 @@
         "action": {
             "type": "Click"
         }
+    },
+    "DispatchClaim.Start": {
+        "desc": "检测派遣任务入口红点",
+        "recognition": "TemplateMatch",
+        "roi": [
+            896,
+            285,
+            41,
+            51
+        ],
+        "template": "claim_rewards/dispatch_entry.png",
+        "threshold": 0.8,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000,
+        "next": [
+            "DispatchClaim.ClaimButton"
+        ],
+        "on_error": [
+            "Common.BackButton"
+        ]
+    },
+    "DispatchClaim.ClaimButton": {
+        "desc": "检测并点击一键领取按钮",
+        "recognition": "TemplateMatch",
+        "roi": [
+            976,
+            629,
+            165,
+            59
+        ],
+        "template": "claim_rewards/dispatch_claim.png",
+        "threshold": 0.8,
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Common.CheckItemObtained",
+            "DispatchClaim.RedeployConfirm"
+        ]
+    },
+    "DispatchClaim.RedeployConfirm": {
+        "desc": "检测并确认再次派遣编队",
+        "recognition": "TemplateMatch",
+        "roi": [
+            566,
+            478,
+            115,
+            51
+        ],
+        "template": "claim_rewards/dispatch_redeploy.png",
+        "threshold": 0.8,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500,
+        "next": [
+            "DispatchClaim.Exit"
+        ]
+    },
+    "DispatchClaim.Exit": {
+        "desc": "退出派遣任务领取界面",
+        "recognition": "TemplateMatch",
+        "roi": [
+            984,
+            629,
+            117,
+            64
+        ],
+        "template": "claim_rewards/dispatch_close.png",
+        "threshold": 0.8,
+        "action": {
+            "type": "Click"
+        }
     }
 }

@@ -70,6 +70,26 @@
                     }
                 }
             ]
+        },
+        "claim_dispatch": {
+            "type": "switch",
+            "label": "派遣任务领取",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "Mailbox.BackButton": {
+                            "next": [
+                                "DispatchClaim.Start"
+                            ]
+                        }
+                    }
+                }
+            ]
         }
     }
 }
