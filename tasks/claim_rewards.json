@@ -74,13 +74,16 @@
         "claim_dispatch": {
             "type": "switch",
             "label": "派遣任务领取",
-            "default_case": "No",
+            "default_case": "Yes",
             "cases": [
                 {
                     "name": "No"
                 },
                 {
                     "name": "Yes",
+                    "option": [
+                        "dispatch_redeploy"
+                    ],
                     "pipeline_override": {
                         "Mailbox.BackButton": {
                             "next": [
@@ -88,6 +91,38 @@
                             ]
                         }
                     }
+                }
+            ]
+        },
+        "dispatch_redeploy": {
+            "type": "switch",
+            "label": "再次派遣",
+            "description": "领取奖励后选择再次派遣，否则直接关闭",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "DispatchClaim.ClaimButton": {
+                            "next": [
+                                "Common.CheckItemObtained",
+                                "DispatchClaim.RedeployConfirm",
+                                "DispatchClaim.Exit"
+                            ]
+                        },
+                        "DispatchClaim.RedeployConfirm": {
+                            "recognition": "DirectHit",
+                            "action": {
+                                "type": "DoNothing"
+                            },
+                            "next": [
+                                "DispatchClaim.Exit"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Yes"
                 }
             ]
         }
