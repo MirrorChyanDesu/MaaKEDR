@@ -627,6 +627,12 @@ DependencySetup_依赖库安装_win.bat
 
 10. **TemplateMatch threshold is per-type from defaults** — Default threshold 0.7 is inherited from `default_pipeline.json.TemplateMatch.threshold`. Override per-node if needed.
 
+## User Preferences
+
+- **Commit style:** Keep commit messages short and general (e.g., "fix: 调整每日登录弹窗 ROI"), not overly detailed.
+- **Push only on approval:** Present commit message for review before pushing. Only push when explicitly told to.
+- **Do not push unilaterally** after making changes — wait for user confirmation.
+
 ## Related Projects & References
 
 - **MaaFramework Documentation:** https://maaframework.github.io/
