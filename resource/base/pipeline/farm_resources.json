@@ -501,10 +501,10 @@
         "desc": "检查体力是否充足",
         "recognition": "TemplateMatch",
         "roi": [
-            1014,
-            197,
-            100,
-            76
+            491,
+            148,
+            223,
+            52
         ],
         "template": "farm_resources/no_stamina.png",
         "threshold": 0.8,
@@ -611,10 +611,10 @@
         "desc": "点击关卡界面退出键",
         "recognition": "TemplateMatch",
         "roi": [
-            1064,
-            15,
-            108,
-            97
+            1070,
+            24,
+            82,
+            69
         ],
         "template": "farm_resources/exit_stage_confirm.png",
         "threshold": 0.8,
