@@ -101,7 +101,8 @@ class CheckResourceStage(CustomRecognition):
         # 检测关卡是否锁定（第一关默认开放，跳过检测）
         if stage_index > 1 and self._check_locked(context, image, stage_roi, lock_template, lock_threshold):
             logger.warning(f"[资源刷取] {stage_name} 关卡被锁定")
-            return None
+            context.override_next(argv.node_name, ["FarmResources.StageLocked"])
+            return CustomRecognition.AnalyzeResult(box=(0, 0, 1, 1), detail={"status": "locked"})
 
         # OCR识别目标关卡
         stage_name_no_dash = stage_name.replace("-", "")

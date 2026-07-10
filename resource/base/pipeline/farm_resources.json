@@ -336,6 +336,7 @@
                 "duration": 500
             }
         },
+        "post_delay": 1000,
         "next": [
             "FarmResources.ClickStage"
         ]
@@ -347,16 +348,17 @@
             "type": "Swipe",
             "param": {
                 "begin": [
-                    900,
+                    1100,
                     400
                 ],
                 "end": [
-                    300,
+                    100,
                     400
                 ],
                 "duration": 500
             }
         },
+        "post_delay": 1000,
         "next": [
             "FarmResources.ClickStage"
         ]
