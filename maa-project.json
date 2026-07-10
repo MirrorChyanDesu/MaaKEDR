@@ -73,7 +73,7 @@
     ],
     "runtime": {
         "mfa": {
-            "channel": "latest",
+            "channel": "v2.12.2-beta.3",
             "enabled": true
         }
     },
