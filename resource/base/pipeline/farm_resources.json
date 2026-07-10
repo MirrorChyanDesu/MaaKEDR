@@ -315,6 +315,28 @@
             "type": "DoNothing"
         },
         "next": [
+            "FarmResources.SwipeToBegin"
+        ]
+    },
+    "FarmResources.SwipeToBegin": {
+        "desc": "滑动到起始位置(还原关卡选择到最左侧)",
+        "max_hit": 3,
+        "recognition": "DirectHit",
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    300,
+                    400
+                ],
+                "end": [
+                    900,
+                    400
+                ],
+                "duration": 500
+            }
+        },
+        "next": [
             "FarmResources.ClickStage"
         ]
     },
