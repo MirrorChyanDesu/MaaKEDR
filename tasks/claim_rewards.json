@@ -6,7 +6,8 @@
             "option": [
                 "claim_daily_rewards",
                 "claim_battle_pass",
-                "claim_mailbox"
+                "claim_mailbox",
+                "claim_dispatch"
             ]
         }
     ],
