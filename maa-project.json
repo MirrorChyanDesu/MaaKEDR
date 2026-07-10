@@ -2,6 +2,9 @@
     "addons": {
         "devTools": {
             "enabled": true
+        },
+        "github": {
+            "enabled": true
         }
     },
     "controller": {
@@ -17,7 +20,7 @@
             "enabled": true
         },
         "release": {
-            "enabled": false
+            "enabled": true
         },
         "vscode": {
             "enabled": true
@@ -35,9 +38,9 @@
     "project": {
         "displayName": "MaaKEDR",
         "initialTemplate": "pipeline",
+        "interfaceUnmanaged": true,
         "slug": "maakedr",
-        "version": "0.1.0",
-        "interfaceUnmanaged": true
+        "version": "0.1.0"
     },
     "resources": [
         {
