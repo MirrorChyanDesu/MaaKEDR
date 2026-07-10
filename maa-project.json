@@ -53,7 +53,7 @@
     "runtime": {
         "mfa": {
             "channel": "latest",
-            "enabled": false
+            "enabled": true
         }
     },
     "schemaVersion": 1
