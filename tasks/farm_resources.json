@@ -3,6 +3,10 @@
         {
             "name": "资源刷取",
             "entry": "FarmResources.CheckHomePage",
+            "default_check": true,
+            "group": [
+                "Daily"
+            ],
             "option": [
                 "farm_category",
                 "farm_battle_mode"

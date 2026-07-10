@@ -2,7 +2,11 @@
     "task": [
         {
             "name": "启动游戏",
-            "entry": "LaunchGame"
+            "entry": "LaunchGame",
+            "default_check": true,
+            "group": [
+                "Daily"
+            ]
         }
     ]
 }

@@ -3,6 +3,10 @@
         {
             "name": "领取奖励",
             "entry": "ClaimRewards.Start",
+            "default_check": true,
+            "group": [
+                "Daily"
+            ],
             "option": [
                 "claim_daily_rewards",
                 "claim_battle_pass",
