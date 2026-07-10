@@ -26,7 +26,8 @@
         "format:check": "prettier --check .",
         "lint": "node tools/check-project.mjs",
         "release:dry-run": "node tools/build-release.mjs --dry-run",
-        "sync:runtime": "node tools/sync-runtime.mjs"
+        "sync:runtime": "node tools/sync-runtime.mjs",
+        "sync:schema": "node tools/sync-schema.mjs"
     },
     "type": "module",
     "version": "0.1.0"

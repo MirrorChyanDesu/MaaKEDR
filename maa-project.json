@@ -1,9 +1,18 @@
 {
     "addons": {
+        "community": {
+            "enabled": true
+        },
         "devTools": {
             "enabled": true
         },
+        "gitCliff": {
+            "enabled": true
+        },
         "github": {
+            "enabled": true
+        },
+        "schemaSync": {
             "enabled": true
         }
     },

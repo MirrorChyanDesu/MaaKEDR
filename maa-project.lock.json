@@ -1,5 +1,25 @@
 {
     "createdFiles": {
+        ".github/ISSUE_TEMPLATE/bug_report.yml": {
+            "createdAt": "2026-07-10T17:36:29.980Z",
+            "managed": false
+        },
+        ".github/ISSUE_TEMPLATE/config.yml": {
+            "createdAt": "2026-07-10T17:36:29.980Z",
+            "managed": false
+        },
+        ".github/ISSUE_TEMPLATE/feature_request.yml": {
+            "createdAt": "2026-07-10T17:36:29.980Z",
+            "managed": false
+        },
+        ".github/ISSUE_TEMPLATE/other_issue.yml": {
+            "createdAt": "2026-07-10T17:36:29.980Z",
+            "managed": false
+        },
+        ".github/PULL_REQUEST_TEMPLATE.md": {
+            "createdAt": "2026-07-10T17:36:29.980Z",
+            "managed": false
+        },
         ".gitignore": {
             "createdAt": "2026-06-22T09:05:47.056Z",
             "managed": false
@@ -14,6 +34,10 @@
         },
         ".vscode/settings.json": {
             "createdAt": "2026-07-09T11:54:42.994Z",
+            "managed": false
+        },
+        "CONTRIBUTING.md": {
+            "createdAt": "2026-07-10T17:36:29.980Z",
             "managed": false
         },
         "LICENSE": {
@@ -33,7 +57,7 @@
             "managed": false
         },
         "maa-project.json": {
-            "createdAt": "2026-07-09T11:54:42.994Z",
+            "createdAt": "2026-07-10T17:36:38.621Z",
             "managed": false
         },
         "maatools.config.mts": {
@@ -41,7 +65,7 @@
             "managed": false
         },
         "package.json": {
-            "createdAt": "2026-07-09T11:54:42.994Z",
+            "createdAt": "2026-07-10T17:36:38.621Z",
             "managed": false
         },
         "pnpm-workspace.yaml": {
@@ -98,6 +122,18 @@
             "hash": "7a4b8e4c2efa2036473526e0e4de5c09327ff3df189c62b1a1f320a1f23c7692",
             "templateHash": "7a4b8e4c2efa2036473526e0e4de5c09327ff3df189c62b1a1f320a1f23c7692"
         },
+        ".github/cliff.toml": {
+            "hash": "1c475f27cd91987b4a8e82a99ee2054f673fe5c344c2c2facc0c4c80778317bc",
+            "templateHash": "1c475f27cd91987b4a8e82a99ee2054f673fe5c344c2c2facc0c4c80778317bc"
+        },
+        ".github/workflows/release.yml": {
+            "hash": "a1c7138b96db38110a803e9d614b37fcf15a078f888379b9eb881fe8da9e8551",
+            "templateHash": "a1c7138b96db38110a803e9d614b37fcf15a078f888379b9eb881fe8da9e8551"
+        },
+        ".github/workflows/schema-sync.yml": {
+            "hash": "49bb37756a12155cfe4fdbdc7fd0d9a619f1b4b6f7271d12e0cf0ca7d552a261",
+            "templateHash": "49bb37756a12155cfe4fdbdc7fd0d9a619f1b4b6f7271d12e0cf0ca7d552a261"
+        },
         ".node-version": {
             "hash": "68ca3fba3b7e864770cb61aeb306d4bd4354b68ab4dd38450860c5d823e42a53",
             "templateHash": "68ca3fba3b7e864770cb61aeb306d4bd4354b68ab4dd38450860c5d823e42a53"
@@ -137,6 +173,10 @@
         "tools/schema/schema-manifest.json": {
             "hash": "3d74d39a564dec1648a0aa1b945bc48ca5607e4a73e3ce7af433b362c7f63493",
             "templateHash": "3d74d39a564dec1648a0aa1b945bc48ca5607e4a73e3ce7af433b362c7f63493"
+        },
+        "tools/sync-schema.mjs": {
+            "hash": "8c31d91da157030ad302284840e29f691297dabda49dfe985d6fbc4fd18eefdd",
+            "templateHash": "8c31d91da157030ad302284840e29f691297dabda49dfe985d6fbc4fd18eefdd"
         },
         "tools/validate-schema.mjs": {
             "hash": "485965647a13626e880c0d306c3845752649475548a029afbb88e11aa65f4e66",
