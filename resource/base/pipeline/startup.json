@@ -35,7 +35,7 @@
         ]
     },
     "DailyLoginReward": {
-        "desc": "处理每日登录奖励",
+        "desc": "检测并点击每日登录奖励弹窗（需点两次）",
         "recognition": "TemplateMatch",
         "roi": [
             379,
@@ -48,11 +48,14 @@
         "action": {
             "type": "Click",
             "param": {
-                "target_count": 3
+                "target_count": 2
             }
         },
-        "post_delay": 1000,
+        "post_delay": 500,
         "next": [
+            "CheckHomePage"
+        ],
+        "on_error": [
             "CheckHomePage"
         ]
     },
