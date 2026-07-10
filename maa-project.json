@@ -57,6 +57,18 @@
             "label": "Base",
             "path": "resource/base",
             "slug": "base"
+        },
+        {
+            "enabled": true,
+            "label": "Bilibili",
+            "path": "resource/bilibili",
+            "slug": "bilibili"
+        },
+        {
+            "enabled": true,
+            "label": "TapTap",
+            "path": "resource/taptap",
+            "slug": "taptap"
         }
     ],
     "runtime": {

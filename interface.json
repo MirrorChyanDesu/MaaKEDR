@@ -19,9 +19,25 @@
     "resource": [
         {
             "name": "base",
-            "label": "Base",
+            "label": "官服",
             "path": [
                 "./resource/base"
+            ]
+        },
+        {
+            "name": "bilibili",
+            "label": "B 服",
+            "path": [
+                "./resource/base",
+                "./resource/bilibili"
+            ]
+        },
+        {
+            "name": "taptap",
+            "label": "TapTap 服",
+            "path": [
+                "./resource/base",
+                "./resource/taptap"
             ]
         }
     ],

@@ -53,15 +53,15 @@
             "managed": false
         },
         "interface.json": {
-            "createdAt": "2026-06-22T09:05:47.056Z",
+            "createdAt": "2026-07-10T17:51:00.456Z",
             "managed": false
         },
         "maa-project.json": {
-            "createdAt": "2026-07-10T17:36:38.621Z",
+            "createdAt": "2026-07-10T17:51:00.456Z",
             "managed": false
         },
         "maatools.config.mts": {
-            "createdAt": "2026-06-22T09:05:47.056Z",
+            "createdAt": "2026-07-10T17:51:00.456Z",
             "managed": false
         },
         "package.json": {
@@ -98,6 +98,14 @@
         },
         "resource/base/pipeline/tutorial.json": {
             "createdAt": "2026-06-22T09:05:47.056Z",
+            "managed": false
+        },
+        "resource/maakedr/image/empty.png": {
+            "createdAt": "2026-07-10T17:51:00.456Z",
+            "managed": false
+        },
+        "resource/maakedr/pipeline/.gitkeep": {
+            "createdAt": "2026-07-10T17:51:00.456Z",
             "managed": false
         },
         "tasks/tutorial.json": {

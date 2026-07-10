@@ -1,0 +1,9 @@
+{
+    "LaunchGame": {
+        "action": {
+            "param": {
+                "package": "com.phxh.taptap.nld"
+            }
+        }
+    }
+}
