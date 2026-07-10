@@ -100,6 +100,18 @@ For more documentation, visit the [MaaFramework](https://github.com/MaaXYZ/MaaFr
 
 ---
 
+## Development Docs
+
+See [docs/](docs/README.md) for detailed development documentation:
+
+- Pipeline Writing Guide
+- Custom Recognition & Action Development
+- Project Structure
+- Formatting Conventions
+- Troubleshooting
+
+---
+
 ## Acknowledgments
 
 ### Core Framework
