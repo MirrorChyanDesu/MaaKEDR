@@ -38,10 +38,10 @@
         "desc": "检测并点击每日登录奖励弹窗（需点两次）",
         "recognition": "TemplateMatch",
         "roi": [
-            379,
-            91,
-            168,
-            150
+            405,
+            115,
+            103,
+            106
         ],
         "template": "daily_login_reward.png",
         "threshold": 0.8,
