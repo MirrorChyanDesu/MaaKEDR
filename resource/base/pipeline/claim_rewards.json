@@ -478,9 +478,6 @@
         "next": [
             "Common.CheckItemObtained",
             "Mailbox.BackButton"
-        ],
-        "on_error": [
-            "Mailbox.BackButton"
         ]
     },
     "Mailbox.BackButton": {

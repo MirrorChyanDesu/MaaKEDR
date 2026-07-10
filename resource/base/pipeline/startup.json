@@ -54,9 +54,6 @@
         "post_delay": 500,
         "next": [
             "CheckHomePage"
-        ],
-        "on_error": [
-            "CheckHomePage"
         ]
     },
     "CheckHomePage": {

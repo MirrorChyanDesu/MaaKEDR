@@ -30,8 +30,7 @@
                         "ClaimRewards.Start": {
                             "recognition": "DirectHit",
                             "action": {"type": "DoNothing"},
-                            "next": ["BattlePass.Start"],
-                            "on_error": ["BattlePass.Start"]
+                            "next": ["BattlePass.Start"]
                         }
                     }
                 }
@@ -51,8 +50,7 @@
                         "BattlePass.Start": {
                             "recognition": "DirectHit",
                             "action": {"type": "DoNothing"},
-                            "next": ["Mailbox.Start"],
-                            "on_error": ["Mailbox.Start"]
+                            "next": ["Mailbox.Start"]
                         }
                     }
                 }
