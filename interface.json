@@ -4,6 +4,7 @@
     "label": "MaaKEDR",
     "version": "v0.1.0",
     "icon": "logo.ico",
+    "title": "MaaKEDR v0.1.0 雪松小助手",
     "contact": "QQ群: 1051890489",
     "license": "LICENSE",
     "welcome": "./resource/base/WELCOME.md",
