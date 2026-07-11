@@ -11,8 +11,8 @@
     "description": "MaaKEDR MaaFW project",
     "controller": [
         {
-            "name": "Android",
-            "label": "Android / Emulator",
+            "name": "ADB",
+            "label": "模拟器",
             "type": "Adb",
             "display_short_side": 720
         }
