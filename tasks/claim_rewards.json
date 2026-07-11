@@ -4,9 +4,8 @@
             "name": "领取奖励",
             "entry": "ClaimRewards.Start",
             "default_check": true,
-            "group": [
-                "Daily"
-            ],
+            "group": ["Daily"],
+            "description": "一键领取各类奖励：每日/每周/军旅成就任务奖励、战令通行证奖励、邮箱奖励、资源派遣奖励(支持可选再次派遣)。自动处理领取按钮点击、奖励弹窗关闭、邮箱翻页、派遣完成确认",
             "option": [
                 "claim_daily_rewards",
                 "claim_battle_pass",

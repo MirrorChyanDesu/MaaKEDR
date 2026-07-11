@@ -4,9 +4,8 @@
             "name": "启动游戏",
             "entry": "LaunchGame",
             "default_check": true,
-            "group": [
-                "Daily"
-            ]
+            "group": ["Daily"],
+            "description": "自动启动游戏并进入主界面，包含：启动游戏进程、检测资源更新、点击开始游戏、处理登录验证码、等待进入主界面"
         }
     ]
 }

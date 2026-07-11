@@ -4,9 +4,8 @@
             "name": "资源刷取",
             "entry": "FarmResources.CheckHomePage",
             "default_check": true,
-            "group": [
-                "Daily"
-            ],
+            "group": ["Daily"],
+            "description": "自动刷取资源关卡，支持资源收集(特别军费行动/作战体能训练/兵种能力评级/载具对抗演练)和技能演练。提供普通模式(指定次数)和清空体力模式(循环至体力耗尽)。支持关卡锁定检测、体力不足自动处理、战斗胜利/物品弹窗自动点击",
             "option": [
                 "farm_category",
                 "farm_battle_mode"
