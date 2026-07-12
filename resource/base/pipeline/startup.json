@@ -44,11 +44,9 @@
         "template": "daily_login_reward.png",
         "threshold": 0.8,
         "action": {
-            "type": "Click",
-            "param": {
-                "target_count": 2
-            }
+            "type": "Click"
         },
+        "repeat": 2,
         "post_delay": 500,
         "next": [
             "CheckHomePage"
@@ -83,10 +81,10 @@
                     360,
                     0,
                     0
-                ],
-                "target_count": 5,
-                "post_delay": 500
+                ]
             }
-        }
+        },
+        "repeat": 5,
+        "repeat_delay": 500
     }
 }
