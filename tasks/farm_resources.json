@@ -38,7 +38,7 @@
                             "next": [
                                 "[JumpBack]FarmResources.ClickVictory",
                                 "[JumpBack]FarmResources.ClickItemDialog",
-                                "FarmResources.ResetCountTarget"
+                                "FarmResources.QuickBattle"
                             ]
                         },
                         "FarmResources.ExitStage": {

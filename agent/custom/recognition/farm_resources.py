@@ -265,15 +265,15 @@ class ReduceBattleCount(CustomAction):
                 except ValueError:
                     current_count = -1
 
+            # 如果目标次数已经小于等于1，返回失败
+            if _current_target_count <= 1:
+                logger.warning("[ReduceBattleCount] 目标次数已到最小({}≤1)，无法继续", _current_target_count)
+                _current_target_count = None  # 重置，让下次重新初始化
+                return CustomAction.RunResult(success=False)
+
             # 减少目标次数（每次减少1）
             _current_target_count -= 1
             logger.info("[ReduceBattleCount] 当前次数: {}, 新目标次数: {}", current_count, _current_target_count)
-
-            # 如果目标次数已经小于1，返回失败
-            if _current_target_count < 1:
-                logger.warning("[ReduceBattleCount] 目标次数已到最小，无法继续")
-                _current_target_count = None  # 重置，让下次重新初始化
-                return CustomAction.RunResult(success=False)
 
             # 点击减号按钮1次
             logger.info("[ReduceBattleCount] 点击减号按钮")
