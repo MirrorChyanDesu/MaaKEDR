@@ -1,0 +1,259 @@
+{
+    "PVP.ChangeTextFilter": {
+        "recognition": "ColorMatch",
+        "method": 4,
+        "lower": [[
+                227,
+                71,
+                0
+            ]],
+        "upper": [[
+                255,
+                79,
+                14
+            ]],
+        "connected": false,
+        "count": 1000
+    },
+    "PVP.ScoreRankFilter": {
+        "recognition": "ColorMatch",
+        "method": 4,
+        "lower": [[
+                225,
+                228,
+                61
+            ]],
+        "upper": [[
+                228,
+                231,
+                61
+            ]],
+        "connected": false,
+        "count": 1000
+    },
+    "PVP.CheckHomePage": {
+        "desc": "确认当前是否在游戏主页",
+        "recognition": "TemplateMatch",
+        "roi": [
+            1199,
+            6,
+            77,
+            83
+        ],
+        "template": "main_option.png",
+        "threshold": 0.8,
+        "pre_delay": 500,
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 5000,
+        "next": [
+            "PVP.Entry"
+        ],
+        "on_error": [
+            "ReturnMain"
+        ]
+    },
+    "PVP.Entry": {
+        "desc": "点击对战入口",
+        "recognition": "TemplateMatch",
+        "roi": [
+            1193,
+            660,
+            64,
+            39
+        ],
+        "template": "pvp/entry.png",
+        "threshold": 0.8,
+        "pre_delay": 500,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000,
+        "next": [
+            "PVP.CheckBattleInterface"
+        ]
+    },
+    "PVP.CheckBattleInterface": {
+        "desc": "确认在对战界面",
+        "recognition": "TemplateMatch",
+        "roi": [
+            69,
+            611,
+            94,
+            86
+        ],
+        "template": "pvp/battle_interface.png",
+        "threshold": 0.8,
+        "pre_delay": 500,
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "PVP.SelectPlayer"
+        ]
+    },
+    "PVP.SelectPlayer": {
+        "desc": "选择玩家对战",
+        "recognition": "TemplateMatch",
+        "roi": [
+            669,
+            539,
+            78,
+            81
+        ],
+        "template": "pvp/player_button.png",
+        "threshold": 0.8,
+        "pre_delay": 500,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000,
+        "next": [
+            "PVP.StartBattle"
+        ]
+    },
+    "PVP.StartBattle": {
+        "desc": "点击开始战斗",
+        "recognition": "TemplateMatch",
+        "roi": [
+            1048,
+            642,
+            158,
+            58
+        ],
+        "template": "pvp/start_battle.png",
+        "threshold": 0.8,
+        "pre_delay": 500,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000,
+        "next": [
+            "PVP.BeginCombat"
+        ]
+    },
+    "PVP.BeginCombat": {
+        "desc": "点击作战开始",
+        "recognition": "TemplateMatch",
+        "roi": [
+            896,
+            204,
+            249,
+            243
+        ],
+        "template": "pvp/begin_combat.png",
+        "threshold": 0.8,
+        "pre_delay": 500,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000,
+        "next": [
+            "PVP.CheckInBattle"
+        ]
+    },
+    "PVP.CheckInBattle": {
+        "desc": "检测是否在战斗中",
+        "recognition": "TemplateMatch",
+        "roi": [
+            519,
+            585,
+            244,
+            113
+        ],
+        "template": "pvp/in_battle.png",
+        "threshold": 0.8,
+        "pre_delay": 500,
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "PVP.Speed2x"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": {
+                "content": "正在自动战斗中",
+                "display": [
+                    "log",
+                    "toast"
+                ]
+            }
+        }
+    },
+    "PVP.Speed2x": {
+        "desc": "点击2倍速",
+        "recognition": "TemplateMatch",
+        "roi": [
+            1188,
+            27,
+            53,
+            52
+        ],
+        "template": "pvp/speed_2x.png",
+        "threshold": 0.8,
+        "pre_delay": 500,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 30000,
+        "next": [
+            "PVP.ReadResult"
+        ]
+    },
+    "PVP.ReadResult": {
+        "desc": "识别积分和排名",
+        "recognition": "Custom",
+        "custom_recognition": "ReadPVPResult",
+        "custom_recognition_param": "{\"current_score_roi\": [78,264,92,40], \"score_change_roi\": [184,266,58,32], \"current_rank_roi\": [77,352,94,35], \"rank_change_roi\": [175,348,73,35]}",
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "PVP.ExitResult"
+        ]
+    },
+    "PVP.ExitResult": {
+        "desc": "点击退出结果界面",
+        "recognition": "TemplateMatch",
+        "template": "pvp/exit_result.png",
+        "threshold": 0.8,
+        "pre_delay": 500,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000,
+        "next": [
+            "Common.CheckItemObtained"
+        ]
+    },
+    "PVP.BackToBattleInterface": {
+        "desc": "确认回到对战界面",
+        "recognition": "TemplateMatch",
+        "template": "pvp/battle_interface.png",
+        "threshold": 0.8,
+        "pre_delay": 500,
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "PVP.ReturnMain"
+        ]
+    },
+    "PVP.ReturnMain": {
+        "desc": "返回主页",
+        "recognition": "TemplateMatch",
+        "roi": [
+            199,
+            26,
+            85,
+            52
+        ],
+        "template": "return_main.png",
+        "threshold": 0.8,
+        "pre_delay": 500,
+        "action": {
+            "type": "Click"
+        }
+    }
+}
