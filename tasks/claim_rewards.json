@@ -2,7 +2,7 @@
     "task": [
         {
             "name": "领取奖励",
-            "entry": "ClaimRewards.Start",
+            "entry": "ClaimRewards",
             "default_check": true,
             "group": ["Daily"],
             "description": "一键领取各类奖励。包含每日/每周/军旅成就奖励、战令通行证奖励、邮箱奖励、资源派遣奖励。支持各奖励类型独立开关",
@@ -27,9 +27,7 @@
                     "name": "No",
                     "pipeline_override": {
                         "ClaimRewards.Start": {
-                            "recognition": "DirectHit",
-                            "action": {"type": "DoNothing"},
-                            "next": ["BattlePass.Start"]
+                            "enabled": false
                         }
                     }
                 }
@@ -47,9 +45,7 @@
                     "name": "No",
                     "pipeline_override": {
                         "BattlePass.Start": {
-                            "recognition": "DirectHit",
-                            "action": {"type": "DoNothing"},
-                            "next": ["Mailbox.Start"]
+                            "enabled": false
                         }
                     }
                 }
@@ -79,18 +75,16 @@
             "default_case": "Yes",
             "cases": [
                 {
-                    "name": "No"
-                },
-                {
                     "name": "Yes",
                     "option": [
                         "dispatch_redeploy"
-                    ],
+                    ]
+                },
+                {
+                    "name": "No",
                     "pipeline_override": {
-                        "Mailbox.BackButton": {
-                            "next": [
-                                "DispatchClaim.Start"
-                            ]
+                        "DispatchClaim.Start": {
+                            "enabled": false
                         }
                     }
                 }

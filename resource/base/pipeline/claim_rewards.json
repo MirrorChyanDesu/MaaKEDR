@@ -1,4 +1,54 @@
 {
+    "ClaimRewards": {
+        "next": [
+            "[JumpBack]ClaimRewards.ReturnMain",
+            "ClaimRewards.MainHub"
+        ]
+    },
+    "ClaimRewards.ReturnMain": {
+        "desc": "返回主界面（任务开始前）",
+        "max_hit": 3,
+        "next": [
+            "ClaimRewards.CheckMainInterface",
+            "[JumpBack]Common.BackButton"
+        ]
+    },
+    "ClaimRewards.MainHub": {
+        "desc": "奖励领取中心枢纽",
+        "recognition": "TemplateMatch",
+        "roi": [
+            1199,
+            6,
+            77,
+            83
+        ],
+        "template": "main_option.png",
+        "threshold": 0.75,
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "[JumpBack]ClaimRewards.Start",
+            "[JumpBack]BattlePass.Start",
+            "[JumpBack]Mailbox.Start",
+            "[JumpBack]DispatchClaim.Start"
+        ]
+    },
+    "ClaimRewards.CheckMainInterface": {
+        "desc": "确认在主界面",
+        "recognition": "TemplateMatch",
+        "roi": [
+            1199,
+            6,
+            77,
+            83
+        ],
+        "template": "main_option.png",
+        "threshold": 0.75,
+        "action": {
+            "type": "DoNothing"
+        }
+    },
     "ClaimRewards.Start": {
         "desc": "检测并点击周常奖励图标",
         "max_hit": 5,
@@ -12,17 +62,32 @@
         "template": "claim_rewards/reward_badge.png",
         "threshold": 0.75,
         "action": {
-            "type": "Click",
-            "param": {
-                "target_count": 2
-            }
+            "type": "Click"
         },
+        "post_wait_freezes": 500,
         "timeout": 5000,
         "next": [
-            "ClaimRewards.ConfirmInterface"
+            "ClaimRewards.ConfirmInterface",
+            "ClaimRewards.RetryClick"
+        ]
+    },
+    "ClaimRewards.RetryClick": {
+        "desc": "重试点击周常奖励图标",
+        "recognition": "TemplateMatch",
+        "roi": [
+            894,
+            190,
+            48,
+            43
         ],
-        "on_error": [
-            "BattlePass.Start"
+        "template": "claim_rewards/reward_badge.png",
+        "threshold": 0.75,
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "ClaimRewards.ConfirmInterface"
         ]
     },
     "ClaimRewards.ConfirmInterface": {
@@ -130,8 +195,10 @@
         "action": {
             "type": "Click"
         },
+        "post_wait_freezes": 500,
         "next": [
-            "BattlePass.Start"
+            "ClaimRewards.MainHub",
+            "[JumpBack]Common.BackButton"
         ]
     },
     "ClaimRewards.ClaimButton": {
@@ -187,9 +254,6 @@
         },
         "next": [
             "BattlePass.ClickEntry"
-        ],
-        "on_error": [
-            "Mailbox.Start"
         ]
     },
     "BattlePass.ClickEntry": {
@@ -211,11 +275,38 @@
                     0,
                     0,
                     0
-                ],
-                "target_count": 3
+                ]
             }
         },
-        "post_delay": 2000,
+        "post_wait_freezes": 500,
+        "next": [
+            "BattlePass.ConfirmInterface",
+            "BattlePass.RetryClickEntry"
+        ]
+    },
+    "BattlePass.RetryClickEntry": {
+        "desc": "重试点击战令通行证入口",
+        "recognition": "TemplateMatch",
+        "roi": [
+            902,
+            245,
+            33,
+            36
+        ],
+        "template": "claim_rewards/battlepass_badge.png",
+        "threshold": 0.75,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    70,
+                    0,
+                    0,
+                    0
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
         "next": [
             "BattlePass.ConfirmInterface"
         ]
@@ -235,6 +326,7 @@
         "action": {
             "type": "DoNothing"
         },
+        "timeout": 5000,
         "next": [
             "BattlePass.CheckTaskComplete",
             "BattlePass.CheckRewardList"
@@ -244,7 +336,7 @@
         ]
     },
     "BattlePass.ExitToMailbox": {
-        "desc": "退出战令界面，前往邮箱",
+        "desc": "退出战令界面",
         "recognition": "TemplateMatch",
         "roi": [
             15,
@@ -257,8 +349,10 @@
         "action": {
             "type": "Click"
         },
+        "post_wait_freezes": 500,
         "next": [
-            "Mailbox.Start"
+            "ClaimRewards.MainHub",
+            "[JumpBack]Common.BackButton"
         ]
     },
     "BattlePass.CheckTaskComplete": {
@@ -439,6 +533,27 @@
         "action": {
             "type": "Click"
         },
+        "post_wait_freezes": 500,
+        "next": [
+            "Mailbox.ConfirmInterface",
+            "[JumpBack]Mailbox.RetryClick"
+        ]
+    },
+    "Mailbox.RetryClick": {
+        "desc": "重试点击邮箱图标",
+        "recognition": "TemplateMatch",
+        "roi": [
+            1140,
+            25,
+            64,
+            45
+        ],
+        "template": "claim_rewards/mailbox.png",
+        "threshold": 0.75,
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
         "next": [
             "Mailbox.ConfirmInterface"
         ]
@@ -493,7 +608,12 @@
         "threshold": 0.75,
         "action": {
             "type": "Click"
-        }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "ClaimRewards.MainHub",
+            "[JumpBack]Common.BackButton"
+        ]
     },
     "DispatchClaim.Start": {
         "desc": "检测派遣任务入口红点",
@@ -509,12 +629,32 @@
         "action": {
             "type": "Click"
         },
-        "post_delay": 1000,
+        "post_wait_freezes": 500,
         "next": [
-            "DispatchClaim.ClaimButton"
+            "DispatchClaim.ClaimButton",
+            "DispatchClaim.RetryClick"
         ],
         "on_error": [
             "Common.BackButton"
+        ]
+    },
+    "DispatchClaim.RetryClick": {
+        "desc": "重试点击派遣任务入口",
+        "recognition": "TemplateMatch",
+        "roi": [
+            896,
+            285,
+            41,
+            51
+        ],
+        "template": "claim_rewards/dispatch_entry.png",
+        "threshold": 0.8,
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "DispatchClaim.ClaimButton"
         ]
     },
     "DispatchClaim.ClaimButton": {
@@ -568,6 +708,11 @@
         "threshold": 0.8,
         "action": {
             "type": "Click"
-        }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "ClaimRewards.MainHub",
+            "[JumpBack]Common.BackButton"
+        ]
     }
 }
