@@ -1,6 +1,6 @@
 {
     "ClaimRewards.Start": {
-        "desc": "检测并点击奖励徽章图标",
+        "desc": "检测并点击周常奖励图标",
         "max_hit": 5,
         "recognition": "TemplateMatch",
         "roi": [
@@ -10,7 +10,7 @@
             43
         ],
         "template": "claim_rewards/reward_badge.png",
-        "threshold": 0.8,
+        "threshold": 0.75,
         "action": {
             "type": "Click",
             "param": {
