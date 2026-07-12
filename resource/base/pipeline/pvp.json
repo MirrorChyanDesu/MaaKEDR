@@ -88,6 +88,22 @@
             "type": "DoNothing"
         },
         "next": [
+            "PVP.InitBattleCount"
+        ]
+    },
+    "PVP.InitBattleCount": {
+        "desc": "初始化战斗计数器",
+        "recognition": "DirectHit",
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "InitPVPBattleCount",
+                "custom_action_param": {
+                    "target_count": 1
+                }
+            }
+        },
+        "next": [
             "PVP.SelectPlayer"
         ]
     },
@@ -264,6 +280,22 @@
             "type": "DoNothing"
         },
         "next": [
+            "PVP.CheckBattleCount"
+        ]
+    },
+    "PVP.CheckBattleCount": {
+        "desc": "检查剩余战斗次数",
+        "recognition": "DirectHit",
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "CheckPVPBattleCount"
+            }
+        },
+        "next": [
+            "PVP.SelectPlayer"
+        ],
+        "on_error": [
             "PVP.ReturnMain"
         ]
     },

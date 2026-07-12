@@ -5,7 +5,74 @@
             "entry": "PVP.CheckHomePage",
             "default_check": false,
             "group": ["Daily"],
-            "description": "自动进行玩家对战。识别战斗结果、积分和排名变化"
+            "description": "自动进行玩家对战。支持多场次循环，识别战斗结果、积分和排名变化",
+            "option": [
+                "pvp_battle_count"
+            ]
         }
-    ]
+    ],
+    "option": {
+        "pvp_battle_count": {
+            "type": "select",
+            "label": "战斗次数",
+            "default_case": "1次",
+            "cases": [
+                {
+                    "name": "1次",
+                    "label": "1次",
+                    "pipeline_override": {
+                        "PVP.InitBattleCount": {
+                            "custom_action_param": {
+                                "target_count": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "2次",
+                    "label": "2次",
+                    "pipeline_override": {
+                        "PVP.InitBattleCount": {
+                            "custom_action_param": {
+                                "target_count": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3次",
+                    "label": "3次",
+                    "pipeline_override": {
+                        "PVP.InitBattleCount": {
+                            "custom_action_param": {
+                                "target_count": 3
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4次",
+                    "label": "4次",
+                    "pipeline_override": {
+                        "PVP.InitBattleCount": {
+                            "custom_action_param": {
+                                "target_count": 4
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "5次",
+                    "label": "5次",
+                    "pipeline_override": {
+                        "PVP.InitBattleCount": {
+                            "custom_action_param": {
+                                "target_count": 5
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
 }
