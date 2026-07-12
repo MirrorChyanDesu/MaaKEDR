@@ -32,11 +32,11 @@ class ReadPVPResult(CustomRecognition):
             JOCR(roi=result_roi, only_rec=True),
             image,
         )
-        
+
         # 如果识别失败，返回None
         if not result_detail or not result_detail.box:
             return None
-        
+
         result_text = self._get_text(result_detail)
 
         # OCR识别积分和排名（使用颜色过滤）
