@@ -28,6 +28,7 @@ config/
 resource/base/debug/
 resource/base/image/*
 !resource/base/image/maakedr-logo_512x512.png
+!resource/base/image/pvp/
 
 # MFAAvalonia UI 二进制文件（通过 release 分发）
 MFAAvalonia.*
