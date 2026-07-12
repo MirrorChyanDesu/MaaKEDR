@@ -1,33 +1,31 @@
 {
-    "PVP.ChangeTextFilter": {
+    "PVP.TextFilter": {
         "recognition": "ColorMatch",
         "method": 4,
-        "lower": [[
+        "lower": [
+            [
                 227,
                 71,
                 0
-            ]],
-        "upper": [[
-                255,
-                79,
-                14
-            ]],
-        "connected": false,
-        "count": 1000
-    },
-    "PVP.ScoreRankFilter": {
-        "recognition": "ColorMatch",
-        "method": 4,
-        "lower": [[
+            ],
+            [
                 225,
                 228,
                 61
-            ]],
-        "upper": [[
+            ]
+        ],
+        "upper": [
+            [
+                255,
+                79,
+                14
+            ],
+            [
                 228,
                 231,
                 61
-            ]],
+            ]
+        ],
         "connected": false,
         "count": 1000
     },
@@ -110,8 +108,36 @@
         },
         "post_delay": 1000,
         "next": [
+            "[JumpBack]PVP.CheckChallengeLimit",
             "PVP.StartBattle"
         ]
+    },
+    "PVP.CheckChallengeLimit": {
+        "desc": "检测今日挑战次数是否用完",
+        "recognition": "TemplateMatch",
+        "roi": [
+            311,
+            85,
+            71,
+            77
+        ],
+        "template": "pvp/challenge_limit.png",
+        "threshold": 0.8,
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "PVP.ReturnMain"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": {
+                "content": "今日挑战次数已用完",
+                "display": [
+                    "log",
+                    "toast"
+                ]
+            }
+        }
     },
     "PVP.StartBattle": {
         "desc": "点击开始战斗",
@@ -205,7 +231,7 @@
         "desc": "识别积分和排名",
         "recognition": "Custom",
         "custom_recognition": "ReadPVPResult",
-        "custom_recognition_param": "{\"current_score_roi\": [78,264,92,40], \"score_change_roi\": [184,266,58,32], \"current_rank_roi\": [77,352,94,35], \"rank_change_roi\": [175,348,73,35]}",
+        "custom_recognition_param": "{\"result_roi\": [62,44,189,47], \"current_score_roi\": [78,264,92,40], \"score_change_roi\": [190,264,50,36], \"current_rank_roi\": [77,352,94,35], \"rank_change_roi\": [175,348,73,35]}",
         "action": {
             "type": "DoNothing"
         },

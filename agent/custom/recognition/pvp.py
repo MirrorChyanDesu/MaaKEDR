@@ -18,6 +18,7 @@ class ReadPVPResult(CustomRecognition):
     ) -> CustomRecognition.AnalyzeResult | RectType | None:
         params = parse_params(argv.custom_recognition_param)
 
+        result_roi = params.get("result_roi", [500, 150, 300, 100])
         current_score_roi = params.get("current_score_roi", [500, 300, 200, 60])
         score_change_roi = params.get("score_change_roi", [710, 300, 100, 60])
         current_rank_roi = params.get("current_rank_roi", [500, 400, 200, 60])
@@ -25,57 +26,55 @@ class ReadPVPResult(CustomRecognition):
 
         image = argv.image
 
-        # 识别当前积分
-        current_score_detail = context.run_recognition_direct(
+        # OCR识别战斗结果（无颜色过滤）
+        result_detail = context.run_recognition_direct(
             JRecognitionType.OCR,
-            JOCR(roi=current_score_roi, only_rec=True),
+            JOCR(roi=result_roi, only_rec=True),
             image,
         )
-        current_score = self._extract_number(current_score_detail)
+        
+        # 如果识别失败，返回None
+        if not result_detail or not result_detail.box:
+            return None
+        
+        result_text = self._get_text(result_detail)
 
-        # 识别积分变化
-        score_change_detail = context.run_recognition_direct(
-            JRecognitionType.OCR,
-            JOCR(roi=score_change_roi, only_rec=True),
-            image,
-        )
-        score_change = self._extract_number(score_change_detail)
+        # OCR识别积分和排名（使用颜色过滤）
+        current_score = self._get_text(context.run_recognition_direct(
+            JRecognitionType.OCR, JOCR(roi=current_score_roi, only_rec=True, color_filter="PVP.TextFilter"), image
+        ))
+        score_change = self._get_text(context.run_recognition_direct(
+            JRecognitionType.OCR, JOCR(roi=score_change_roi, only_rec=True, color_filter="PVP.TextFilter"), image
+        ))
+        current_rank = self._get_text(context.run_recognition_direct(
+            JRecognitionType.OCR, JOCR(roi=current_rank_roi, only_rec=True, color_filter="PVP.TextFilter"), image
+        ))
+        rank_change = self._get_text(context.run_recognition_direct(
+            JRecognitionType.OCR, JOCR(roi=rank_change_roi, only_rec=True, color_filter="PVP.TextFilter"), image
+        ))
 
-        # 识别当前排名
-        current_rank_detail = context.run_recognition_direct(
-            JRecognitionType.OCR,
-            JOCR(roi=current_rank_roi, only_rec=True),
-            image,
-        )
-        current_rank = self._extract_number(current_rank_detail)
-
-        # 识别排名变化
-        rank_change_detail = context.run_recognition_direct(
-            JRecognitionType.OCR,
-            JOCR(roi=rank_change_roi, only_rec=True),
-            image,
-        )
-        rank_change = self._extract_number(rank_change_detail)
-
-        # 判断胜负
-        result_text = "胜利" if score_change > 0 else "失败"
-
-        # 显示结果
+        # 输出结果
         logger.info("[PVP战斗结果] {}", result_text)
-        logger.info("[当前积分] {} ({}{})", current_score, "+" if score_change > 0 else "", score_change)
-        logger.info("[当前排名] {} ({}{})", current_rank, "+" if rank_change > 0 else "", rank_change)
+        logger.info("[当前积分] {} ({})", current_score, self._format_change(score_change))
+        logger.info("[当前排名] {} ({})", current_rank, self._format_change(rank_change))
 
-        return CustomRecognition.AnalyzeResult(box=(0, 0, 1, 1), detail={})
+        return CustomRecognition.AnalyzeResult(box=result_detail.box, detail={})
 
-    def _extract_number(self, ocr_detail: Any) -> int:
-        """从OCR结果中提取数字"""
+    def _get_text(self, ocr_detail: Any) -> str:
+        """从OCR结果中获取文本"""
         if not ocr_detail or not ocr_detail.all_results:
-            return 0
-
+            return ""
         try:
-            text = ocr_detail.all_results[0].text.strip()  # pyright: ignore
-            # 保留数字和正负号
-            number_str = ''.join(c for c in text if c.isdigit() or c in ['-', '+'])
-            return int(number_str) if number_str else 0
-        except (ValueError, AttributeError):
-            return 0
+            return ocr_detail.all_results[0].text.strip()  # pyright: ignore
+        except AttributeError:
+            return ""
+
+    def _format_change(self, text: str) -> str:
+        """格式化变化值，确保有正负号"""
+        if not text:
+            return ""
+        # 如果已经有正负号，直接返回
+        if text.startswith(('+', '-')):
+            return text
+        # 否则添加+号
+        return f"+{text}"
