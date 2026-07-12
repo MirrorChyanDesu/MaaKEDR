@@ -9,7 +9,6 @@ from maa.pipeline import JOCR, JRecognitionType
 from utils.logger import logger
 from utils.params import parse_params
 
-
 _battle_remaining = 0
 
 
