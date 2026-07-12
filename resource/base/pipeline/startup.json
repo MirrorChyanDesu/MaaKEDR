@@ -9,9 +9,7 @@
         },
         "post_delay": 5000,
         "next": [
-            "ClickToStart",
-            "DailyLoginReward",
-            "CheckHomePage"
+            "ClickToStart"
         ]
     },
     "ClickToStart": {
@@ -29,9 +27,9 @@
                 ]
             }
         },
+        "post_delay": 2000,
         "next": [
-            "DailyLoginReward",
-            "CheckHomePage"
+            "DailyLoginReward"
         ]
     },
     "DailyLoginReward": {
