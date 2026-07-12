@@ -59,7 +59,7 @@ class ReadPVPResult(CustomRecognition):
 
         # 判断胜负
         result_text = "胜利" if score_change > 0 else "失败"
-        
+
         # 显示结果
         logger.info("[PVP战斗结果] {}", result_text)
         logger.info("[当前积分] {} ({}{})", current_score, "+" if score_change > 0 else "", score_change)
@@ -71,7 +71,7 @@ class ReadPVPResult(CustomRecognition):
         """从OCR结果中提取数字"""
         if not ocr_detail or not ocr_detail.all_results:
             return 0
-        
+
         try:
             text = ocr_detail.all_results[0].text.strip()  # pyright: ignore
             # 保留数字和正负号
