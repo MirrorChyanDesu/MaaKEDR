@@ -4,10 +4,11 @@
     "label": "MaaKEDR",
     "version": "v0.1.0",
     "icon": "logo.ico",
+    "github": "https://github.com/APPLe-DF/MaaKEDR",
     "title": "MaaKEDR v0.1.0 雪松小助手",
     "contact": "QQ群: 1051890489",
     "license": "LICENSE",
-    "welcome": "./resource/base/WELCOME.md",
+    "welcome": "./resource/announcement/1.简介.md",
     "description": "MaaKEDR MaaFW project",
     "controller": [
         {

@@ -14,15 +14,20 @@
     ],
     "option": {
         "farm_battle_mode": {
-            "type": "switch",
-            "label": "清空体力",
-            "default_case": "No",
+            "type": "select",
+            "label": "战斗模式",
+            "default_case": "单次战斗",
             "cases": [
                 {
-                    "name": "No"
+                    "name": "单次战斗",
+                    "label": "单次战斗",
+                    "option": [
+                        "farm_battle_count"
+                    ]
                 },
                 {
-                    "name": "Yes",
+                    "name": "清空体力",
+                    "label": "清空体力",
                     "pipeline_override": {
                         "FarmResources.QuickBattle": {
                             "next": [
