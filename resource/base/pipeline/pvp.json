@@ -224,7 +224,8 @@
         },
         "post_delay": 1000,
         "next": [
-            "Common.CheckItemObtained"
+            "Common.CheckItemObtained",
+            "PVP.BackToBattleInterface"
         ]
     },
     "PVP.BackToBattleInterface": {
