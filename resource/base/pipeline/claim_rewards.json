@@ -445,9 +445,13 @@
             "type": "Click"
         },
         "post_wait_freezes": 500,
+        "timeout": 5000,
         "next": [
             "BattlePass.CheckItemObtainedReward",
             "BattlePass.CheckRewardList"
+        ],
+        "on_error": [
+            "Common.BackButton"
         ]
     },
     "BattlePass.CheckItemObtainedReward": {
