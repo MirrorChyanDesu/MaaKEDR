@@ -25,22 +25,20 @@ Powered by [MaaFramework](https://github.com/MaaXYZ/MaaFramework)!
 
 </div>
 
-> ⚠️ **Project Status: Semi-Abandoned**
+> ℹ️ **Project Status: Maintenance Mode**
 >
-> The developer is lazy and recently discovered a similar open-source project
-> [MaaAssistantKedrgame (MAK)](https://github.com/Hollow-YK/MaaAssistantKedrgame)
-> with more complete features and active maintenance.
-> If you need a reliable tool, please use [MAK](https://github.com/Hollow-YK/MaaAssistantKedrgame) instead.
+> After completing the daily routine features, this project will enter **maintenance mode**,
+> with no active development of new content, only bug fixes and necessary compatibility updates.
 >
-> This project is now **semi-abandoned** and will no longer be maintained as a primary tool,
-> but may receive occasional updates as the developer's personal practice project.
+> For more comprehensive features and active maintenance, please consider the similar open-source project
+> [MaaAssistantKedrgame (MAK)](https://github.com/Hollow-YK/MaaAssistantKedrgame).
 
 ---
 
 ## Features
 
 - Game Launch
-- Claim Rewards (daily/weekly/military achievements, battle pass, mailbox — individually toggleable)
+- Claim Rewards (dispatch tasks, daily/weekly/military achievements, battle pass, mailbox — individually toggleable)
 - Resource Farming (Special Funds, Physical Training, Unit Rating, Vehicle Drill)
 - Skill Training (Basic Skills, Advanced Skills)
 - Multiple stage selection with configurable battle count (1-6 / max)
