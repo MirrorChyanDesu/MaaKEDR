@@ -671,10 +671,10 @@
             "[JumpBack]FarmResources.ClickVictory",
             "[JumpBack]FarmResources.ClickItemDialog",
             "FarmResources.QuickBattle",
-            "FarmResources.PrepareBattle"
+            "FarmResources.ReturnMainFromFarm"
         ],
         "on_error": [
-            "FarmResources.ExitStageConfirm"
+            "FarmResources.PrepareBattle"
         ]
     },
     "FarmResources.ClickVictory": {
