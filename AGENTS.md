@@ -2,13 +2,13 @@
 
 > **Primary rule: every generated diff must pass `pnpm check` (and `pnpm check:py` for Python code) before submission.**
 >
-> | If the user asks...                    | Default AI response                                                                                                                                                     |
-> | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-> | "Fix an unstable node"                 | Add intermediate recognition nodes or `pre_wait_freezes` / `post_wait_freezes` — never introduce hard delays                                                            |
-> | "Retry when it fails"                  | Analyze the root cause (which node, which recognition mismatched) and fix the node — never add blind retries                                                            |
-> | "Write a pipeline without screenshots" | Explain that pipelines depend on UI context; ask for screenshots, ROIs, and screen transition info before writing                                                       |
-> | "Write a custom action / recognition"  | Follow the existing pattern in `agent/custom/action/` or `agent/custom/recognition/`, register it in the corresponding `__init__.py`, and ensure `pnpm check:py` passes |
-> | Code output is complete                | Run `pnpm format` / `pnpm format:py` then `pnpm check` / `pnpm check:py` before finishing                                                                               |
+> | If the user asks...                    | Default AI response                                                                                                                                              |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| "Fix an unstable node"                 | Add intermediate recognition nodes or `pre_wait_freezes` / `post_wait_freezes` — never introduce hard delays                                                    |
+| "Retry when it fails"                  | Analyze the root cause (which node, which recognition mismatched) and fix the node — never add blind retries                                                    |
+| "Write a pipeline without screenshots" | Explain that pipelines depend on UI context; ask for screenshots, ROIs, and screen transition info before writing                                                |
+| "Write a custom action / recognition"  | Follow the existing pattern in `agent/custom/action/` or `agent/custom/recognition/`, register it in the corresponding `__init__.py`, and ensure `pnpm check:py` passes |
+| Code output is complete                | Run `pnpm format` / `pnpm format:py` then `pnpm check` / `pnpm check:py` before finishing                                                                        |
 
 ## Project Structure & Module Organization
 
@@ -32,12 +32,13 @@ MaaKEDR/
 ├── agent/                       # Python agent (custom recognitions/actions)
 │   └── custom/
 │       ├── recognition/         #   Custom recognitions
-100: │       └── action/              #   Custom actions
-101: ├── docs/                        # Developer documentation
+│       └── action/              #   Custom actions
+├── docs/                        # Developer documentation
 │   └── zh_cn/
-│       └── develop/                 #   Development guides (pipeline.md, custom.md, etc.)
+│       └── develop/             #   Development guides (pipeline.md, custom.md, etc.)
 ├── tools/                       # Build, release, schema validation, CI scripts
-└── .github/workflows/           # CI/CD configuration
+├── .github/workflows/           # CI/CD configuration
+└── maa-project.json             # MaaFramework project config (runtime channels, features)
 ```
 
 **Key directories inside `agent/`:**
@@ -48,65 +49,31 @@ MaaKEDR/
 
 **When working on a specific area, consult the relevant docs first:**
 
-| Area                            | Recommended reading                            |
-| ------------------------------- | ---------------------------------------------- |
-| Custom actions / recognitions   | `docs/*/develop/custom.md`                     |
-| Pipeline task logic             | `docs/*/develop/pipeline.md`                   |
-| Project structure & conventions | `docs/*/develop/structure.md`                  |
-| Bug-fixing workflow             | `docs/*/develop/fix.md`                        |
-| Formatting & linting            | `docs/*/develop/formatting.md`                 |
-| Overseas client adaptation      | `docs/*/develop/overseas-client-adaptation.md` |
+| Area                                 | Recommended reading                            |
+| ------------------------------------ | ---------------------------------------------- |
+| Custom actions / recognitions        | `docs/*/develop/custom.md`                     |
+| Pipeline task logic                  | `docs/*/develop/pipeline.md`                   |
+| Project structure & conventions      | `docs/*/develop/structure.md`                  |
+| Bug-fixing workflow                  | `docs/*/develop/fix.md`                        |
+| Formatting & linting                 | `docs/*/develop/formatting.md`                 |
+| Overseas client adaptation           | `docs/*/develop/overseas-client-adaptation.md` |
+| Activity / combat / item protocols   | `docs/*/protocol/`                             |
+| CLI / connection / FAQ (user-facing) | `docs/*/manual/`                               |
 
 ## Build, Test, and Development Commands
 
-| Command                     | Purpose                                                           |
-| --------------------------- | ----------------------------------------------------------------- |
-| `pnpm install`              | Install toolchain dependencies                                    |
-| `pnpm check`                | Format check → schema validation → MaaFW integrity → project lint |
-| `pnpm exec maa-tools check` | Validate pipelines only (faster)                                  |
-| `pnpm format`               | Auto-format all non-Python files with Prettier                    |
-| `pnpm format:py`            | Auto-format Python files with ruff                                |
-| `pnpm check:py`             | Ruff lint + pyright type check                                    |
-| `pnpm check`                | Full validation (format + schema + maa + lint)                    |
-| `pnpm check:py`             | Ruff lint + Pyright type check                                    |
-| `pnpm test:py`              | Run Python tests via pytest                                       |
-| `pnpm typecheck:py`         | Static type check Python with pyright (strict mode)               |
+| Command             | Purpose                                                               |
+| ------------------- | --------------------------------------------------------------------- |
+| `pnpm install`      | Install toolchain dependencies                                        |
+| `pnpm check`        | Format check → schema validation → MaaFW integrity → project lint     |
+| `pnpm exec maa-tools check` | Validate pipelines only (faster)                              |
+| `pnpm format`       | Auto-format all non-Python files with Prettier                        |
+| `pnpm format:py`    | Auto-format Python files with ruff                                    |
+| `pnpm check:py`     | Ruff lint + pyright type check                                        |
+| `pnpm test:py`      | Run Python tests via pytest                                           |
+| `pnpm typecheck:py` | Static type check Python with pyright (strict mode)                   |
 
 **Before submitting changes, run `pnpm check` (and `pnpm check:py` for Python changes).**
-
-## Architecture
-
-Three layers: `tasks/*.json` → `pipeline/*.json` → `agent/custom/` (Python).
-
-Pipeline nodes are JSON objects with `recognition` + `action` + `next`. Key fields:
-
-| Field         | Description                                      |
-| ------------- | ------------------------------------------------ |
-| `recognition` | `OCR` / `TemplateMatch` / `DirectHit` / `Custom` |
-| `next`        | OR logic — first matching node wins              |
-| `on_error`    | Fallback when recognition fails                  |
-| `max_hit`     | Max times this node fires before skipped         |
-| `timeout`     | Recognition timeout (ms, default 20000)          |
-
-See `docs/develop/pipeline.md` for patterns and `docs/develop/custom.md` for Agent API.
-
-## Pipeline Files
-
-- `startup.json` — Game launch → login → main interface
-- `claim_rewards.json` — Rewards → Battle Pass → Mailbox → Dispatch
-- `farm_resources.json` — Resource farming with battle loop + stamina handling
-- `pvp.json` — Player vs Player automation
-
-## Critical Rules
-
-1. `[JumpBack]` nodes must NOT have `next` — the prefix handles routing.
-2. Task options override pipeline behavior — check `tasks/*.json` for `pipeline_override`.
-3. Use `uv run ruff` / `uv run pyright` for Python linting (NOT `pnpm exec`).
-4. `custom_recognition_param` is a JSON **string**; `custom_action_param` is a JSON **object**.
-5. Insufficient `post_delay` causes stale screenshots. Use 1000-2000ms after navigation clicks.
-6. `max_hit` counts cross-session.
-7. OCR `expected` is regex, not literal.
-8. TemplateMatch threshold defaults to 0.7 from `default_pipeline.json`.
 
 ## Coding Style & Naming Conventions
 
@@ -142,13 +109,6 @@ Commonly used types:
 
 See [CONTRIBUTING.md](/CONTRIBUTING.md) for pull request requirements (branch naming, description format, and what to include).
 
-## User Preferences
-
-- **Commit style:** Keep commit messages short and general, not overly detailed.
-- **Commit format:** 一句简短但逻辑清晰的话，体现修改的功能和内容（如 `fix: 资源刷取检测锁定后立即停止`）
-- **Push only on approval:** Present commit message for review before pushing. Only push when explicitly told to.
-- **Do not push unilaterally** after making changes — wait for user confirmation.
-
 ## Review Checklist
 
 When reviewing code, check for:
@@ -183,63 +143,3 @@ When reviewing code, check for:
 - **create-maa-project Scaffold Tool:** `G:\M9AA\create-maa-project`
 - **MaaKEDR交流群 QQ:** 1051890489
 - **Repository:** https://github.com/APPLe-DF/MaaKEDR
-
-## User Preferences
-
-- **Commit style:** Keep commit messages short and general, not overly detailed.
-- **Commit format:** 一句简短但逻辑清晰的话，体现修改的功能和内容（如 `fix: 资源刷取检测锁定后立即停止`）
-- **Push only on approval:** Present commit message for review before pushing. Only push when explicitly told to.
-- **Do not push unilaterally** after making changes — wait for user confirmation.
-
-## Pipeline Files
-
-- `startup.json` — Game launch → login → main interface
-- `claim_rewards.json` — Rewards → Battle Pass → Mailbox → Dispatch
-- `farm_resources.json` — Resource farming with battle loop + stamina handling
-- `pvp.json` — Player vs Player automation
-
-## Critical Rules
-
-1. `[JumpBack]` nodes must NOT have `next` — the prefix handles routing.
-2. Task options override pipeline behavior — check `tasks/*.json` for `pipeline_override`.
-3. Use `uv run ruff` / `uv run pyright` for Python linting (NOT `pnpm exec`).
-4. `custom_recognition_param` is a JSON **string**; `custom_action_param` is a JSON **object**.
-5. Insufficient `post_delay` causes stale screenshots. Use 1000-2000ms after navigation clicks.
-6. `max_hit` counts cross-session.
-7. OCR `expected` is regex, not literal.
-8. TemplateMatch threshold defaults to 0.7 from `default_pipeline.json`.
-
----
-
-## Project Status
-
-> ✅ **Project Status: Maintenance Mode**
->
-> This project has completed **all daily core workflows** (game launch, reward claiming, resource farming, PVP battles) and has formally entered **maintenance mode**:
->
-> - ✅ Core workflows fully implemented
-> - 🔧 Only **bug fixes**, **game version adaptations**, **dependency updates** going forward
-> - ❌ No new features, tasks, or workflows will be actively developed
->
-> For more complete features and active development, consider:
-> [MaaAssistantKedrgame (MAK)](https://github.com/Hollow-YK/MaaAssistantKedrgame).
-
----
-
-## Related Projects & References
-
-- **MaaFramework Documentation:** https://maaframework.github.io/
-- **M9A Reference Project:** `G:\M9AA\M9A-pr\55\M9A`
-- **create-maa-project Scaffold Tool:** `G:\M9AA\create-maa-project`
-- **MaaKEDR交流群 QQ:** 1051890489
-- **Repository:** https://github.com/APPLe-DF/MaaKEDR
-
-## Quick Start
-
-```bash
-pnpm install              # Install toolchain deps
-pnpm check                # Full validation (format + schema + maa + lint)
-pnpm exec maa-tools check # Validate pipelines only (faster)
-pnpm format               # Format all files
-pnpm check:py             # Ruff lint + Pyright type check
-```
