@@ -55,7 +55,9 @@ Powered by [MaaFramework](https://github.com/MaaXYZ/MaaFramework)!
 - [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0)
 - ADB set up (for connecting to Android device or emulator)
 
-### Installation & Run
+### Download
+
+Download the latest release from [GitHub Releases](https://github.com/APPLe-DF/MaaKEDR/releases/latest), extract the archive, and run.
 
 ```bash
 # Install runtime dependencies

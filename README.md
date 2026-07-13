@@ -55,6 +55,10 @@
 - [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0)
 - ADB 已配置（用于连接 Android 设备或模拟器）
 
+### 下载安装
+
+前往 [GitHub Releases](https://github.com/APPLe-DF/MaaKEDR/releases/latest) 下载最新版本压缩包，解压后运行即可。
+
 ### 安装运行
 
 ```bash
