@@ -3,7 +3,7 @@
         {
             "name": "玩家对战",
             "entry": "PVP.CheckHomePage",
-            "default_check": false,
+            "default_check": true,
             "group": ["Daily"],
             "description": "自动进行玩家对战。支持多场次循环，识别战斗结果、积分和排名变化",
             "option": [

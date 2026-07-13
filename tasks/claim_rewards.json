@@ -40,7 +40,7 @@
             "type": "switch",
             "label": "再次派遣",
             "description": "领取奖励后选择再次派遣，否则直接关闭",
-            "default_case": "No",
+            "default_case": "Yes",
             "cases": [
                 {
                     "name": "No",
