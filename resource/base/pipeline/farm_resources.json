@@ -579,7 +579,7 @@
             "type": "DoNothing"
         },
         "next": [
-            "FarmResources.ExitStage"
+            "FarmResources.ExitStageConfirm"
         ],
         "focus": {
             "Node.Action.Starting": "体力不足，停止刷取"
@@ -590,9 +590,9 @@
         "max_hit": 5,
         "recognition": "TemplateMatch",
         "roi": [
-            269,
-            581,
-            111,
+            325,
+            614,
+            112,
             63
         ],
         "template": "farm_resources/exit_button.png",
