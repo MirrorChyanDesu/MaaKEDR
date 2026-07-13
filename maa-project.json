@@ -75,6 +75,10 @@
         "mfa": {
             "channel": "v2.12.2-beta.3",
             "enabled": true
+        },
+        "mxu": {
+            "channel": "latest",
+            "enabled": true
         }
     },
     "schemaVersion": 1
