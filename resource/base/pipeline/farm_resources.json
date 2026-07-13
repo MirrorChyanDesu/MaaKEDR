@@ -282,7 +282,6 @@
         "desc": "检查技能关卡是否被锁定(roi由选项动态设置)",
         "recognition": "TemplateMatch",
         "template": "farm_resources/skill_lock_icon.png",
-        "only_rec": true,
         "threshold": 0.8,
         "pre_delay": 500,
         "action": {
