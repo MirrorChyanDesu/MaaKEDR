@@ -12,7 +12,7 @@
 
 ### Startup Issues
 
-**Agent fails to start**
+#### Agent fails to start
 
 Error: `Python >=3.13,<3.14 is required`
 
@@ -20,7 +20,7 @@ Cause: Wrong Python version. Project requires Python 3.13.x.
 
 Fix: Use `uv` for Python management, run `uv sync`.
 
-**Custom module not registered**
+#### Custom module not registered
 
 Error: Custom action/recognition returns `success: false`
 
@@ -30,7 +30,7 @@ Fix: Add module name, e.g. `RECOGNITION_MODULES = ("farm_resources", "pvp")`.
 
 ### Runtime Issues
 
-**Pipeline node stuck**
+#### Pipeline node stuck
 
 Symptoms: Task hangs on a node until timeout.
 
@@ -41,11 +41,11 @@ Common causes:
 3. Outdated template — UI changed, re-screenshot
 4. Missing fallback — Critical nodes lack `on_error`
 
-**JumpBack node misbehavior**
+#### JumpBack node misbehavior
 
 Cause: JumpBack node has `next` field. **JumpBack nodes must NOT have `next`.**
 
-**Stamina drain mode loops**
+#### Stamina drain mode loops
 
 Cause: `ExitStage` and `ExitStageConfirm` override points to `BattleStage` instead of exit path.
 
@@ -53,7 +53,7 @@ Fix: Check the clear stamina mode override in `tasks/farm_resources.json`.
 
 ### Recognition Issues
 
-**Stage not found**
+#### Stage not found
 
 Symptoms: `CheckResourceStage` keeps failing
 
@@ -63,11 +63,11 @@ Common causes:
 2. Stage list offset — confirm `SwipeToBegin` executed
 3. Wrong `stage_index` or `resource_type` in params
 
-**Stamina popup not recognized**
+#### Stamina popup not recognized
 
 Cause: `no_stamina.png` template missing or wrong ROI.
 
-**Schema validation fails**
+#### Schema validation fails
 
 Error: `must NOT have unevaluated properties`
 
