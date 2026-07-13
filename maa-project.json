@@ -78,7 +78,7 @@
         },
         "mxu": {
             "channel": "latest",
-            "enabled": true
+            "enabled": false
         }
     },
     "schemaVersion": 1
