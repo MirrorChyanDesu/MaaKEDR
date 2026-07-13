@@ -62,7 +62,15 @@
         "template": "claim_rewards/reward_badge.png",
         "threshold": 0.75,
         "action": {
-            "type": "Click"
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    0,
+                    0,
+                    0
+                ]
+            }
         },
         "post_wait_freezes": 500,
         "timeout": 5000,
@@ -83,7 +91,15 @@
         "template": "claim_rewards/reward_badge.png",
         "threshold": 0.75,
         "action": {
-            "type": "Click"
+            "type": "Click",
+            "param": {
+                "target": [
+                    50,
+                    0,
+                    0,
+                    0
+                ]
+            }
         },
         "post_wait_freezes": 500,
         "next": [
