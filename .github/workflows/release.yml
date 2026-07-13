@@ -38,7 +38,7 @@ jobs:
             runtime_os: linux
             runtime_arch: arm64
             ext: tar.gz
-          - os: macos-13
+          - os: macos-15-intel
             artifact_os: macos
             arch: x86_64
             runtime_os: osx
