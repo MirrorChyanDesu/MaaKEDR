@@ -2,13 +2,13 @@
 
 > **Primary rule: every generated diff must pass `pnpm check` (and `pnpm check:py` for Python code) before submission.**
 >
-> | If the user asks...                    | Default AI response                                                                                                                                              |
-| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| "Fix an unstable node"                 | Add intermediate recognition nodes or `pre_wait_freezes` / `post_wait_freezes` — never introduce hard delays                                                    |
-| "Retry when it fails"                  | Analyze the root cause (which node, which recognition mismatched) and fix the node — never add blind retries                                                    |
-| "Write a pipeline without screenshots" | Explain that pipelines depend on UI context; ask for screenshots, ROIs, and screen transition info before writing                                                |
-| "Write a custom action / recognition"  | Follow the existing pattern in `agent/custom/action/` or `agent/custom/recognition/`, register it in the corresponding `__init__.py`, and ensure `pnpm check:py` passes |
-| Code output is complete                | Run `pnpm format` / `pnpm format:py` then `pnpm check` / `pnpm check:py` before finishing                                                                        |
+> | If the user asks...                    | Default AI response                                                                                                                                                     |
+> | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | "Fix an unstable node"                 | Add intermediate recognition nodes or `pre_wait_freezes` / `post_wait_freezes` — never introduce hard delays                                                            |
+> | "Retry when it fails"                  | Analyze the root cause (which node, which recognition mismatched) and fix the node — never add blind retries                                                            |
+> | "Write a pipeline without screenshots" | Explain that pipelines depend on UI context; ask for screenshots, ROIs, and screen transition info before writing                                                       |
+> | "Write a custom action / recognition"  | Follow the existing pattern in `agent/custom/action/` or `agent/custom/recognition/`, register it in the corresponding `__init__.py`, and ensure `pnpm check:py` passes |
+> | Code output is complete                | Run `pnpm format` / `pnpm format:py` then `pnpm check` / `pnpm check:py` before finishing                                                                               |
 
 ## Project Structure & Module Organization
 
@@ -62,16 +62,16 @@ MaaKEDR/
 
 ## Build, Test, and Development Commands
 
-| Command             | Purpose                                                               |
-| ------------------- | --------------------------------------------------------------------- |
-| `pnpm install`      | Install toolchain dependencies                                        |
-| `pnpm check`        | Format check → schema validation → MaaFW integrity → project lint     |
-| `pnpm exec maa-tools check` | Validate pipelines only (faster)                              |
-| `pnpm format`       | Auto-format all non-Python files with Prettier                        |
-| `pnpm format:py`    | Auto-format Python files with ruff                                    |
-| `pnpm check:py`     | Ruff lint + pyright type check                                        |
-| `pnpm test:py`      | Run Python tests via pytest                                           |
-| `pnpm typecheck:py` | Static type check Python with pyright (strict mode)                   |
+| Command                     | Purpose                                                           |
+| --------------------------- | ----------------------------------------------------------------- |
+| `pnpm install`              | Install toolchain dependencies                                    |
+| `pnpm check`                | Format check → schema validation → MaaFW integrity → project lint |
+| `pnpm exec maa-tools check` | Validate pipelines only (faster)                                  |
+| `pnpm format`               | Auto-format all non-Python files with Prettier                    |
+| `pnpm format:py`            | Auto-format Python files with ruff                                |
+| `pnpm check:py`             | Ruff lint + pyright type check                                    |
+| `pnpm test:py`              | Run Python tests via pytest                                       |
+| `pnpm typecheck:py`         | Static type check Python with pyright (strict mode)               |
 
 **Before submitting changes, run `pnpm check` (and `pnpm check:py` for Python changes).**
 
