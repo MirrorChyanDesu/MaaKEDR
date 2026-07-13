@@ -238,7 +238,7 @@
         "action": {
             "type": "Click"
         },
-        "post_delay": 30000,
+        "post_delay": 40000,
         "next": [
             "PVP.ReadResult"
         ]
