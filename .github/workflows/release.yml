@@ -93,8 +93,8 @@ jobs:
               if [ ! -f rcedit.exe ]; then
                 curl -fsSL https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe -o rcedit.exe
               fi
-              exe="$(find "$pkg_dir" -maxdepth 1 -type f -name '*.exe' | head -n 1)"
-              if [[ -n "$exe" ]]; then
+              exe="$pkg_dir/maakedr.exe"
+              if [[ -f "$exe" ]]; then
                 if python3 -c "import sys; sys.exit(0 if open('${{ github.workspace }}/logo.ico','rb').read(4) == b'\x00\x00\x01\x00' else 1)" 2>/dev/null; then
                   ./rcedit.exe "$exe" --set-icon logo.ico
                   echo "[OK] Applied Windows executable icon: $exe ($gui)"
