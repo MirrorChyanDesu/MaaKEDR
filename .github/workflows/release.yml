@@ -48,7 +48,7 @@ jobs:
             artifact_os: mac
             arch: aarch64
             runtime_os: mac
-            runtime_arch: arm64
+            runtime_arch: x64
             ext: tar.gz
     runs-on: ${{ matrix.os }}
     steps:
