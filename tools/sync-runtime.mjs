@@ -28,7 +28,12 @@ if (project.runtime?.mfa?.enabled !== false) {
     updateArgs.push("--update", "runtime:mfa");
 }
 if (project.runtime?.mxu?.enabled) {
-    updateArgs.push("--update", "runtime:mxu");
+    const platform = detectRuntimePlatform();
+    if (platform === "linux-arm64") {
+        console.warn("[WARN] Skipping MXU runtime sync for linux-arm64 because no MXU runtime asset is available.");
+    } else {
+        updateArgs.push("--update", "runtime:mxu");
+    }
 }
 const invocation = resolveCreateMaaProject();
 
