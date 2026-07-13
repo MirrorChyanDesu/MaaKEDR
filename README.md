@@ -127,6 +127,8 @@ MaaKEDR/
 
 - [MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia)  
   基于 Avalonia UI 构建的 MaaFramework 通用 GUI 解决方案
+- [MXU](https://github.com/MistEO/MXU)  
+  基于 Unity 的 MaaFramework GUI 客户端
 
 ### 社区项目
 

@@ -121,6 +121,8 @@ See [docs/](docs/README.md) for detailed development documentation:
 
 - [MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia)  
   Universal MaaFramework GUI solution built with Avalonia UI
+- [MXU](https://github.com/MistEO/MXU)  
+  A Unity-based MaaFramework GUI client
 
 ### Community Project
 
