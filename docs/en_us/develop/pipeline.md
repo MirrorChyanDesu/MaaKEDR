@@ -1,8 +1,8 @@
-# Pipeline Writing Guide
+# Pipeline Guide
 
 ## Node Structure
 
-Each pipeline node defines a recognition → action → transition step in JSON:
+Each pipeline node defines a recognition → action → transition step:
 
 ```json
 {
@@ -25,59 +25,113 @@ Each pipeline node defines a recognition → action → transition step in JSON:
 
 ## Recognition Types
 
-| Type          | Use Case           | Notes                                                      |
-| ------------- | ------------------ | ---------------------------------------------------------- |
-| TemplateMatch | Static UI elements | OpenCV matching, images in `image/`, default threshold 0.7 |
-| OCR           | Dynamic text       | PaddleOCR v5, `expected` supports regex                    |
-| DirectHit     | Routing hub        | Always matches, used for `next` branching                  |
-| Custom        | Complex logic      | Python class via `@AgentServer.custom_recognition()`       |
+| Type          | Use Case      | Description                                                       |
+| ------------- | ------------- | ----------------------------------------------------------------- |
+| TemplateMatch | Static UI     | OpenCV template matching, images in `image/`, threshold 0.7       |
+| OCR           | Dynamic text  | PaddleOCR v5, `expected` supports regex, `roi` for text region    |
+| DirectHit     | Routing       | Always matches, used for `next` branching                         |
+| Custom        | Complex logic | Python custom recognition via `@AgentServer.custom_recognition()` |
+| ColorMatch    | Color filter  | Used with OCR `color_filter` field for background removal         |
 
 ## Action Types
 
-| Type      | Description                                                                        |
-| --------- | ---------------------------------------------------------------------------------- |
-| Click     | Click recognized position. `target: true` = center; `target: [x,y,w,h]` = absolute |
-| DoNothing | Recognition-only routing                                                           |
-| Swipe     | `param.begin` / `param.end` / `param.duration`                                     |
-| Custom    | Python class via `@AgentServer.custom_action()`                                    |
+| Type      | Description                                                                       |
+| --------- | --------------------------------------------------------------------------------- |
+| Click     | Click matched position. `target: true` for center, `target: [x,y,w,h]` for offset |
+| DoNothing | Recognition-only, no action                                                       |
+| Swipe     | Swipe with `param.begin` / `param.end` / `param.duration`                         |
+| Custom    | Python custom action via `@AgentServer.custom_action()`                           |
 
-## Key Fields
+## Common Fields
 
-| Field                      | Description                                                            |
-| -------------------------- | ---------------------------------------------------------------------- |
-| `pre_delay` / `post_delay` | Wait before/after action (ms). Use 1000-2000ms after navigation clicks |
-| `max_hit`                  | Max times this node fires before being skipped                         |
-| `timeout`                  | Recognition timeout (ms, default 20000)                                |
-| `only_rec`                 | Recognize only, no action                                              |
-| `on_error`                 | Fallback when recognition fails                                        |
+| Field                      | Description                                                   |
+| -------------------------- | ------------------------------------------------------------- |
+| `pre_delay` / `post_delay` | Wait before/after action (ms). Navigation clicks: 1000-2000ms |
+| `post_wait_freezes`        | Wait until screen stops changing (smarter than fixed delay)   |
+| `max_hit`                  | Max hits before skip. For looping UI elements                 |
+| `timeout`                  | Recognition timeout (ms), default 20000                       |
+| `only_rec`                 | Recognition only, no action                                   |
+| `focus`                    | Log notification on hit/failure                               |
+| `color_filter`             | OCR color pre-filter, references a ColorMatch node            |
+
+## Naming Conventions
+
+- Use **dot-separated hierarchy**: `FarmResources.Start`, `ClaimRewards.CheckDaily`
+- Prefix with module name: `PVP.`, `BattlePass.`, `Common.`
+- JumpBack nodes must NOT have `next`
 
 ## Design Patterns
 
-### JumpBack Battle Loop
+### Linear Flow
+
+Best for sequential operations (e.g., game launch):
 
 ```json
-"Dispatcher": {
+"LaunchGame": {
     "recognition": "DirectHit",
-    "action": { "type": "DoNothing" },
-    "next": [
-        "[JumpBack]HandleA",
-        "[JumpBack]HandleB",
-        "ExitNode"
-    ]
+    "action": {
+        "type": "DoNothing",
+        "param": { "package": "com.phxh.official.nld" }
+    },
+    "next": ["ClickToStart"]
 },
-"HandleA": {
+"ClickToStart": {
     "recognition": "TemplateMatch",
-    "template": "something.png",
-    "action": { "type": "Click" }
-    // NO next — JumpBack returns to parent
+    "template": "click_to_start.png",
+    "action": { "type": "Click" },
+    "post_delay": 2000,
+    "next": ["DailyLoginReward", "CheckHomePage"]
 }
 ```
 
-`[JumpBack]` nodes return to the parent after execution. **JumpBack nodes must NOT have `next`.**
+### DirectHit Hub
+
+```json
+"HubNode": {
+    "recognition": "DirectHit",
+    "action": { "type": "DoNothing" },
+    "next": ["BranchA", "BranchB"]
+}
+```
+
+`next` is OR logic: tries from top to bottom, executes the first match.
+
+### [JumpBack] Central Hub
+
+Suitable for repeating sub-module visits (e.g., reward claim loop):
+
+```json
+"ClaimRewards.MainHub": {
+    "recognition": "DirectHit",
+    "action": { "type": "DoNothing" },
+    "next": [
+        "[JumpBack]DispatchClaim.Start",
+        "[JumpBack]ClaimRewards.Start",
+        "[JumpBack]BattlePass.Start",
+        "[JumpBack]Mailbox.Start"
+    ]
+}
+```
+
+`[JumpBack]` nodes return to the parent after execution. Only non-JumpBack nodes can exit the loop.
+
+### Battle Loop
+
+```json
+"BattleStage": {
+    "recognition": "DirectHit",
+    "action": { "type": "DoNothing" },
+    "next": [
+        "[JumpBack]ClickVictory",
+        "[JumpBack]ClickItemDialog",
+        "QuickBattle"
+    ]
+}
+```
 
 ### Task Option Override
 
-Modify node behavior at runtime via `pipeline_override` in `tasks/*.json`:
+`tasks/*.json` uses `pipeline_override` to modify node behavior at runtime:
 
 ```json
 "pipeline_override": {
@@ -87,7 +141,9 @@ Modify node behavior at runtime via `pipeline_override` in `tasks/*.json`:
 }
 ```
 
-### max_hit Anti-Loop
+Can override `next`, `roi`, `threshold`, `custom_action_param`, etc.
+
+### max_hit Anti-loop
 
 ```json
 "ClaimButton": {
@@ -96,12 +152,13 @@ Modify node behavior at runtime via `pipeline_override` in `tasks/*.json`:
 }
 ```
 
-Fires at most 5 times before being skipped. Good for cyclic UI elements.
+Max 5 hits before skip. Counts cross-session.
 
-## Tips
+## Notes
 
-1. **post_delay** of 1000-2000ms after navigation clicks prevents stale screenshots
-2. **OCR `expected` is regex** — `".*"` matches anything, `"^text$"` exact match
-3. **ROI** is `[x, y, w, h]` at 1280x720 resolution
-4. **Node naming** uses dot-separated hierarchy (e.g. `FarmResources.Start`)
-5. **Always add `on_error`** to critical navigation nodes
+1. **Sufficient delays** — At least 1000ms after navigation clicks
+2. **OCR expected is regex** — `".*"` matches anything, `"^text$"` exact match
+3. **ROI at 1280x720** — coordinates `[x, y, w, h]`
+4. **Always add `on_error`** — For critical navigation nodes
+5. **`next` order matters** — Put high-priority matches first
+6. **Use `post_wait_freezes`** — More reliable than fixed `post_delay` for animations

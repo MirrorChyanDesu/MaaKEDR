@@ -81,20 +81,26 @@ pnpm format:all       # 格式化所有文件
 
 ```
 MaaKEDR/
-├── resource/base/           # 核心资源
-│   ├── pipeline/            # Pipeline 流程定义
-│   ├── image/               # 模板匹配用图片
-│   └── model/ocr/           # PaddleOCR 模型
-├── agent/                   # Python Agent（自定义识别/动作）
+├── interface.json               # 项目入口配置
+├── tasks/                       # 任务定义（GUI 中显示的任务列表）
+│   ├── startup.json             #   启动游戏
+│   ├── pvp.json                 #   玩家对战
+│   ├── claim_rewards.json       #   领取奖励
+│   └── farm_resources.json      #   资源刷取
+├── resource/base/               # 核心资源
+│   ├── pipeline/                #   Pipeline 流程定义
+│   ├── image/                   #   模板匹配用图片
+│   └── model/ocr/               #   PaddleOCR 模型
+├── agent/                       # Python Agent（自定义识别/动作）
 │   └── custom/
-│       ├── recognition/     # 自定义识别
-│       └── action/          # 自定义动作
-├── tasks/                   # 任务入口定义
-├── tools/                   # 开发工具
-└── interface.json           # MaaFramework 项目定义
+│       ├── recognition/         #   自定义识别
+│       └── action/              #   自定义动作
+├── docs/                        # 开发文档
+├── tools/                       # 开发工具
+└── .github/workflows/           # CI/CD 配置
 ```
 
-更多文档请前往 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 主仓库查看。
+更多文档请前往 [docs/](docs/README.md) 查看。
 
 ---
 
@@ -102,11 +108,11 @@ MaaKEDR/
 
 详细的项目开发文档请参见 [docs/](docs/README.md)，包含：
 
-- Pipeline 编写指南
-- Custom 识别与动作开发
-- 项目结构说明
-- 格式化规范
-- 常见问题排查
+- [Pipeline 编写指南](docs/zh_cn/develop/pipeline.md)
+- [Custom 识别与动作开发](docs/zh_cn/develop/custom.md)
+- [项目结构说明](docs/zh_cn/develop/structure.md)
+- [格式化规范](docs/zh_cn/develop/formatting.md)
+- [Bug 排查](docs/zh_cn/develop/fix.md)
 
 ---
 

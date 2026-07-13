@@ -102,11 +102,11 @@ For more documentation, visit the [MaaFramework](https://github.com/MaaXYZ/MaaFr
 
 See [docs/](docs/README.md) for detailed development documentation:
 
-- Pipeline Writing Guide
-- Custom Recognition & Action Development
-- Project Structure
-- Formatting Conventions
-- Troubleshooting
+- [Pipeline Guide](docs/en_us/develop/pipeline.md)
+- [Custom Recognition & Action](docs/en_us/develop/custom.md)
+- [Project Structure](docs/en_us/develop/structure.md)
+- [Formatting](docs/en_us/develop/formatting.md)
+- [Troubleshooting](docs/en_us/develop/fix.md)
 
 ---
 

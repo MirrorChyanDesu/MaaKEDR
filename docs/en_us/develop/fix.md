@@ -2,48 +2,93 @@
 
 ## Log Files
 
-- `debug/agent-bootstrap.log` — Agent startup log
-- `maafw.log` — MaaFramework runtime log (project root)
+| File                        | Description                             |
+| --------------------------- | --------------------------------------- |
+| `debug/agent-bootstrap.log` | Agent startup log                       |
+| `maafw.log`                 | MaaFramework runtime log (project root) |
+| `debug/`                    | Debug screenshots                       |
 
-## Common Issues
+## Categories
 
-### Agent Startup Fails
+### Startup Issues
 
-**Error**: `Python >=3.13,<3.14 is required`
+**Agent fails to start**
 
-**Cause**: System Python version mismatch. Project requires Python 3.13.x.
+Error: `Python >=3.13,<3.14 is required`
 
-**Fix**: Install `uv` and run `uv sync` to let it manage Python version automatically.
+Cause: Wrong Python version. Project requires Python 3.13.x.
 
-### Pipeline Node Stuck
+Fix: Use `uv` for Python management, run `uv sync`.
 
-**Error**: Task hangs on a node until timeout.
+**Custom module not registered**
 
-**Common causes**:
+Error: Custom action/recognition returns `success: false`
 
-1. **Stale screenshot** — `post_delay` too short on previous action. Increase to 1000-2000ms after navigation clicks.
-2. **Wrong ROI** — Game UI changed position. Update ROI coordinates.
-3. **Outdated template** — Game UI changed visually. Recapture template image.
-4. **No fallback** — Critical navigation node missing `on_error`.
+Cause: Module not added to `RECOGNITION_MODULES` in `agent/custom/recognition/__init__.py`.
 
-### JumpBack Node Issues
+Fix: Add module name, e.g. `RECOGNITION_MODULES = ("farm_resources", "pvp")`.
 
-**Symptom**: node doesn't behave as expected after execution.
+### Runtime Issues
 
-**Cause**: JumpBack node has a `next` field. **JumpBack nodes must NOT have `next`.**
+**Pipeline node stuck**
 
-### Stage Not Found
+Symptoms: Task hangs on a node until timeout.
 
-**Symptom**: `CheckResourceStage` keeps returning failure.
+Common causes:
 
-**Possible causes**:
+1. Stale screenshot — `post_delay` too short. Increase to 1000ms+
+2. ROI mismatch — Game UI changed, update ROI
+3. Outdated template — UI changed, re-screenshot
+4. Missing fallback — Critical nodes lack `on_error`
 
-1. Stage is locked (grey text, OCR can't read) — check `lock_icon.png` template
-2. Need to swipe to beginning first — verify `SwipeToBegin` executed
-3. `custom_recognition_param` has wrong `stage_index` or `resource_type`
+**JumpBack node misbehavior**
 
-### Stamina Depletion Flow Stuck
+Cause: JumpBack node has `next` field. **JumpBack nodes must NOT have `next`.**
 
-**Symptom**: Task doesn't exit when stamina is empty.
+**Stamina drain mode loops**
 
-**Cause**: `no_stamina.png` template missing or wrong ROI.
+Cause: `ExitStage` and `ExitStageConfirm` override points to `BattleStage` instead of exit path.
+
+Fix: Check the clear stamina mode override in `tasks/farm_resources.json`.
+
+### Recognition Issues
+
+**Stage not found**
+
+Symptoms: `CheckResourceStage` keeps failing
+
+Common causes:
+
+1. Stage locked — update `lock_icon.png` template
+2. Stage list offset — confirm `SwipeToBegin` executed
+3. Wrong `stage_index` or `resource_type` in params
+
+**Stamina popup not recognized**
+
+Cause: `no_stamina.png` template missing or wrong ROI.
+
+**Schema validation fails**
+
+Error: `must NOT have unevaluated properties`
+
+Cause: Using unsupported field in the current schema.
+
+Fix: Remove unsupported fields or update `tools/schema/` definitions.
+
+### Log Analysis
+
+Runtime logs (`maafw.log`) contain detailed recognition results:
+
+```json
+{
+    "reco_id": 400000431,
+    "algorithm": "Custom",
+    "box": null,
+    "detail": {"all": [], "best": null},
+    "name": "PVP.ReadResult"
+}
+```
+
+- `box: null` — no match
+- `box: [x, y, w, h]` — match found
+- `debug/` screenshots show actual screen state

@@ -1,6 +1,10 @@
 # Custom 编写指南
 
-## 自定义识别
+## 模块类型
+
+MaaKEDR 支持三类自定义模块，通过 `@AgentServer` 装饰器注册。
+
+### 自定义识别
 
 当 TemplateMatch 和 OCR 无法满足需求时（如动态 ROI、条件判断），使用 Custom Recognition。
 
@@ -15,19 +19,17 @@ class MyRecognizer(CustomRecognition):
     def analyze(
         self, context: Context, argv: CustomRecognition.AnalyzeArg
     ) -> CustomRecognition.AnalyzeResult | None:
-        # 解析 pipeline 传来的参数（JSON 字符串）
-        # params = json.loads(argv.custom_recognition_param)
-
-        # 使用 MaaFW API 做 OCR
-        # detail = context.run_recognition_direct(
-        #     JRecognitionType.OCR,
-        #     JOCR(expected=["text"], roi=(x, y, w, h)),
-        #     argv.image,
-        # )
-
-        # 返回识别结果
+        params = json.loads(argv.custom_recognition_param)
+        # OCR 识别
+        detail = context.run_recognition_direct(
+            JRecognitionType.OCR,
+            JOCR(expected=["text"], roi=(x, y, w, h)),
+            argv.image,
+        )
+        if not detail or not detail.box:
+            return None  # 未命中
         return CustomRecognition.AnalyzeResult(
-            box=(x, y, w, h),
+            box=detail.box,
             detail={"status": "found"}
         )
 ```
@@ -45,7 +47,7 @@ Pipeline 中调用：
 
 > `custom_recognition_param` 是 JSON **字符串**（需序列化），不是 JSON 对象。
 
-## 自定义动作
+### 自定义动作
 
 复杂操作（状态管理、条件逻辑）用 Custom Action。
 
@@ -59,7 +61,9 @@ class MyAction(CustomAction):
     def run(
         self, context: Context, argv: CustomAction.RunArg
     ) -> CustomAction.RunResult:
-        # params = json.loads(argv.custom_action_param)
+        params = json.loads(argv.custom_action_param)
+        target = params.get("target_count", 1)
+        # ... 业务逻辑
         return CustomAction.RunResult(success=True)
 ```
 
@@ -80,15 +84,43 @@ Pipeline 中调用：
 
 > `custom_action_param` 是 JSON **对象**（直接传，不序列化）。
 
-## MaaFW Python API
+### 自定义 Sink（事件监听器）
+
+Sink 用于监听任务事件（开始、完成、错误等），适合做前置检查、日志记录或性能监控。
 
 ```python
-# OCR
+from maa.agent.agent_server import AgentServer
+from maa.event import TaskerEventSink, TaskerEvent
+
+@AgentServer.tasker_sink()
+class MySink(TaskerEventSink):
+    def on_event(self, event: TaskerEvent) -> None:
+        if event.event_type == TaskerEvent.Type.RECOGNITION_FAILED:
+            node_name = event.detail.get("node_name", "")
+            logger.warning(f"节点识别失败: {node_name}")
+```
+
+## 识别结果处理
+
+Custom Recognition 的 `analyze` 返回 `AnalyzeResult` 或 `None`：
+
+- 返回 `AnalyzeResult(box=..., detail=...)`：命中，使用指定 box
+- 返回 `None`：未命中，框架走 `on_error`
+
+返回值中的 `detail` 会记录在日志中，可用于调试。
+
+## Context API 参考
+
+```python
+# OCR 识别
 ocr = context.run_recognition_direct(
     JRecognitionType.OCR,
     JOCR(expected=["text"], roi=(x, y, w, h)),
     image,
 )
+# 获取结果文本
+if ocr and ocr.all_results:
+    text = ocr.all_results[0].text
 
 # 模板匹配
 match = context.run_recognition_direct(
@@ -103,16 +135,29 @@ context.run_action_direct(JActionType.Click, JClick(), box, "")
 # 获取缓存截图
 image = context.tasker.controller.cached_image
 
-# 直接发送点击
+# 发送点击（跳过 pipeline）
 context.tasker.controller.post_click(x, y).wait()
 
 # 覆盖 next 跳转
 context.override_next(argv.node_name, ["NextNodeA", "NextNodeB"])
+
+# 动态覆盖 pipeline 配置
+context.override_pipeline({
+    "SomeNode": {
+        "next": ["CustomNext"]
+    }
+})
 ```
 
 ## 注册模块
 
 1. 在 `agent/custom/recognition/` 或 `agent/custom/action/` 下创建 Python 文件
-2. 添加 `@AgentServer.custom_recognition("Name")` 或 `@AgentServer.custom_action("Name")` 装饰器
-3. 在 `agent/custom/__init__.py` 的 `register_all()` 中注册模块
+2. 添加 `@AgentServer.custom_recognition("Name")` / `@AgentServer.custom_action("Name")` / `@AgentServer.tasker_sink()` 装饰器
+3. 在 `agent/custom/recognition/__init__.py` 的 `RECOGNITION_MODULES` 中注册模块名
 4. Pipeline 中通过 `custom_recognition` / `custom_action` 字段引用
+
+## 开发建议
+
+- 先阅读项目已有的 Custom 实现（`farm_resources.py`、`pvp.py`）了解模式
+- 复杂逻辑先在单独的 Python 文件中测试，再集成到 Pipeline 中
+- 使用 `from utils.logger import logger` 输出日志，方便调试
