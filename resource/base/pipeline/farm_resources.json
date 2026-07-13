@@ -670,10 +670,11 @@
         "next": [
             "[JumpBack]FarmResources.ClickVictory",
             "[JumpBack]FarmResources.ClickItemDialog",
-            "FarmResources.QuickBattle"
+            "FarmResources.QuickBattle",
+            "FarmResources.PrepareBattle"
         ],
         "on_error": [
-            "FarmResources.PrepareBattle"
+            "FarmResources.ExitStageConfirm"
         ]
     },
     "FarmResources.ClickVictory": {
