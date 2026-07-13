@@ -50,12 +50,12 @@
                         },
                         "FarmResources.ExitStage": {
                             "next": [
-                                "FarmResources.BattleStage"
+                                "FarmResources.ExitStageConfirm"
                             ]
                         },
                         "FarmResources.ExitStageConfirm": {
                             "next": [
-                                "FarmResources.BattleStage"
+                                "FarmResources.ReturnMainFromFarm"
                             ]
                         }
                     }
