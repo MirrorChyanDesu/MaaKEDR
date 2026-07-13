@@ -28,10 +28,10 @@
             "type": "DoNothing"
         },
         "next": [
+            "[JumpBack]DispatchClaim.Start",
             "[JumpBack]ClaimRewards.Start",
             "[JumpBack]BattlePass.Start",
-            "[JumpBack]Mailbox.Start",
-            "[JumpBack]DispatchClaim.Start"
+            "[JumpBack]Mailbox.Start"
         ]
     },
     "ClaimRewards.CheckMainInterface": {
@@ -216,7 +216,7 @@
             "type": "Click"
         },
         "next": [
-            "ClaimRewards.CheckItemObtained",
+            "[JumpBack]ClaimRewards.CheckItemObtained",
             "ClaimRewards.ConfirmInterface"
         ]
     },
@@ -328,10 +328,8 @@
         },
         "timeout": 5000,
         "next": [
-            "BattlePass.CheckTaskComplete",
-            "BattlePass.CheckRewardList"
-        ],
-        "on_error": [
+            "[JumpBack]BattlePass.CheckTaskComplete",
+            "[JumpBack]BattlePass.CheckRewardList",
             "BattlePass.ExitToMailbox"
         ]
     },
@@ -447,7 +445,7 @@
         "post_wait_freezes": 500,
         "timeout": 5000,
         "next": [
-            "BattlePass.CheckItemObtainedReward",
+            "[JumpBack]BattlePass.CheckItemObtainedReward",
             "BattlePass.CheckRewardList"
         ],
         "on_error": [
@@ -595,7 +593,7 @@
             "type": "Click"
         },
         "next": [
-            "Common.CheckItemObtained",
+            "[JumpBack]Common.CheckItemObtained",
             "Mailbox.BackButton"
         ]
     },
@@ -615,8 +613,7 @@
         },
         "post_wait_freezes": 500,
         "next": [
-            "ClaimRewards.MainHub",
-            "[JumpBack]Common.BackButton"
+            "ClaimRewards.MainHub"
         ]
     },
     "DispatchClaim.Start": {
@@ -676,7 +673,7 @@
             "type": "Click"
         },
         "next": [
-            "Common.CheckItemObtained",
+            "[JumpBack]Common.CheckItemObtained",
             "DispatchClaim.RedeployConfirm"
         ]
     },
@@ -715,8 +712,7 @@
         },
         "post_wait_freezes": 500,
         "next": [
-            "ClaimRewards.MainHub",
-            "[JumpBack]Common.BackButton"
+            "ClaimRewards.MainHub"
         ]
     }
 }
