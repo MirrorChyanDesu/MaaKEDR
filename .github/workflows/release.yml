@@ -114,7 +114,7 @@ jobs:
           for pkg_dir in dist/package-*; do
             [ -d "$pkg_dir" ] || continue
             gui=$(basename "$pkg_dir" | sed 's/^package-//')
-            archive="MaaKEDR-${{ matrix.artifact_os }}-${{ matrix.arch }}-${GITHUB_REF_NAME}-${gui^^}.${{ matrix.ext }}"
+            archive="MaaKEDR-${{ matrix.artifact_os }}-${{ matrix.arch }}-${GITHUB_REF_NAME}-$(echo "$gui" | tr '[:lower:]' '[:upper:]').${{ matrix.ext }}"
             (
               cd "$pkg_dir"
               if [[ "${{ matrix.ext }}" == "zip" ]]; then
