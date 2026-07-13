@@ -253,7 +253,16 @@
         },
         "next": [
             "PVP.ExitResult"
-        ]
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": {
+                "content": "PVP战斗结束，查看日志了解积分与排名变化",
+                "display": [
+                    "log",
+                    "toast"
+                ]
+            }
+        }
     },
     "PVP.ExitResult": {
         "desc": "点击退出结果界面",

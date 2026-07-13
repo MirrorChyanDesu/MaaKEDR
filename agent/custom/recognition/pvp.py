@@ -88,7 +88,13 @@ class ReadPVPResult(CustomRecognition):
         logger.info("[当前积分] {} ({})", current_score, self._format_change(score_change))
         logger.info("[当前排名] {} ({})", current_rank, self._format_change(rank_change))
 
-        return CustomRecognition.AnalyzeResult(box=result_detail.box, detail={})
+        return CustomRecognition.AnalyzeResult(box=result_detail.box, detail={
+            "result": result_text,
+            "current_score": current_score,
+            "score_change": self._format_change(score_change),
+            "current_rank": current_rank,
+            "rank_change": self._format_change(rank_change)
+        })
 
     def _get_text(self, ocr_detail: Any) -> str:
         """从OCR结果中获取文本"""
