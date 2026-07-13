@@ -39,16 +39,16 @@ jobs:
             runtime_arch: arm64
             ext: tar.gz
           - os: macos-13
-            artifact_os: mac
+            artifact_os: macos
             arch: x86_64
-            runtime_os: mac
+            runtime_os: osx
             runtime_arch: x64
             ext: tar.gz
           - os: macos-latest
-            artifact_os: mac
+            artifact_os: macos
             arch: aarch64
-            runtime_os: mac
-            runtime_arch: x64
+            runtime_os: osx
+            runtime_arch: arm64
             ext: tar.gz
     runs-on: ${{ matrix.os }}
     steps:
