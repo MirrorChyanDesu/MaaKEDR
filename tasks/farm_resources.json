@@ -7,8 +7,8 @@
             "group": ["Daily"],
             "description": "自动刷取资源关卡。支持资源收集(特别军费行动/作战体能训练/兵种能力评级/载具对抗演练)和技能演练(基础技能/专业技能)。支持普通次数模式与清空体力模式",
             "option": [
-                "farm_category",
-                "farm_battle_mode"
+                "farm_battle_mode",
+                "farm_category"
             ]
         }
     ],
