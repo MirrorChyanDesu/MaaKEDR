@@ -23,7 +23,6 @@ export default defineUserConfig({
     },
     footer: false,
     watermark: false,
-    notes: [],
     locales: {
       '/zh_cn/': {
         navbar: [
