@@ -23,16 +23,15 @@ export default defineUserConfig({
     },
     footer: false,
     watermark: false,
-    notes: [],
-    collections: [],
+    plugins: {
+      blog: false,
+    },
     locales: {
       '/zh_cn/': {
         navbar: [
           { text: '首页', link: '/' },
           { text: '开发文档', link: '/zh_cn/develop/' },
         ],
-        notes: [],
-        collections: [],
         sidebar: {
           '/zh_cn/develop/': [
             {
@@ -54,8 +53,6 @@ export default defineUserConfig({
           { text: 'Home', link: '/' },
           { text: 'Development', link: '/en_us/develop/' },
         ],
-        notes: [],
-        collections: [],
         sidebar: {
           '/en_us/develop/': [
             {
