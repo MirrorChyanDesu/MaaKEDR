@@ -1,4 +1,5 @@
 ---
+title: "Troubleshooting"
 order: 3
 icon: "ri:bug-fill"
 ---

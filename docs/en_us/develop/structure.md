@@ -1,4 +1,5 @@
 ---
+title: "Project Structure"
 order: 5
 icon: "ri:folder-tree-fill"
 ---

@@ -1,4 +1,5 @@
 ---
+title: "Pipeline Guide"
 order: 2
 icon: "ri:git-branch-fill"
 ---

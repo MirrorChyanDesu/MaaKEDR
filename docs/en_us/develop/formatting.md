@@ -1,4 +1,5 @@
 ---
+title: "Formatting"
 order: 4
 icon: "ri:paint-brush-fill"
 ---

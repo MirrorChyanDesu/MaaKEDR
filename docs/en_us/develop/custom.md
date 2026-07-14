@@ -1,4 +1,5 @@
 ---
+title: "Custom Recognition & Action"
 order: 2
 icon: "ri:code-s-slash-fill"
 ---
