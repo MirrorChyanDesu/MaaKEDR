@@ -38,11 +38,5 @@
         "docs:build": "vuepress build docs --clean-cache --clean-temp"
     },
     "type": "module",
-    "pnpm": {
-        "onlyBuiltDependencies": [
-            "@parcel/watcher",
-            "esbuild"
-        ]
-    },
     "version": "0.1.0"
 }
