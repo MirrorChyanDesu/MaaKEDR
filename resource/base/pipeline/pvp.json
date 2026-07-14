@@ -248,6 +248,7 @@
         "recognition": "Custom",
         "custom_recognition": "ReadPVPResult",
         "custom_recognition_param": "{\"result_roi\": [62,44,189,47], \"current_score_roi\": [78,264,92,40], \"score_change_roi\": [190,264,50,36], \"current_rank_roi\": [77,352,94,35], \"rank_change_roi\": [175,348,73,35]}",
+        "pre_delay": 3000,
         "action": {
             "type": "DoNothing"
         },
@@ -256,7 +257,7 @@
         ],
         "focus": {
             "Node.Recognition.Succeeded": {
-                "content": "PVP战斗结束，查看日志了解积分与排名变化",
+                "content": "PVP: ${detail.result} 积分:${detail.current_score}(${detail.score_change}) 排名:${detail.current_rank}(${detail.rank_change})",
                 "display": [
                     "log",
                     "toast"

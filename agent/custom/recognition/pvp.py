@@ -83,17 +83,20 @@ class ReadPVPResult(CustomRecognition):
             JRecognitionType.OCR, JOCR(roi=rank_change_roi, only_rec=True, color_filter="PVP.TextFilter"), image
         ))
 
+        # 格式化结果
+        score_change_fmt = self._format_change(score_change)
+        rank_change_fmt = self._format_change(rank_change)
+
         # 输出结果
-        logger.info("[PVP战斗结果] {}", result_text)
-        logger.info("[当前积分] {} ({})", current_score, self._format_change(score_change))
-        logger.info("[当前排名] {} ({})", current_rank, self._format_change(rank_change))
+        result_msg = f"{result_text} 积分:{current_score}({score_change_fmt}) 排名:{current_rank}({rank_change_fmt})"
+        logger.info("[PVP] {}", result_msg)
 
         return CustomRecognition.AnalyzeResult(box=result_detail.box, detail={
-            "result": result_text,
-            "current_score": current_score,
-            "score_change": self._format_change(score_change),
-            "current_rank": current_rank,
-            "rank_change": self._format_change(rank_change)
+            "result": result_text or "战斗结束",
+            "current_score": current_score or "-",
+            "score_change": score_change_fmt or "-",
+            "current_rank": current_rank or "-",
+            "rank_change": rank_change_fmt or "-"
         })
 
     def _get_text(self, ocr_detail: Any) -> str:
