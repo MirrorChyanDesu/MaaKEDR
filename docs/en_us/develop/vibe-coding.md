@@ -21,7 +21,7 @@ This project was largely developed using **Vibe Coding** — generating code thr
 
 ### AGENTS.md
 
-[AGENTS.md](../../../AGENTS.md) is the AI behavior guide for this project. It defines behavioral norms and constraints for the AI assistant during development, including project structure, documentation references, build commands, coding conventions, and strategies for common development scenarios. The AI learns from this file to ensure generated code aligns with the project's conventions.
+[AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md) is the AI behavior guide for this project. It defines behavioral norms and constraints for the AI assistant during development, including project structure, documentation references, build commands, coding conventions, and strategies for common development scenarios. The AI learns from this file to ensure generated code aligns with the project's conventions.
 
 ## Reference Repositories
 
