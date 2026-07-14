@@ -23,7 +23,7 @@ export default defineUserConfig({
     },
     footer: false,
     watermark: false,
-    notes: [
+    collections: [
       {
         dir: '/zh_cn/develop/',
         link: '/zh_cn/develop/',
