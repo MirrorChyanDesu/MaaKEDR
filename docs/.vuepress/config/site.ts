@@ -4,7 +4,7 @@ export const SITE_TITLE = 'MaaKEDR'
 export const SITE_DESCRIPTION_ZH = '《雪松》小助手 — 基于 MaaFramework 的自动化工具'
 export const SITE_DESCRIPTION_EN = 'Cedar Automation Assistant — Powered by MaaFramework'
 
-export const HOSTNAME = 'https://app-le-df.github.io/MaaKEDR/'
+export const HOSTNAME = 'https://apple-df.github.io/MaaKEDR/'
 
 export interface Locale {
   name: string
