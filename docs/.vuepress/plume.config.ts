@@ -7,9 +7,10 @@ export default defineThemeConfig({
   appearance: true,
 
   social: [
+    { icon: 'qq', link: 'https://qm.qq.com/q/clvWu1RoWI' },
     { icon: 'github', link: 'https://github.com/APPLe-DF/MaaKEDR' },
   ],
-  navbarSocialInclude: ['github'],
+  navbarSocialInclude: ['qq', 'github'],
 
   footer: {
     message: 'AGPL-3.0 License',

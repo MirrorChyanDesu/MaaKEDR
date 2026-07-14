@@ -16,6 +16,9 @@ export default defineUserConfig({
 
   head: [
     ['link', { rel: 'icon', type: 'image/png', href: `${BASE_URL}images/maakedr-logo_512x512.png` }],
+    ['meta', { name: 'baidu-site-verification', content: 'codeva-GnOwnwiCSA' }],
+    ['meta', { name: 'msvalidate.01', content: '6A49AB032E4ED1D8DC8BD5B30324C3ED' }],
+    ['meta', { name: 'google-site-verification', content: 'bLO4xMnM1-AK3Gw_hBpnuPxb3ztH4QW0HCHK_1_M7Tg' }],
   ],
 
   bundler: viteBundler(),
