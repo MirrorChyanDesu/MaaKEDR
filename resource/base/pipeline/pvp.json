@@ -302,6 +302,7 @@
                 "custom_action": "CheckPVPBattleCount"
             }
         },
+        "timeout": 5000,
         "next": [
             "PVP.SelectPlayer"
         ],
