@@ -24,9 +24,14 @@ interface NavigationComponents {
 
 type SidebarItem = ThemeSidebarItem | string
 
+function logWarning(message: string): void {
+  console.warn(`[genNavigationComponents] ${message}`)
+}
+
 function getMetaData(dir: string, entry: fs.Dirent): MetaData | null {
   const currentPath = path.join(dir, entry.name)
   if (!fs.existsSync(currentPath)) {
+    logWarning(`Path does not exist: ${currentPath}`)
     return null
   }
 
@@ -40,6 +45,7 @@ function getMetaData(dir: string, entry: fs.Dirent): MetaData | null {
   }
 
   if (!fs.existsSync(mdFilePath)) {
+    logWarning(`README.md not found for: ${entry.name} in ${dir}`)
     return null
   }
 
@@ -69,7 +75,18 @@ function getSidebarItems(dir: string): SidebarItem[] {
     order: number
   }
 
-  const entries = fs.readdirSync(dir, { withFileTypes: true }).filter((e) => !e.name.startsWith('.'))
+  if (!fs.existsSync(dir)) {
+    logWarning(`Directory does not exist: ${dir}`)
+    return []
+  }
+
+  let entries: fs.Dirent[]
+  try {
+    entries = fs.readdirSync(dir, { withFileTypes: true }).filter((e) => !e.name.startsWith('.'))
+  } catch (error) {
+    logWarning(`Failed to read directory ${dir}: ${error instanceof Error ? error.message : String(error)}`)
+    return []
+  }
 
   const sidebarItemsWithOrder: WrappedSidebarItem[] = []
   for (const entry of entries) {
@@ -116,7 +133,18 @@ export function genNavigationComponents(
 
   const langDir = path.join(baseDir, locale.name)
 
-  const entries = fs.readdirSync(langDir, { withFileTypes: true }).filter((e) => !e.name.startsWith('.'))
+  if (!fs.existsSync(langDir)) {
+    logWarning(`Locale directory does not exist: ${langDir}`)
+    return { navbar: [], collections: [] }
+  }
+
+  let entries: fs.Dirent[]
+  try {
+    entries = fs.readdirSync(langDir, { withFileTypes: true }).filter((e) => !e.name.startsWith('.'))
+  } catch (error) {
+    logWarning(`Failed to read locale directory ${langDir}: ${error instanceof Error ? error.message : String(error)}`)
+    return { navbar: [], collections: [] }
+  }
 
   for (const entry of entries) {
     if (!entry.isDirectory()) continue
