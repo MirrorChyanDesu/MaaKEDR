@@ -485,7 +485,7 @@
         },
         "post_wait_freezes": 500,
         "next": [
-            "BattlePass.CheckRewardList"
+            "BattlePass.ConfirmInterface"
         ]
     },
     "Common.BackButton": {
