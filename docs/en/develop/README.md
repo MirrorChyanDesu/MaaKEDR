@@ -11,6 +11,7 @@ Welcome to the MaaKEDR development documentation.
 
 ## Navigation
 
+- [Setup & Development Quickstart](./setup.md) — Environment setup, first pipeline
 - [Pipeline Guide](./pipeline.md) — Node structure, recognition types, design patterns
 - [Custom Recognition & Action](./custom.md) — Custom module development
 - [Vibe Coding](./vibe-coding.md) — AI-assisted development approach

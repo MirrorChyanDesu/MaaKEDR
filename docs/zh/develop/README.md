@@ -11,6 +11,7 @@ dir:
 
 ## 文档导航
 
+- [环境搭建与开发入门](./setup.md) — 环境准备、项目初始化、第一个 Pipeline
 - [Pipeline 编写指南](./pipeline.md) — 节点结构、识别类型、设计模式
 - [Custom 编写指南](./custom.md) — 自定义识别、动作、Sink 模块
 - [Vibe Coding 开发说明](./vibe-coding.md) — 本项目的 AI 辅助开发模式

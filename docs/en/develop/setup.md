@@ -1,0 +1,206 @@
+---
+order: 1
+icon: ri:tools-fill
+---
+
+# Setup & Development Quickstart
+
+## Overview
+
+This guide is for contributors who want to set up a development environment for MaaKEDR and build their first pipeline.
+
+## Prerequisites
+
+### System Requirements
+
+| Item             | Requirement                 |
+| ---------------- | --------------------------- |
+| OS               | Windows 10+ / macOS / Linux |
+| Python           | 3.13                        |
+| Node.js          | >= 24                       |
+| Package Managers | pnpm (via corepack) + uv    |
+| Version Control  | Git                         |
+
+### Setup Steps
+
+#### 1. Python 3.13
+
+```bash
+python --version   # must be 3.13.x
+```
+
+> Download from [python.org](https://www.python.org/downloads/) if needed.
+
+#### 2. Install uv
+
+```bash
+# Windows
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# macOS / Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Verify:
+
+```bash
+uv --version
+```
+
+#### 3. Install Node.js and pnpm
+
+Download Node.js >= 24 from [nodejs.org](https://nodejs.org/), then enable pnpm:
+
+```bash
+corepack enable
+corepack prepare pnpm@latest --activate
+pnpm --version
+```
+
+### Clone the Project
+
+```bash
+git clone https://github.com/APPLe-DF/MaaKEDR.git
+cd MaaKEDR
+```
+
+### Install Dependencies
+
+```bash
+pnpm install
+uv sync --frozen
+```
+
+> `uv sync --frozen` installs locked versions from `uv.lock` for reproducible builds.
+
+### Verify Setup
+
+```bash
+pnpm check
+pnpm check:py
+```
+
+> The first run downloads MaaFramework runtime and PaddleOCR models — ensure network connectivity.
+
+## Project Structure Overview
+
+```
+MaaKEDR/
+├── interface.json        # Entry config — tasks and connection settings
+├── maa-project.json      # MaaFramework project configuration
+├── tasks/                # Task definitions (visible in GUI task list)
+├── resource/
+│   ├── base/pipeline/    # Pipeline JSON node definitions
+│   ├── base/image/       # Template matching images
+│   └── base/model/ocr/   # PaddleOCR models
+├── agent/custom/         # Python custom recognition and action modules
+├── docs/                 # Documentation site
+└── tools/                # Build and release scripts
+```
+
+Key concepts:
+
+- **Pipeline**: JSON node graph — each node defines a recognize → act → transition step
+- **Task**: `tasks/*.json` entry points selectable from the GUI
+- **Template Image**: A cropped game screenshot region used for template matching
+- **Custom Module**: Python code for complex recognition or action logic
+
+## Your First Pipeline
+
+Scenario: detect a "Start Game" button and click it.
+
+### 1. Capture a Screenshot
+
+Take a screenshot from your emulator or device. Save as `start_screen.png`.
+
+### 2. Measure the ROI
+
+Open `start_screen.png` in an image editor and measure the button:
+
+```
+Example at 1280x720 resolution:
+x = 540, y = 600, w = 200, h = 60
+```
+
+### 3. Create a Template Image
+
+Crop the button from the screenshot and save to `resource/base/image/`:
+
+```
+resource/base/image/start_button.png
+```
+
+> Keep template images between 50x50 and 200x200 pixels for best performance.
+
+### 4. Write the Pipeline Node
+
+Create a JSON file under `resource/base/pipeline/`:
+
+```json
+{
+    "ClickStart": {
+        "recognition": "TemplateMatch",
+        "template": "start_button.png",
+        "roi": [
+            500,
+            570,
+            280,
+            100
+        ],
+        "threshold": 0.8,
+        "action": "Click",
+        "next": ["CheckMainPage"]
+    },
+    "CheckMainPage": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": []
+    }
+}
+```
+
+### 5. Define a Task
+
+Create a JSON file in `tasks/` to make it selectable:
+
+```json
+{
+    "TestClickStart": {
+        "pipeline_override": {
+            "ClickStart": {
+                "next": []
+            }
+        }
+    }
+}
+```
+
+### 6. Run and Verify
+
+```bash
+# Via MaaPiCli
+maapi -t TestClickStart
+```
+
+> Make sure your emulator is running and the game is on the correct screen.
+
+## Development Workflow
+
+```text
+Screenshot → Measure ROI → Create Template → Write Pipeline → Bind Task → Run → Iterate
+```
+
+Each iteration:
+
+1. Run `pnpm check` to validate formatting and schemas
+2. Run `pnpm check:py` for Python module changes
+3. Check logs and screenshots in `debug/` to diagnose issues
+
+## References
+
+- [MaaFramework Documentation](https://maaframework.github.io/)
+- [Pipeline Guide](./pipeline.md)
+- [Custom Module Guide](./custom.md)
+- [Troubleshooting](./fix.md)
+- [Formatting Guide](./formatting.md)
+- [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md)

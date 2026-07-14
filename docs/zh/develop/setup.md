@@ -1,0 +1,208 @@
+---
+order: 1
+icon: ri:tools-fill
+---
+
+# 环境搭建与开发入门
+
+## 概述
+
+本文档面向希望参与 MaaKEDR 开发的贡献者，帮助快速搭建开发环境并完成第一个 Pipeline。
+
+## 环境准备
+
+### 系统要求
+
+| 项目     | 要求                        |
+| -------- | --------------------------- |
+| 操作系统 | Windows 10+ / macOS / Linux |
+| Python   | 3.13                        |
+| Node.js  | >= 24                       |
+| 包管理器 | pnpm（corepack 管理） + uv  |
+| 版本控制 | Git                         |
+
+### 安装步骤
+
+#### 1. Python 3.13
+
+```bash
+python --version   # 须为 3.13.x
+```
+
+> 如果版本不符，请从 [python.org](https://www.python.org/downloads/) 下载 Python 3.13。
+
+#### 2. 安装 uv
+
+[uv](https://docs.astral.sh/uv/) 是 Python 包管理器，用于管理项目依赖和虚拟环境。
+
+```bash
+# Windows
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# macOS / Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+确认安装成功：
+
+```bash
+uv --version
+```
+
+#### 3. 安装 Node.js 和 pnpm
+
+从 [nodejs.org](https://nodejs.org/) 下载 Node.js >= 24，安装后通过 corepack 启用 pnpm：
+
+```bash
+corepack enable
+corepack prepare pnpm@latest --activate
+pnpm --version
+```
+
+### 获取项目
+
+```bash
+git clone https://github.com/APPLe-DF/MaaKEDR.git
+cd MaaKEDR
+```
+
+### 安装依赖
+
+```bash
+pnpm install
+uv sync --frozen
+```
+
+> `uv sync --frozen` 会根据 `uv.lock` 锁定文件安装指定版本的依赖，确保环境一致性。
+
+### 验证环境
+
+```bash
+pnpm check
+pnpm check:py
+```
+
+> 首次运行需要下载 MaaFramework 运行时和 PaddleOCR 模型，请确保网络畅通。
+
+## 项目结构速览
+
+```
+MaaKEDR/
+├── interface.json        # 入口配置，定义任务列表和连接方式
+├── maa-project.json      # MaaFramework 项目配置
+├── tasks/                # 任务定义（GUI 可见的任务列表）
+├── resource/
+│   ├── base/pipeline/    # Pipeline JSON 节点定义
+│   ├── base/image/       # 模板匹配图片
+│   └── base/model/ocr/   # PaddleOCR 模型
+├── agent/custom/         # Python 自定义识别和动作
+├── docs/                 # 文档站
+└── tools/                # 构建和发布脚本
+```
+
+关键概念：
+
+- **Pipeline**：JSON 格式的节点图，每个节点定义一个识别 → 动作 → 跳转的步骤
+- **Task**：`tasks/*.json` 定义的任务入口，用户通过 GUI 选择要执行的任务
+- **Template Image**：游戏截图中抠出的小图，用于模板匹配定位 UI 元素
+- **Custom Module**：Python 编写的自定义识别或动作，应对复杂逻辑
+
+## 第一个 Pipeline
+
+以一个简单场景为例：识别游戏主界面的"开始游戏"按钮并点击。
+
+### 1. 获取截图
+
+使用模拟器或真机的截图功能获取游戏画面，保存为 `start_screen.png`。
+
+### 2. 测量 ROI
+
+用画图工具打开 `start_screen.png`，测量"开始游戏"按钮的位置和尺寸：
+
+```
+示例：按钮在 1280x720 分辨率下
+x = 540, y = 600, w = 200, h = 60
+```
+
+### 3. 制作模板图片
+
+从截图中抠出按钮的小图，保存到 `resource/base/image/`：
+
+```
+resource/base/image/start_button.png
+```
+
+> 模板图片尺寸建议在 50x50 到 200x200 像素之间。
+
+### 4. 编写 Pipeline 节点
+
+在 `resource/base/pipeline/` 下创建一个 JSON 文件：
+
+```json
+{
+    "ClickStart": {
+        "recognition": "TemplateMatch",
+        "template": "start_button.png",
+        "roi": [
+            500,
+            570,
+            280,
+            100
+        ],
+        "threshold": 0.8,
+        "action": "Click",
+        "next": ["CheckMainPage"]
+    },
+    "CheckMainPage": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": []
+    }
+}
+```
+
+### 5. 定义任务
+
+在 `tasks/` 下创建 JSON 文件，让任务可被 GUI 选择：
+
+```json
+{
+    "TestClickStart": {
+        "pipeline_override": {
+            "ClickStart": {
+                "next": []
+            }
+        }
+    }
+}
+```
+
+### 6. 运行验证
+
+```bash
+# 通过 MaaPiCli 运行
+maapi -t TestClickStart
+```
+
+> 运行前请确保模拟器已启动且游戏在正确界面。
+
+## 开发工作流
+
+```text
+截图 → 测量 ROI → 制作模板 → 编写 Pipeline → 任务绑定 → 运行验证 → 迭代优化
+```
+
+每次迭代：
+
+1. 运行 `pnpm check` 确保格式和 Schema 通过
+2. 运行 Python 自定义模块时执行 `pnpm check:py`
+3. 查看 `debug/` 目录下的日志和截图定位问题
+
+## 参考
+
+- [MaaFramework 文档](https://maaframework.github.io/)
+- [Pipeline 编写指南](./pipeline.md)
+- [Custom 编写指南](./custom.md)
+- [Bug 排查指南](./fix.md)
+- [格式化规范](./formatting.md)
+- [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md)
