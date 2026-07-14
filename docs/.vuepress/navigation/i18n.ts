@@ -8,4 +8,4 @@ export {
   locales,
   normalizeBaseUrl,
   buildHomePaths,
-} from './config/site.ts'
+} from '../config/site.ts'
