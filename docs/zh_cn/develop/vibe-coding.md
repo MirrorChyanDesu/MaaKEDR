@@ -1,4 +1,5 @@
 ---
+title: "Vibe Coding 说明"
 order: 2
 icon: "ri:robot-fill"
 ---

@@ -1,4 +1,5 @@
 ---
+title: "Pipeline 编写指南"
 order: 2
 icon: "ri:git-branch-fill"
 ---
