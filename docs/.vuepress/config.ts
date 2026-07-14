@@ -23,8 +23,9 @@ export default defineUserConfig({
     },
     footer: false,
     watermark: false,
-    collections: {
-      'dev-zh': {
+    notes: [],
+    collections: [
+      {
         dir: '/zh_cn/develop/',
         link: '/zh_cn/develop/',
         text: '开发文档',
@@ -37,7 +38,7 @@ export default defineUserConfig({
           { text: '项目结构说明', link: '/zh_cn/develop/structure' },
         ],
       },
-      'dev-en': {
+      {
         dir: '/en_us/develop/',
         link: '/en_us/develop/',
         text: 'Development Docs',
@@ -50,6 +51,6 @@ export default defineUserConfig({
           { text: 'Project Structure', link: '/en_us/develop/structure' },
         ],
       },
-    },
+    ],
   }),
 })
