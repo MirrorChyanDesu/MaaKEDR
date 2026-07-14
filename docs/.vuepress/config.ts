@@ -15,7 +15,7 @@ export default defineUserConfig({
   plugins: [],
 
   head: [
-    ['link', { rel: 'icon', type: 'image/png', href: `${BASE_URL}images/maakedr-logo_128x128.png` }],
+    ['link', { rel: 'icon', type: 'image/png', href: `${BASE_URL}images/maakedr-logo_512x512.png` }],
   ],
 
   bundler: viteBundler(),

@@ -8,7 +8,7 @@ dir:
 <!-- markdownlint-disable MD033 MD041 -->
 <div align="center">
 
-<img alt="LOGO" src="/images/maakedr-logo_128x128.png" width="128" height="128" />
+<img alt="LOGO" src="/images/maakedr-logo_512x512.png" width="256" height="256" />
 
 # MaaKEDR
 

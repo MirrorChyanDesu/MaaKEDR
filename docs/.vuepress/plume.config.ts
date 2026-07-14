@@ -2,7 +2,7 @@ import { defineThemeConfig } from 'vuepress-theme-plume'
 import { genThemeLocales } from './navigation/genLocales.ts'
 
 export default defineThemeConfig({
-  logo: '/images/maakedr-logo_128x128.png',
+  logo: '/images/maakedr-logo_512x512.png',
 
   appearance: true,
 
