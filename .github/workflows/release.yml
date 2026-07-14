@@ -95,12 +95,8 @@ jobs:
               fi
               exe="$pkg_dir/maakedr.exe"
               if [[ -f "$exe" ]]; then
-                if python3 -c "import sys; sys.exit(0 if open('${{ github.workspace }}/logo.ico','rb').read(4) == b'\x00\x00\x01\x00' else 1)" 2>/dev/null; then
-                  ./rcedit.exe "$exe" --set-icon logo.ico
-                  echo "[OK] Applied Windows executable icon: $exe ($gui)"
-                else
-                  echo "[WARN] logo.ico is not a valid ICO file; skipping icon set for $exe"
-                fi
+                ./rcedit.exe "$exe" --set-icon logo.ico
+                echo "[OK] Applied Windows executable icon: $exe ($gui)"
               else
                 echo "[WARN] Windows executable was not found in $pkg_dir; skipped."
               fi
