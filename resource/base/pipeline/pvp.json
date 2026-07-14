@@ -257,7 +257,7 @@
         ],
         "focus": {
             "Node.Recognition.Succeeded": {
-                "content": "PVP: {detail.result} 积分:{detail.current_score}({detail.score_change}) 排名:{detail.current_rank}({detail.rank_change})",
+                "content": "PVP 战斗结束，详情见日志",
                 "display": [
                     "log",
                     "toast"
