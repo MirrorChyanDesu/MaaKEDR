@@ -4,7 +4,6 @@
         "@nekosu/prettier-plugin-maafw-sort": "1.0.5",
         "@vue/runtime-core": "^3.5.39",
         "@vuepress/bundler-vite": "2.0.0-rc.30",
-        "@vuepress/plugin-register-components": "2.0.0-rc.30",
         "ajv": "8.20.0",
         "ajv-formats": "3.0.1",
         "gray-matter": "^4.0.3",
