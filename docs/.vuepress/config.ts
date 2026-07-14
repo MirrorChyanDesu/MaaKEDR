@@ -1,6 +1,7 @@
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 
 import { genSiteLocales, HOSTNAME, BASE_URL, locales } from './config/site.ts'
 
@@ -12,7 +13,11 @@ export default defineUserConfig({
 
   locales: genSiteLocales(),
 
-  plugins: [],
+  plugins: [
+    registerComponentsPlugin({
+      componentsDir: new URL('./components', import.meta.url).pathname,
+    }),
+  ],
 
   head: [
     ['link', { rel: 'icon', type: 'image/png', href: `${BASE_URL}images/maakedr-logo_512x512.png` }],
