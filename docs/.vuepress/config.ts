@@ -23,8 +23,10 @@ export default defineUserConfig({
     },
     footer: false,
     watermark: false,
-    notes: {
-      '/zh_cn/develop/': {
+    notes: [
+      {
+        dir: '/zh_cn/develop/',
+        link: '/zh_cn/develop/',
         text: '开发文档',
         sidebar: [
           { text: 'Pipeline 编写指南', link: '/zh_cn/develop/pipeline' },
@@ -35,7 +37,9 @@ export default defineUserConfig({
           { text: '项目结构说明', link: '/zh_cn/develop/structure' },
         ],
       },
-      '/en_us/develop/': {
+      {
+        dir: '/en_us/develop/',
+        link: '/en_us/develop/',
         text: 'Development Docs',
         sidebar: [
           { text: 'Pipeline Guide', link: '/en_us/develop/pipeline' },
@@ -46,6 +50,6 @@ export default defineUserConfig({
           { text: 'Project Structure', link: '/en_us/develop/structure' },
         ],
       },
-    },
+    ],
   }),
 })
