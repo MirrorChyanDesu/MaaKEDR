@@ -1,3 +1,5 @@
+export const BASE_URL = '/MaaKEDR/'
+
 export interface Locale {
   name: string
   htmlLang: string

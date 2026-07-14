@@ -12,7 +12,7 @@ Welcome to the MaaKEDR development documentation.
 ## Navigation
 
 - [Pipeline Guide](./pipeline.md) — Node structure, recognition types, design patterns
-- [Custom Recognition & Action](./custom.md) — Custom modules development
+- [Custom Recognition & Action](./custom.md) — Custom module development
 - [Vibe Coding](./vibe-coding.md) — AI-assisted development approach
 - [Troubleshooting](./fix.md) — Common issues and solutions
 - [Formatting](./formatting.md) — Code style and tool configuration

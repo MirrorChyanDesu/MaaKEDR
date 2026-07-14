@@ -23,7 +23,7 @@ export default defineUserConfig({
   shouldPrefetch: false,
 
   theme: plumeTheme({
-    hostname: 'https://maakedr.app',
+    hostname: 'https://app-le-df.github.io/MaaKEDR/',
 
     docsRepo: 'APPLe-DF/MaaKEDR',
     docsDir: 'docs',
