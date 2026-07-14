@@ -1,3 +1,8 @@
+---
+order: 2
+icon: "ri:code-s-slash-fill"
+---
+
 # Custom Recognition & Action
 
 ## Module Types

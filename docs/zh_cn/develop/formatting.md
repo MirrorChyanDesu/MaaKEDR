@@ -1,3 +1,8 @@
+---
+order: 4
+icon: "ri:paint-brush-fill"
+---
+
 # 格式化与规范
 
 ## 编码与换行

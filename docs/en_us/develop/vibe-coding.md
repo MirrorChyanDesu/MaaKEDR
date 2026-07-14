@@ -1,3 +1,8 @@
+---
+order: 2
+icon: "ri:robot-fill"
+---
+
 # Vibe Coding Development
 
 ## Overview

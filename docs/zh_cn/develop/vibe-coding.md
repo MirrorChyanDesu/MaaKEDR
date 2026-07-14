@@ -1,3 +1,8 @@
+---
+order: 2
+icon: "ri:robot-fill"
+---
+
 # Vibe Coding 开发说明
 
 ## 概述

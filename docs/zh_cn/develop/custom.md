@@ -1,3 +1,8 @@
+---
+order: 2
+icon: "ri:code-s-slash-fill"
+---
+
 # Custom 编写指南
 
 ## 模块类型

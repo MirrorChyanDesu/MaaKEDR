@@ -1,3 +1,8 @@
+---
+order: 2
+icon: "ri:git-branch-fill"
+---
+
 # Pipeline 编写指南
 
 ## 节点结构

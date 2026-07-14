@@ -1,3 +1,8 @@
+---
+order: 4
+icon: "ri:paint-brush-fill"
+---
+
 # Formatting & Conventions
 
 ## Encoding & Line Endings

@@ -1,3 +1,8 @@
+---
+order: 2
+icon: "ri:git-branch-fill"
+---
+
 # Pipeline Guide
 
 ## Node Structure

@@ -1,3 +1,8 @@
+---
+order: 3
+icon: "ri:bug-fill"
+---
+
 # Bug 排查
 
 ## 日志文件位置

@@ -1,3 +1,8 @@
+---
+order: 3
+icon: "ri:bug-fill"
+---
+
 # Troubleshooting
 
 ## Log Files
