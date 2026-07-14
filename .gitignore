@@ -51,6 +51,10 @@ DependencySetup_*.bat
 # 测试文件
 test_*.json
 
+# VuePress temp
+docs/.vuepress/.temp/
+docs/.vuepress/dist/
+
 # Node.js
 node_modules/
 
