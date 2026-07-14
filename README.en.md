@@ -33,6 +33,16 @@ Powered by [MaaFramework](https://github.com/MaaXYZ/MaaFramework)!
 > For more comprehensive features and active maintenance, please consider the similar open-source project
 > [MaaAssistantKedrgame (MAK)](https://github.com/Hollow-YK/MaaAssistantKedrgame).
 
+> 🎵 **Development Approach**
+>
+> This project was largely developed using **Vibe Coding** — generating code through iterative conversations with an AI assistant (opencode).
+> The developer provides requirements, screenshots, ROIs, UI analysis, and validation; the AI implements pipeline logic, Python custom nodes,
+> CI/CD configuration, and documentation. This approach greatly improves development efficiency, with code quality ensured by `pnpm check` pipelines.
+>
+> If you're building a MaaFramework project with AI, this repository can serve as a reference case.
+> See [Vibe Coding Development](docs/en_us/develop/vibe-coding.md) for details.  
+> This project also maintains [AGENTS.md](AGENTS.md) as an AI behavior guide to ensure development conventions and consistency.
+
 ---
 
 ## Features
@@ -109,6 +119,7 @@ See [docs/](docs/README.md) for detailed development documentation:
 - [Project Structure](docs/en_us/develop/structure.md)
 - [Formatting](docs/en_us/develop/formatting.md)
 - [Troubleshooting](docs/en_us/develop/fix.md)
+- [Vibe Coding Development](docs/en_us/develop/vibe-coding.md)
 
 ---
 

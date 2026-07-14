@@ -37,6 +37,16 @@
 > 如需更完善的功能、更积极的迭代，建议关注同类活跃项目：
 > [MaaAssistantKedrgame (MAK)](https://github.com/Hollow-YK/MaaAssistantKedrgame)。
 
+> 🎵 **开发方式**
+>
+> 本项目很大程度上使用了 **Vibe Coding** 开发模式 —— 通过与 AI 助手（opencode）对话逐步生成代码。
+> 开发者负责提供需求、截图、ROI 坐标、UI 分析和验收，AI 负责实现 pipeline 逻辑、Python 自定义节点、
+> CI/CD 配置和文档编写。这种模式下开发效率大幅提升，代码质量通过 `pnpm check` 流水线保证。
+>
+> 如果你也在用 AI 做 MaaFramework 项目，这个仓库可以作为一个参考案例。
+> 详见 [Vibe Coding 开发说明](docs/zh_cn/develop/vibe-coding.md)。  
+> 本项目还维护了 [AGENTS.md](AGENTS.md) 作为 AI 助手的行为指南，确保开发规范和一致性。
+
 ---
 
 ## 功能列表
@@ -121,6 +131,7 @@ MaaKEDR/
 - [项目结构说明](docs/zh_cn/develop/structure.md)
 - [格式化规范](docs/zh_cn/develop/formatting.md)
 - [Bug 排查](docs/zh_cn/develop/fix.md)
+- [Vibe Coding 开发说明](docs/zh_cn/develop/vibe-coding.md)
 
 ---
 
