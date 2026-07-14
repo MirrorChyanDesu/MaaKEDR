@@ -1,9 +1,13 @@
 import * as fs from 'fs'
 import * as path from 'path'
+import { fileURLToPath } from 'node:url'
 import { default as matter } from 'gray-matter'
 import { ThemeCollectionItem, ThemeNavItem, ThemeSidebarItem } from 'vuepress-theme-plume'
 
 import { Locale } from './i18n.ts'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 interface MetaData {
   baseName: string
@@ -46,7 +50,7 @@ function getMetaData(dir: string, entry: fs.Dirent): MetaData | null {
   const order = Number((entry.isDirectory() ? meta?.dir?.order : meta?.order) ?? Number.MAX_SAFE_INTEGER)
   const title = String(meta?.title ?? /^# (.+)/m.exec(fileContent)?.[1] ?? baseName)
   const icon = String(meta?.icon ?? '')
-  const index = entry.isDirectory() ? (Boolean(meta?.index) ?? true) : true
+  const index = entry.isDirectory() ? (meta?.index ?? true) : true
 
   return {
     baseName,
@@ -130,7 +134,7 @@ export function genNavigationComponents(
       type: 'doc',
       title: metaData.title,
       dir: metaData.baseName,
-      linkPrefix: `/${metaData.baseName}/`,
+      linkPrefix: `/${locale.name}/${metaData.baseName}/`,
       sidebar: getSidebarItems(path.join(langDir, entry.name)),
     }
 
