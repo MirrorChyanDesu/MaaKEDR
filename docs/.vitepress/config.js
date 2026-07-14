@@ -8,7 +8,7 @@ export default defineConfig({
     cleanUrls: true,
     ignoreDeadLinks: true,
     themeConfig: {
-        logo: "/maakedr-logo_512x512.png",
+        logo: "/maakedr-logo_128x128.png",
         nav: [
             {text: "首页", link: "/"},
             {text: "简体中文", link: "/zh_cn/develop/"},
