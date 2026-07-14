@@ -2,7 +2,7 @@ import { SiteLocaleConfig, LocaleConfig } from 'vuepress'
 import { ThemeLocaleData } from 'vuepress-theme-plume'
 
 import { locales } from './i18n.ts'
-import { genNavigationComponents } from './genNavigationComponents.ts'
+import { navigation } from '../config/navigation.ts'
 
 export function genSiteLocales(): SiteLocaleConfig {
   const siteLocales: SiteLocaleConfig = {}
@@ -19,10 +19,10 @@ export function genSiteLocales(): SiteLocaleConfig {
 export function genThemeLocales(): LocaleConfig<ThemeLocaleData> {
   const themeLocales: LocaleConfig<ThemeLocaleData> = {}
   for (const locale of locales) {
-    const navigationComponents = genNavigationComponents(locale)
+    const nav = navigation[locale.name]
     themeLocales[`/${locale.name}/`] = {
-      navbar: navigationComponents.navbar,
-      collections: navigationComponents.collections,
+      navbar: nav?.navbar ?? [],
+      collections: nav?.collections ?? [],
     }
   }
   return themeLocales
