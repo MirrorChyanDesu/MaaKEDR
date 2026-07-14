@@ -14,7 +14,6 @@ const zh: NavigationConfig = {
       type: 'doc',
       title: '开发文档',
       dir: 'develop',
-      linkPrefix: '/zh/develop/',
       sidebar: [
         'pipeline.md',
         'custom.md',
@@ -36,7 +35,6 @@ const en: NavigationConfig = {
       type: 'doc',
       title: 'Development Docs',
       dir: 'develop',
-      linkPrefix: '/en/develop/',
       sidebar: [
         'pipeline.md',
         'custom.md',
