@@ -304,9 +304,7 @@
         },
         "timeout": 5000,
         "next": [
-            "PVP.SelectPlayer"
-        ],
-        "on_error": [
+            "PVP.SelectPlayer",
             "PVP.ReturnMain"
         ]
     },
