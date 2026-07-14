@@ -5,7 +5,8 @@ import {Breadcrumb as ThemeBreadcrumb} from "vuepress-theme-plume";
 const route = useRoute();
 
 function isHomeOrIndex(): boolean {
-    return route.path === "/" || route.path.endsWith("/index.html");
+    const path = route.path;
+    return path === "/" || path === "/zh/" || path === "/en/" || path.endsWith("/index.html");
 }
 </script>
 

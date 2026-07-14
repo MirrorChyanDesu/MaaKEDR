@@ -4,8 +4,6 @@ import { plumeTheme } from 'vuepress-theme-plume'
 
 import { genSiteLocales } from './navigation/genLocales.ts'
 
-const isProd = process.env.NODE_ENV === 'production'
-
 export default defineUserConfig({
   base: '/MaaKEDR/',
   lang: 'zh-CN',
@@ -28,7 +26,7 @@ export default defineUserConfig({
     hostname: 'https://maakedr.app',
 
     docsRepo: 'APPLe-DF/MaaKEDR',
-    docsDir: '/docs',
+    docsDir: 'docs',
     docsBranch: 'main',
 
     editLink: true,

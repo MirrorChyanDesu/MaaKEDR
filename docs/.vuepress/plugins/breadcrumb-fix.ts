@@ -7,5 +7,5 @@ const __dirname = path.dirname(__filename)
 
 export const breadcrumbFix: Plugin = {
   name: 'breadcrumb-fix',
-  clientConfigFile: path.resolve(__dirname, '../components/BreadcrumbFix.vue'),
+  clientConfigFile: path.resolve(__dirname, 'breadcrumb-fix-client.ts'),
 }
