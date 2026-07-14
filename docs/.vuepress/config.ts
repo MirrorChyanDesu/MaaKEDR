@@ -15,7 +15,7 @@ export default defineUserConfig({
   plugins: [],
 
   head: [
-    ['link', { rel: 'icon', type: 'image/png', href: '/images/maakedr-logo_32x32.png' }],
+    ['link', { rel: 'icon', type: 'image/png', href: `${BASE_URL}images/maakedr-logo_128x128.png` }],
   ],
 
   bundler: viteBundler(),
@@ -27,7 +27,7 @@ export default defineUserConfig({
 
     docsRepo: 'APPLe-DF/MaaKEDR',
     docsDir: 'docs',
-    docsBranch: 'main',
+    docsBranch: 'master',
 
     editLink: true,
     lastUpdated: false,
