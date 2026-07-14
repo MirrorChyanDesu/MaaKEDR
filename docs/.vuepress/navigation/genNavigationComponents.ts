@@ -52,7 +52,7 @@ function getMetaData(dir: string, entry: fs.Dirent): MetaData | null {
   const order = Number.isFinite(parsedOrder) ? parsedOrder : Number.MAX_SAFE_INTEGER
   const title = String(meta?.title ?? /^# (.+)/m.exec(fileContent)?.[1] ?? baseName)
   const icon = String(meta?.icon ?? '')
-  const index = entry.isDirectory() ? (meta?.index ?? true) : true
+  const index = entry.isDirectory() ? Boolean(meta?.index ?? true) : true
 
   return {
     baseName,

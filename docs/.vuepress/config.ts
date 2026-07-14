@@ -2,10 +2,10 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
 
-import { genSiteLocales } from './navigation/genLocales.ts'
+import { genSiteLocales, HOSTNAME, BASE_URL, locales } from './config/site.ts'
 
 export default defineUserConfig({
-  base: '/MaaKEDR/',
+  base: BASE_URL,
   lang: 'zh-CN',
   title: 'MaaKEDR',
   description: '《雪松》小助手 — 基于 MaaFramework 的自动化工具',
@@ -23,7 +23,7 @@ export default defineUserConfig({
   shouldPrefetch: false,
 
   theme: plumeTheme({
-    hostname: 'https://app-le-df.github.io/MaaKEDR/',
+    hostname: HOSTNAME,
 
     docsRepo: 'APPLe-DF/MaaKEDR',
     docsDir: 'docs',
