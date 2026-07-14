@@ -9,6 +9,8 @@ import { Locale } from './i18n.ts'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+const QQ_LINK = 'https://qm.qq.com/q/clvWu1RoWI'
+
 interface MetaData {
   baseName: string
   order: number
@@ -177,8 +179,16 @@ export function genNavigationComponents(
 
   navigationComponentsWithOrder.sort((a, b) => a.order - b.order)
 
+  const navbar: ThemeNavItem[] = navigationComponentsWithOrder.map((i) => i.navItem)
+
+  navbar.push({
+    text: locale.name === 'zh' ? 'QQ群' : 'QQ Group',
+    icon: 'ri:qq-fill',
+    link: QQ_LINK,
+  })
+
   return {
-    navbar: navigationComponentsWithOrder.map((i) => i.navItem),
+    navbar,
     collections: navigationComponentsWithOrder.map((i) => i.collectionItem),
   }
 }
