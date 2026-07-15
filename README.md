@@ -55,6 +55,7 @@
 - 领取奖励（派遣任务、每日/每周/军旅成就、战令通行证、邮箱，可独立开关）
 - 资源刷取（特别军费行动、作战体能训练、兵种能力评级、载具对抗演练）
 - 技能演练（基础技能、专业技能）
+- 玩家对战（PVP 自动战斗，支持多场循环）
 - 多关卡选择，可配置战斗次数（1~6 次 / 最大）
 - 清空体力循环模式
 
@@ -66,7 +67,7 @@
 
 - Windows 10+
 - [VC++ Redistributable 2015+](https://aka.ms/vs/17/release/vc_redist.x64.exe)
-- [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0)
+- .NET Desktop Runtime 8.0+（MFAAvalonia 需要）
 - ADB 已配置（用于连接 Android 设备或模拟器）
 
 ### 下载安装
@@ -79,11 +80,13 @@
 # 安装运行时依赖
 DependencySetup_依赖库安装_win.bat
 
-# 启动 GUI
-MFAAvalonia.exe
+# 启动 GUI（两个版本任选其一）
+MFAAvalonia.exe     # Avalonia UI 版本
+# 或
+mxu.exe             # Tauri + React 版本（MaaEnd 同款）
 ```
 
-在 MFAAvalonia 界面中选择任务并配置选项即可开始自动化。
+在 GUI 界面中选择任务并配置选项即可开始自动化。
 
 ---
 
@@ -91,8 +94,10 @@ MFAAvalonia.exe
 
 ```bash
 pnpm install          # 安装开发依赖
-pnpm check            # 代码检查 + 类型检查
-pnpm format:all       # 格式化所有文件
+pnpm check            # 代码检查（格式 + schema + MaaFW + lint）
+pnpm check:py         # Python 代码检查（ruff + pyright）
+pnpm format           # 格式化所有文件
+pnpm format:py        # 格式化 Python 文件
 ```
 
 ### 项目结构
