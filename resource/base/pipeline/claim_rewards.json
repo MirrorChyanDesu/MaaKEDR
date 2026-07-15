@@ -47,7 +47,15 @@
         "template": "main_option.png",
         "threshold": 0.75,
         "action": {
-            "type": "DoNothing"
+            "type": "Click",
+            "param": {
+                "target": [
+                    588,
+                    369,
+                    9,
+                    11
+                ]
+            }
         }
     },
     "ClaimRewards.Start": {
