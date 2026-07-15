@@ -418,7 +418,8 @@
             "type": "Click"
         },
         "next": [
-            "BattlePass.CheckItemObtainedTask"
+            "[JumpBack]BattlePass.CheckItemObtainedTask",
+            "BattlePass.ConfirmInterface"
         ]
     },
     "BattlePass.CheckItemObtainedTask": {
@@ -435,6 +436,7 @@
         "action": {
             "type": "Click"
         },
+        "timeout": 5000,
         "next": [
             "BattlePass.ConfirmInterface"
         ]
