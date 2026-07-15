@@ -32,7 +32,8 @@
             "[JumpBack]DispatchClaim.Start",
             "[JumpBack]ClaimRewards.Start",
             "[JumpBack]BattlePass.Start",
-            "[JumpBack]Mailbox.Start"
+            "[JumpBack]Mailbox.Start",
+            "[JumpBack]Common.CheckItemObtained"
         ]
     },
     "ClaimRewards.CheckMainInterface": {
@@ -85,7 +86,8 @@
         "timeout": 5000,
         "next": [
             "ClaimRewards.ConfirmInterface",
-            "ClaimRewards.RetryClick"
+            "ClaimRewards.RetryClick",
+            "[JumpBack]Common.CheckItemObtained"
         ]
     },
     "ClaimRewards.RetryClick": {
@@ -134,7 +136,8 @@
         "next": [
             "ClaimRewards.CheckDaily",
             "ClaimRewards.CheckWeekly",
-            "ClaimRewards.CheckMilitary"
+            "ClaimRewards.CheckMilitary",
+            "[JumpBack]Common.CheckItemObtained"
         ],
         "on_error": [
             "ClaimRewards.ExitRewardInterface"
@@ -243,25 +246,7 @@
             "type": "Click"
         },
         "next": [
-            "[JumpBack]ClaimRewards.CheckItemObtained",
-            "ClaimRewards.ConfirmInterface"
-        ]
-    },
-    "ClaimRewards.CheckItemObtained": {
-        "desc": "检查并点击获得物品提示（领取奖励专用）",
-        "recognition": "TemplateMatch",
-        "roi": [
-            573,
-            237,
-            136,
-            40
-        ],
-        "template": "item_obtained_dialog.png",
-        "threshold": 0.75,
-        "action": {
-            "type": "Click"
-        },
-        "next": [
+            "[JumpBack]Common.CheckItemObtained",
             "ClaimRewards.ConfirmInterface"
         ]
     },
@@ -308,7 +293,8 @@
         "post_wait_freezes": 500,
         "next": [
             "BattlePass.ConfirmInterface",
-            "BattlePass.RetryClickEntry"
+            "BattlePass.RetryClickEntry",
+            "[JumpBack]Common.CheckItemObtained"
         ]
     },
     "BattlePass.RetryClickEntry": {
@@ -357,7 +343,8 @@
         "next": [
             "[JumpBack]BattlePass.CheckTaskComplete",
             "[JumpBack]BattlePass.CheckRewardList",
-            "BattlePass.ExitToMailbox"
+            "BattlePass.ExitToMailbox",
+            "[JumpBack]Common.CheckItemObtained"
         ]
     },
     "BattlePass.ExitToMailbox": {
@@ -418,26 +405,7 @@
             "type": "Click"
         },
         "next": [
-            "[JumpBack]BattlePass.CheckItemObtainedTask",
-            "BattlePass.ConfirmInterface"
-        ]
-    },
-    "BattlePass.CheckItemObtainedTask": {
-        "desc": "检查并点击获得物品提示（战令任务专用）",
-        "recognition": "TemplateMatch",
-        "roi": [
-            573,
-            237,
-            136,
-            40
-        ],
-        "template": "item_obtained_dialog.png",
-        "threshold": 0.75,
-        "action": {
-            "type": "Click"
-        },
-        "timeout": 5000,
-        "next": [
+            "[JumpBack]Common.CheckItemObtained",
             "BattlePass.ConfirmInterface"
         ]
     },
@@ -473,28 +441,9 @@
         "post_wait_freezes": 500,
         "timeout": 5000,
         "next": [
-            "[JumpBack]BattlePass.CheckItemObtainedReward",
+            "[JumpBack]Common.CheckItemObtained",
             "BattlePass.CheckRewardList",
             "[JumpBack]Common.BackButton"
-        ]
-    },
-    "BattlePass.CheckItemObtainedReward": {
-        "desc": "检查并点击获得物品提示（战令奖励专用）",
-        "recognition": "TemplateMatch",
-        "roi": [
-            573,
-            237,
-            136,
-            40
-        ],
-        "template": "item_obtained_dialog.png",
-        "threshold": 0.75,
-        "action": {
-            "type": "Click"
-        },
-        "post_wait_freezes": 500,
-        "next": [
-            "BattlePass.ConfirmInterface"
         ]
     },
     "Common.BackButton": {
@@ -564,7 +513,8 @@
         "post_wait_freezes": 500,
         "next": [
             "Mailbox.ConfirmInterface",
-            "[JumpBack]Mailbox.RetryClick"
+            "[JumpBack]Mailbox.RetryClick",
+            "[JumpBack]Common.CheckItemObtained"
         ]
     },
     "Mailbox.RetryClick": {
@@ -602,7 +552,8 @@
         },
         "timeout": 5000,
         "next": [
-            "Mailbox.ClaimButton"
+            "Mailbox.ClaimButton",
+            "[JumpBack]Common.CheckItemObtained"
         ]
     },
     "Mailbox.ClaimButton": {
@@ -660,7 +611,8 @@
         "post_wait_freezes": 500,
         "next": [
             "DispatchClaim.ClaimButton",
-            "DispatchClaim.RetryClick"
+            "DispatchClaim.RetryClick",
+            "[JumpBack]Common.CheckItemObtained"
         ]
     },
     "DispatchClaim.RetryClick": {
