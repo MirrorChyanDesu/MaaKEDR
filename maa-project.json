@@ -42,7 +42,7 @@
         "channel": "latest"
     },
     "network": {
-        "mode": "auto"
+        "mode": "official"
     },
     "project": {
         "displayName": "MaaKEDR",
