@@ -680,9 +680,7 @@
             "[JumpBack]FarmResources.ClickVictory",
             "[JumpBack]FarmResources.ClickItemDialog",
             "FarmResources.QuickBattle",
-            "FarmResources.ReturnMainFromFarm"
-        ],
-        "on_error": [
+            "FarmResources.ReturnMainFromFarm",
             "FarmResources.PrepareBattle"
         ]
     },
