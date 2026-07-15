@@ -147,6 +147,7 @@
         "action": {
             "type": "Click"
         },
+        "timeout": 5000,
         "next": [
             "ClaimRewards.ClaimButton"
         ],
@@ -169,6 +170,7 @@
         "action": {
             "type": "Click"
         },
+        "timeout": 5000,
         "next": [
             "ClaimRewards.ClaimButton"
         ],
@@ -385,6 +387,7 @@
         "action": {
             "type": "Click"
         },
+        "timeout": 5000,
         "next": [
             "BattlePass.ClaimTaskReward"
         ],
@@ -445,10 +448,8 @@
         },
         "timeout": 5000,
         "next": [
-            "BattlePass.ClaimRewardButton"
-        ],
-        "on_error": [
-            "Common.BackButton"
+            "BattlePass.ClaimRewardButton",
+            "[JumpBack]Common.BackButton"
         ]
     },
     "BattlePass.ClaimRewardButton": {
@@ -463,10 +464,8 @@
         "timeout": 5000,
         "next": [
             "[JumpBack]BattlePass.CheckItemObtainedReward",
-            "BattlePass.CheckRewardList"
-        ],
-        "on_error": [
-            "Common.BackButton"
+            "BattlePass.CheckRewardList",
+            "[JumpBack]Common.BackButton"
         ]
     },
     "BattlePass.CheckItemObtainedReward": {
@@ -591,6 +590,7 @@
         "action": {
             "type": "DoNothing"
         },
+        "timeout": 5000,
         "next": [
             "Mailbox.ClaimButton"
         ]
@@ -651,9 +651,6 @@
         "next": [
             "DispatchClaim.ClaimButton",
             "DispatchClaim.RetryClick"
-        ],
-        "on_error": [
-            "Common.BackButton"
         ]
     },
     "DispatchClaim.RetryClick": {
@@ -689,6 +686,7 @@
         "action": {
             "type": "Click"
         },
+        "timeout": 5000,
         "next": [
             "[JumpBack]Common.CheckItemObtained",
             "DispatchClaim.RedeployConfirm"
