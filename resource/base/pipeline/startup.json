@@ -23,6 +23,7 @@
         "template": "game_loading.png",
         "threshold": 0.8,
         "post_wait_freezes": 500,
+        "post_delay": 4000,
         "next": [
             "ClickToStart"
         ]
