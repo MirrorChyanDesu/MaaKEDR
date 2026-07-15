@@ -443,7 +443,8 @@
         "next": [
             "[JumpBack]Common.CheckItemObtained",
             "BattlePass.CheckRewardList",
-            "[JumpBack]Common.BackButton"
+            "[JumpBack]Common.BackButton",
+            "ClaimRewards.MainHub"
         ]
     },
     "Common.BackButton": {
