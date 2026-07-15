@@ -7,9 +7,22 @@
                 "package": "com.phxh.official.nld"
             }
         },
-        "post_wait_freezes": {
-            "time": 500
-        },
+        "next": [
+            "WaitGameLoading"
+        ]
+    },
+    "WaitGameLoading": {
+        "desc": "等待游戏加载完成",
+        "recognition": "TemplateMatch",
+        "roi": [
+            595,
+            653,
+            146,
+            64
+        ],
+        "template": "game_loading.png",
+        "threshold": 0.8,
+        "post_wait_freezes": 500,
         "next": [
             "ClickToStart"
         ]
