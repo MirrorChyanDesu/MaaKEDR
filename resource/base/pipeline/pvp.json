@@ -214,23 +214,17 @@
         ],
         "template": "pvp/in_battle.png",
         "threshold": 0.8,
-        "pre_delay": 3000,
         "action": {
             "type": "DoNothing"
         },
-        "timeout": 300000,
         "next": [
-            "PVP.CheckInBattle"
-        ],
-        "on_error": [
-            "PVP.ReadResult"
+            "PVP.Speed2x"
         ],
         "focus": {
             "Node.Recognition.Succeeded": {
                 "content": "正在自动战斗中",
                 "display": [
-                    "log",
-                    "toast"
+                    "log"
                 ]
             }
         }
@@ -251,7 +245,50 @@
             "type": "Click"
         },
         "next": [
-            "PVP.CheckInBattle"
+            "PVP.BattleLoop"
+        ]
+    },
+    "PVP.BattleLoop": {
+        "desc": "战斗循环：等待战斗结束",
+        "recognition": "DirectHit",
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": 300000,
+        "next": [
+            "PVP.CheckBattleEnd"
+        ]
+    },
+    "PVP.CheckBattleEnd": {
+        "desc": "检测结算画面是否出现",
+        "recognition": "OCR",
+        "roi": [
+            1202,
+            34,
+            50,
+            26
+        ],
+        "expected": "跳过",
+        "only_rec": true,
+        "threshold": 0.8,
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "PVP.WaitSettlement"
+        ]
+    },
+    "PVP.WaitSettlement": {
+        "desc": "等待结算动画播放完毕",
+        "recognition": "TemplateMatch",
+        "template": "pvp/exit_result.png",
+        "threshold": 0.8,
+        "action": {
+            "type": "DoNothing"
+        },
+        "post_delay": 5000,
+        "next": [
+            "PVP.ReadResult"
         ]
     },
     "PVP.ReadResult": {
@@ -270,7 +307,8 @@
             "Node.Recognition.Succeeded": {
                 "content": "PVP 战斗结束，详情见日志",
                 "display": [
-                    "log"
+                    "log",
+                    "toast"
                 ]
             }
         }
@@ -286,7 +324,7 @@
         },
         "post_delay": 1000,
         "next": [
-            "Common.CheckItemObtained",
+            "[JumpBack]Common.CheckItemObtained",
             "PVP.BackToBattleInterface"
         ]
     },

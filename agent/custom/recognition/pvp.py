@@ -91,6 +91,17 @@ class ReadPVPResult(CustomRecognition):
         result_msg = f"{result_text} 积分:{current_score}({score_change_fmt}) 排名:{current_rank}({rank_change_fmt})"
         logger.info("[PVP] {}", result_msg)
 
+        context.override_pipeline({
+            "PVP.ExitResult": {
+                "focus": {
+                    "Node.Action.Starting": {
+                        "content": result_msg,
+                        "display": ["log", "toast"],
+                    },
+                },
+            },
+        })
+
         return CustomRecognition.AnalyzeResult(box=result_detail.box, detail={
             "result": result_text or "战斗结束",
             "current_score": current_score or "-",
