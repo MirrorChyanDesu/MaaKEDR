@@ -7,7 +7,9 @@
                 "package": "com.phxh.official.nld"
             }
         },
-        "post_delay": 12000,
+        "post_wait_freezes": {
+            "time": 500
+        },
         "next": [
             "ClickToStart"
         ]
@@ -16,6 +18,7 @@
         "recognition": "TemplateMatch",
         "template": "startgame1.png",
         "threshold": 0.8,
+        "pre_delay": 1000,
         "action": {
             "type": "Click",
             "param": {
