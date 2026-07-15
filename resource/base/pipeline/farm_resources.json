@@ -519,6 +519,7 @@
             }
         },
         "post_delay": 200,
+        "timeout": 5000,
         "next": [
             "FarmResources.ReturnMainFromFarm"
         ],
