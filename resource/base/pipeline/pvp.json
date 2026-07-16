@@ -257,6 +257,9 @@
         "timeout": 300000,
         "next": [
             "PVP.CheckBattleEnd"
+        ],
+        "on_error": [
+            "PVP.ReadResult"
         ]
     },
     "PVP.CheckBattleEnd": {
