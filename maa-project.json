@@ -1,6 +1,12 @@
 {
     "addons": {
+        "autoFormat": {
+            "enabled": true
+        },
         "community": {
+            "enabled": true
+        },
+        "dependabot": {
             "enabled": true
         },
         "devTools": {
@@ -10,6 +16,9 @@
             "enabled": true
         },
         "github": {
+            "enabled": true
+        },
+        "optimizeImages": {
             "enabled": true
         },
         "schemaSync": {

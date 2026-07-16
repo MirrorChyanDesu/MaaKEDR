@@ -57,7 +57,7 @@
             "managed": false
         },
         "maa-project.json": {
-            "createdAt": "2026-07-10T17:51:00.456Z",
+            "createdAt": "2026-07-16T17:48:45.916Z",
             "managed": false
         },
         "maatools.config.mts": {
@@ -65,7 +65,7 @@
             "managed": false
         },
         "package.json": {
-            "createdAt": "2026-07-10T17:36:38.621Z",
+            "createdAt": "2026-07-16T17:48:45.916Z",
             "managed": false
         },
         "pnpm-workspace.yaml": {
@@ -134,6 +134,18 @@
             "hash": "6ff35ded4d35fe9d51f07b3b5388a48000d467b010e364c3e4afd0e82257f9fe",
             "templateHash": "1c475f27cd91987b4a8e82a99ee2054f673fe5c344c2c2facc0c4c80778317bc"
         },
+        ".github/dependabot.yml": {
+            "hash": "146fc4a7e29026507034652f344d0f100f70fd1a61e2a9cfa74bbabe38281b43",
+            "templateHash": "146fc4a7e29026507034652f344d0f100f70fd1a61e2a9cfa74bbabe38281b43"
+        },
+        ".github/workflows/format.yml": {
+            "hash": "88fb255e8edbbf1b9d2db38ae39406ba70855e06ff6fe1806be4fdaa1c5ba1c6",
+            "templateHash": "88fb255e8edbbf1b9d2db38ae39406ba70855e06ff6fe1806be4fdaa1c5ba1c6"
+        },
+        ".github/workflows/optimize-images.yml": {
+            "hash": "73a7c9e794094326764331ef81841f10534d74e083609773d064cfbe2ce4b072",
+            "templateHash": "73a7c9e794094326764331ef81841f10534d74e083609773d064cfbe2ce4b072"
+        },
         ".github/workflows/release.yml": {
             "hash": "1967dd59244bd7fac52c002b45a7444a05faea5d1ba507bfd51901ca7310827f",
             "templateHash": "1948c8135358e77ebb874e0b99952b6f592f093b50efe9c4fa515786f6074172"
@@ -161,6 +173,10 @@
         "tools/check-project.mjs": {
             "hash": "064d87915d7b877ca6ccfadb143f3e3d77a4cfcf29cf65952fb031f12a4cbe6d",
             "templateHash": "064d87915d7b877ca6ccfadb143f3e3d77a4cfcf29cf65952fb031f12a4cbe6d"
+        },
+        "tools/optimize-images.mjs": {
+            "hash": "5c158bda7393675ec21f0fe0239400a8683cfbc7a509410dc3fd06cc556a766c",
+            "templateHash": "5c158bda7393675ec21f0fe0239400a8683cfbc7a509410dc3fd06cc556a766c"
         },
         "tools/schema/interface.schema.json": {
             "hash": "f398c5215a6a63edf45a5b8c5198557986ccafe52828598a8a46d428c8228e35",
