@@ -109,6 +109,15 @@ Commonly used types:
 
 See [CONTRIBUTING.md](/CONTRIBUTING.md) for pull request requirements (branch naming, description format, and what to include).
 
+## Release Guidelines
+
+Before tagging a new release (`vX.Y.Z`), manually update the version in `interface.json`:
+
+- `version` field (e.g. `"v1.0.5"`)
+- `title` field (e.g. `"MaaKEDR v1.0.5"`)
+
+This file is manually managed (see Review Checklist: "interface.json is unmanaged") and is **not** synced from the git tag automatically. Forgetting to update it will make the published package still show the old version number. Commit the `interface.json` change, then push the `vX.Y.Z` tag to trigger `release.yml`.
+
 ## Review Checklist
 
 When reviewing code, check for:
