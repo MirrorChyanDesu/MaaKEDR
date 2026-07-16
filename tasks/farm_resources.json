@@ -45,7 +45,9 @@
                             "next": [
                                 "[JumpBack]FarmResources.ClickVictory",
                                 "[JumpBack]FarmResources.ClickItemDialog",
-                                "FarmResources.QuickBattle"
+                                "FarmResources.QuickBattle",
+                                "FarmResources.ReturnMainFromFarm",
+                                "FarmResources.PrepareBattle"
                             ]
                         },
                         "FarmResources.ExitStage": {
