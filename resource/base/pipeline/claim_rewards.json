@@ -1,8 +1,9 @@
 {
     "ClaimRewards": {
         "next": [
-            "[JumpBack]ClaimRewards.ReturnMain",
-            "ClaimRewards.MainHub"
+            "[JumpBack]ClaimRewards.CheckMainInterface",
+            "ClaimRewards.MainHub",
+            "[JumpBack]ClaimRewards.ReturnMain"
         ]
     },
     "ClaimRewards.ReturnMain": {
