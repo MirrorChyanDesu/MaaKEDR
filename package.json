@@ -33,7 +33,7 @@
         "check:maa": "pnpm exec maa-tools check",
         "check:py": "uv run ruff check . && uv run pyright",
         "check:schema": "node tools/validate-schema.mjs",
-        "docs:build": "vuepress build docs --clean-cache --clean-temp",
+        "docs:build": "vuepress build docs --clean-cache --clean-temp && node tools/fix-docs-urls.mjs",
         "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
         "docs:preview": "http-server docs/.vuepress/dist",
         "format": "prettier --write .",
