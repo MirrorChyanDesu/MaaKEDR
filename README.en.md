@@ -40,7 +40,7 @@ Powered by [MaaFramework](https://github.com/MaaXYZ/MaaFramework)!
 > CI/CD configuration, and documentation. This approach greatly improves development efficiency, with code quality ensured by `pnpm check` pipelines.
 >
 > If you're building a MaaFramework project with AI, this repository can serve as a reference case.
-> See [Vibe Coding Development](docs/en_us/develop/vibe-coding.md) for details.  
+> See [Vibe Coding Development](docs/en/develop/vibe-coding.md) for details.  
 > This project also maintains [AGENTS.md](AGENTS.md) as an AI behavior guide to ensure development conventions and consistency.
 
 ---
@@ -53,6 +53,14 @@ Powered by [MaaFramework](https://github.com/MaaXYZ/MaaFramework)!
 - Skill Training (Basic Skills, Advanced Skills)
 - Multiple stage selection with configurable battle count (1-6 / max)
 - Stamina-drain loop mode
+
+---
+
+## Documentation
+
+- 📘 [Online docs](https://apple-df.github.io/MaaKEDR/) — user manual, development guides, protocol notes
+- English: [User Manual](https://apple-df.github.io/MaaKEDR/en/manual/) · [Development](https://apple-df.github.io/MaaKEDR/en/develop/) · [Protocol](https://apple-df.github.io/MaaKEDR/en/protocol/)
+- 中文：[用户手册](https://apple-df.github.io/MaaKEDR/zh/manual/) · [开发文档](https://apple-df.github.io/MaaKEDR/zh/develop/) · [协议文档](https://apple-df.github.io/MaaKEDR/zh/protocol/)
 
 ---
 

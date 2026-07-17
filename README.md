@@ -44,7 +44,7 @@
 > CI/CD 配置和文档编写。这种模式下开发效率大幅提升，代码质量通过 `pnpm check` 流水线保证。
 >
 > 如果你也在用 AI 做 MaaFramework 项目，这个仓库可以作为一个参考案例。
-> 详见 [Vibe Coding 开发说明](docs/zh_cn/develop/vibe-coding.md)。  
+> 详见 [Vibe Coding 开发说明](docs/zh/develop/vibe-coding.md)。  
 > 本项目还维护了 [AGENTS.md](AGENTS.md) 作为 AI 助手的行为指南，确保开发规范和一致性。
 
 ---
@@ -58,6 +58,14 @@
 - 玩家对战（PVP 自动战斗，支持多场循环）
 - 多关卡选择，可配置战斗次数（1~6 次 / 最大）
 - 清空体力循环模式
+
+---
+
+## 文档
+
+- 📘 [在线文档站](https://apple-df.github.io/MaaKEDR/) — 用户手册、开发文档、协议约定
+- 中文：[用户手册](https://apple-df.github.io/MaaKEDR/zh/manual/) · [开发文档](https://apple-df.github.io/MaaKEDR/zh/develop/) · [协议文档](https://apple-df.github.io/MaaKEDR/zh/protocol/)
+- English: [User Manual](https://apple-df.github.io/MaaKEDR/en/manual/) · [Development](https://apple-df.github.io/MaaKEDR/en/develop/) · [Protocol](https://apple-df.github.io/MaaKEDR/en/protocol/)
 
 ---
 
