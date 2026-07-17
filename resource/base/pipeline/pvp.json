@@ -200,7 +200,8 @@
         },
         "post_delay": 2000,
         "next": [
-            "PVP.CheckInBattle"
+            "PVP.CheckInBattle",
+            "PVP.BeginCombat"
         ]
     },
     "PVP.CheckInBattle": {
@@ -219,6 +220,9 @@
         },
         "next": [
             "PVP.Speed2x"
+        ],
+        "on_error": [
+            "PVP.BeginCombat"
         ],
         "focus": {
             "Node.Recognition.Succeeded": {
