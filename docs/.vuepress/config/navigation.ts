@@ -9,6 +9,7 @@ const zh: NavigationConfig = {
   navbar: [
     { text: '用户手册', icon: 'mdi:user', link: '/zh/manual/' },
     { text: '开发文档', icon: 'ph:code-bold', link: '/zh/develop/' },
+    { text: '协议文档', icon: 'basil:document-solid', link: '/zh/protocol/' },
   ],
   collections: [
     {
@@ -29,6 +30,19 @@ const zh: NavigationConfig = {
         'fix.md',
         'formatting.md',
         'structure.md',
+        'doc.md',
+      ],
+    },
+    {
+      type: 'doc',
+      title: '协议文档',
+      dir: 'protocol',
+      sidebar: [
+        'overview.md',
+        'startup.md',
+        'claim-rewards.md',
+        'farm-resources.md',
+        'pvp.md',
       ],
     },
   ],
@@ -38,6 +52,7 @@ const en: NavigationConfig = {
   navbar: [
     { text: 'User Manual', icon: 'mdi:user', link: '/en/manual/' },
     { text: 'Development Docs', icon: 'ph:code-bold', link: '/en/develop/' },
+    { text: 'Protocol', icon: 'basil:document-solid', link: '/en/protocol/' },
   ],
   collections: [
     {
@@ -58,6 +73,19 @@ const en: NavigationConfig = {
         'fix.md',
         'formatting.md',
         'structure.md',
+        'doc.md',
+      ],
+    },
+    {
+      type: 'doc',
+      title: 'Protocol',
+      dir: 'protocol',
+      sidebar: [
+        'overview.md',
+        'startup.md',
+        'claim-rewards.md',
+        'farm-resources.md',
+        'pvp.md',
       ],
     },
   ],

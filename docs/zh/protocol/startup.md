@@ -1,0 +1,44 @@
+---
+order: 2
+icon: ri:play-circle-line
+---
+
+# 启动与登录协议
+
+## 任务入口
+
+| 项     | 值                                                                     |
+| ------ | ---------------------------------------------------------------------- |
+| 任务名 | 启动游戏（见 `tasks/startup.json`）                                    |
+| entry  | 以该文件中定义为准                                                     |
+| 资源   | 主流程在 `resource/base/pipeline/startup.json`；B 服 / TapTap 可有覆盖 |
+
+## 典型流程
+
+```text
+启动游戏进程
+  → 等待加载 / 点击开始游戏
+  → 处理每日登录奖励等弹窗
+  → 确认主界面（如 main_option 等模板）
+  → 任务结束
+```
+
+## 资源与模板
+
+常用模板位于 `resource/base/image/`（及区服目录），例如：
+
+- 加载 / 开始游戏相关图
+- `daily_login_reward.png` — 每日登录奖励
+- `main_option.png` — 主界面特征
+
+具体节点名与 ROI 以 `startup.json` 为准。
+
+## 区服
+
+`resource/bilibili/pipeline/`、`resource/taptap/pipeline/` 中可覆盖启动相关节点（登录入口、渠道包差异）。  
+新增区服时优先只改启动与登录，其它任务尽量复用 `base`。
+
+## 开发注意
+
+- 启动后动画长：用识别节点或 `wait_freezes`，避免固定超长 delay
+- 弹窗顺序可能变化：`next` 中并列弹窗节点，并用 JumpBack 处理可重入弹窗

@@ -64,6 +64,8 @@ git clone https://github.com/APPLe-DF/MaaKEDR.git
 cd MaaKEDR
 ```
 
+For pull requests, fork first and clone your fork (see Contributing below).
+
 ### Install Dependencies
 
 ```bash
@@ -177,10 +179,7 @@ Create a JSON file in `tasks/` to make it selectable:
 
 ### 6. Run and Verify
 
-```bash
-# Via MaaPiCli
-maapi -t TestClickStart
-```
+This project does **not** ship a standalone MaaPiCli package. Use the **MFAAvalonia / MXU** GUI from the release package to run tasks, or start the Agent in a local dev setup as described in [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md).
 
 > Make sure your emulator is running and the game is on the correct screen.
 
@@ -196,6 +195,18 @@ Each iteration:
 2. Run `pnpm check:py` for Python module changes
 3. Check logs and screenshots in `debug/` to diagnose issues
 
+## Contributing & Pull Requests
+
+1. Fork and clone your fork
+2. Branch from latest `master` (`feat/…`, `fix/…`, `docs/…`)
+3. Pass `pnpm check` (and `pnpm check:py` when touching Python)
+4. Open a focused PR (one concern per PR)
+5. Describe motivation, scope, and how you tested
+
+See [CONTRIBUTING.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/CONTRIBUTING.md) and [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md).
+
+**Release**: before tagging `vX.Y.Z`, manually update `interface.json` `version` and `title`.
+
 ## References
 
 - [MaaFramework Documentation](https://maaframework.github.io/)
@@ -203,4 +214,6 @@ Each iteration:
 - [Custom Module Guide](./custom.md)
 - [Troubleshooting](./fix.md)
 - [Formatting Guide](./formatting.md)
+- [Writing Docs](./doc.md)
+- [Protocol](../protocol/)
 - [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md)

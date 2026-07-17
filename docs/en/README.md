@@ -37,7 +37,9 @@ Image technology + simulation control, free your hands!
 
 ## User Guide
 
+- [User Manual](./manual/) — Newbie, connection, FAQ, features
 - [Development Guide](./develop/) — Pipeline, Custom, Project Structure
+- [Protocol](./protocol/) — Task and resource conventions
 - [Vibe Coding](./develop/vibe-coding.md) — AI-assisted Development Mode
 - [Bug Fixing](./develop/fix.md) — Common Issues & Solutions
 
@@ -46,6 +48,7 @@ Image technology + simulation control, free your hands!
 - [Pipeline Development](./develop/pipeline.md)
 - [Custom Node Development](./develop/custom.md)
 - [Formatting & Linting](./develop/formatting.md)
+- [Writing Docs](./develop/doc.md)
 - [中文文档](../zh/) — 切换到中文
 
 ## Acknowledgements

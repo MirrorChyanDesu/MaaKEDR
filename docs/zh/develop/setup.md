@@ -61,10 +61,14 @@ pnpm --version
 
 ### 获取项目
 
+日常开发可直接克隆主仓库：
+
 ```bash
 git clone https://github.com/APPLe-DF/MaaKEDR.git
 cd MaaKEDR
 ```
+
+若要提交 PR，请先 Fork 再克隆你的仓库，并使用独立功能分支（见下文「贡献与 PR」）。
 
 ### 安装依赖
 
@@ -179,10 +183,7 @@ resource/base/image/start_button.png
 
 ### 6. 运行验证
 
-```bash
-# 通过 MaaPiCli 运行
-maapi -t TestClickStart
-```
+本项目**不提供**独立 MaaPiCli 发行包。请使用发布包中的 **MFAAvalonia / MXU** 图形界面勾选任务运行，或按 [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md) 在开发环境中启动 Agent 后调试。
 
 > 运行前请确保模拟器已启动且游戏在正确界面。
 
@@ -198,6 +199,18 @@ maapi -t TestClickStart
 2. 运行 Python 自定义模块时执行 `pnpm check:py`
 3. 查看 `debug/` 目录下的日志和截图定位问题
 
+## 贡献与 PR
+
+1. Fork 仓库并克隆自己的 fork
+2. 从最新 `master` 拉出分支，例如 `feat/xxx`、`fix/xxx`、`docs/xxx`
+3. 本地通过 `pnpm check`（及 Python 相关时的 `pnpm check:py`）
+4. 推送并打开 Pull Request；一个 PR 只解决一个问题
+5. 描述写清改动动机、影响范围与自测方式；识别/流程类问题请附截图或日志
+
+完整约定见仓库 [CONTRIBUTING.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/CONTRIBUTING.md) 与 [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md)。
+
+**发版**：打 `vX.Y.Z` 标签前，须手动更新 `interface.json` 的 `version` 与 `title`（不会随 tag 自动同步）。
+
 ## 参考
 
 - [MaaFramework 文档](https://maaframework.github.io/)
@@ -205,4 +218,6 @@ maapi -t TestClickStart
 - [Custom 编写指南](./custom.md)
 - [Bug 排查指南](./fix.md)
 - [格式化规范](./formatting.md)
+- [文档编写](./doc.md)
+- [协议文档](../protocol/)
 - [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md)

@@ -87,7 +87,12 @@ Auto-battle resource stages with stamina management.
 | Unit Rating       | Unit promotion material stages |
 | Vehicle Drill     | Vehicle material stages        |
 
-Each resource type has multiple sub-stages (e.g. 1-1 through 1-5) selectable in options.
+Stage counts differ by type (selectable in options):
+
+- Special Funds: 1-1 … 1-5
+- Physical Training: 2-1 … 2-4
+- Unit Rating: 3-1 … 3-4
+- Vehicle Drill: 4-1 … 4-5
 
 ### Skill Training
 

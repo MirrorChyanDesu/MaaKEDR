@@ -37,7 +37,9 @@ dir:
 
 ## 使用说明
 
+- [用户手册](./manual/) — 新手、连接、FAQ、功能介绍
 - [开发指南](./develop/) — Pipeline、Custom、项目结构
+- [协议文档](./protocol/) — 任务与资源约定
 - [Vibe Coding 说明](./develop/vibe-coding.md) — 本项目的 AI 辅助开发模式
 - [Bug 排查](./develop/fix.md) — 常见问题与解决方法
 
@@ -46,6 +48,7 @@ dir:
 - [Pipeline 开发](./develop/pipeline.md)
 - [自定义节点开发](./develop/custom.md)
 - [格式化与检查](./develop/formatting.md)
+- [文档编写](./develop/doc.md)
 - [English Documentation](../en/) — Switch to English
 
 ## 鸣谢

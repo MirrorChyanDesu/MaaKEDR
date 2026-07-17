@@ -22,6 +22,8 @@ dir:
 - [**连接设置**](./connection) — 模拟器 ADB 连接详细说明，各模拟器端口速查表
 - [**功能介绍**](./introduction) — 各自动化任务的配置项详解和使用说明
 
+开发者可参阅 [协议文档](../protocol/)（任务与资源约定）与 [开发文档](../develop/)。
+
 ---
 
 > 如有其他问题，欢迎在 [GitHub Issues](https://github.com/APPLe-DF/MaaKEDR/issues) 提出反馈或加入交流群讨论（见 `CONTACT` 文件）。
