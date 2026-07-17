@@ -11,22 +11,22 @@ config:
           actions:
               - theme: brand
                 text: 简体中文
-                link: /MaaKEDR/zh/
+                link: /zh/
               - theme: alt
                 text: English
-                link: /MaaKEDR/en/
+                link: /en/
     - type: features
       features:
           - title: 用户手册
             icon: 📖
             details: 完整的安装和使用说明
-            link: /MaaKEDR/zh/manual/newbie/
+            link: /zh/manual/newbie/
           - title: 开发指南
             icon: 🛠️
             details: 面向开发者的技术文档
-            link: /MaaKEDR/zh/develop/setup/
+            link: /zh/develop/setup/
           - title: 常见问题
             icon: 💡
             details: 遇到问题？查看常见问题解答
-            link: /MaaKEDR/zh/manual/faq/
+            link: /zh/manual/faq/
 ---
