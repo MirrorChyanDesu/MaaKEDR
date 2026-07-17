@@ -58,7 +58,10 @@
                     11
                 ]
             }
-        }
+        },
+        "next": [
+            "ClaimRewards.MainHub"
+        ]
     },
     "ClaimRewards.Start": {
         "desc": "检测并点击周常奖励图标",
