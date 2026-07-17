@@ -286,11 +286,11 @@
         "action": {
             "type": "Click",
             "param": {
-                "target_offset": [
-                    70,
-                    0,
-                    0,
-                    0
+                "target": [
+                    943,
+                    273,
+                    3,
+                    3
                 ]
             }
         },
@@ -315,17 +315,18 @@
         "action": {
             "type": "Click",
             "param": {
-                "target_offset": [
-                    70,
-                    0,
-                    0,
-                    0
+                "target": [
+                    943,
+                    273,
+                    3,
+                    3
                 ]
             }
         },
         "post_wait_freezes": 500,
         "next": [
-            "BattlePass.ConfirmInterface"
+            "BattlePass.ConfirmInterface",
+            "ClaimRewards.MainHub"
         ]
     },
     "BattlePass.ConfirmInterface": {
