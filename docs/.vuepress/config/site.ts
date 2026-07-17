@@ -4,7 +4,8 @@ export const SITE_TITLE = 'MaaKEDR'
 export const SITE_DESCRIPTION_ZH = '《雪松》小助手 — 基于 MaaFramework 的自动化工具'
 export const SITE_DESCRIPTION_EN = 'Cedar Automation Assistant — Powered by MaaFramework'
 
-export const HOSTNAME = 'https://apple-df.github.io/MaaKEDR/'
+// 站点根域名（不含 base）。base 为 /MaaKEDR/ 时若再写进 HOSTNAME，会生成双重 /MaaKEDR/MaaKEDR/ 链接。
+export const HOSTNAME = 'https://apple-df.github.io'
 
 export interface Locale {
   name: string
