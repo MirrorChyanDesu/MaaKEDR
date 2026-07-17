@@ -345,7 +345,9 @@ def find_compatible_python() -> Path | None:
                 errors="replace",
                 timeout=10,
             )
-        except OSError, subprocess.TimeoutExpired:
+        except Exception as error:
+            if not isinstance(error, (OSError, subprocess.TimeoutExpired)):
+                raise
             continue
         version_str = (result.stdout or result.stderr).strip()
         m = re.search(r"(\d+)\.(\d+)", version_str)
