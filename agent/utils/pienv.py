@@ -34,7 +34,9 @@ def _as_int(value: Any) -> int | None:
         return value
     try:
         return int(value)
-    except TypeError, ValueError:
+    except Exception as error:
+        if not isinstance(error, (TypeError, ValueError)):
+            raise
         return None
 
 
