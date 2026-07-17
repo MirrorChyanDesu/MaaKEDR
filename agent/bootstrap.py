@@ -133,9 +133,7 @@ def find_requirements_file(project_root: Path) -> Path:
     return project_root / "requirements.txt"
 
 
-def ensure_requirements_installed(
-    project_root: Path, requirements: Path, digest: str
-) -> None:
+def ensure_requirements_installed(project_root: Path, requirements: Path, digest: str) -> None:
     if not needs_requirement_install(project_root, digest):
         return
 
@@ -347,7 +345,7 @@ def find_compatible_python() -> Path | None:
                 errors="replace",
                 timeout=10,
             )
-        except (OSError, subprocess.TimeoutExpired):
+        except OSError, subprocess.TimeoutExpired:
             continue
         version_str = (result.stdout or result.stderr).strip()
         m = re.search(r"(\d+)\.(\d+)", version_str)

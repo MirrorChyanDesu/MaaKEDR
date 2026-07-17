@@ -19,7 +19,7 @@ def validate_json_file(filepath: str) -> dict:
         验证结果 {"valid": bool, "error": str}
     """
     try:
-        with open(filepath, encoding='utf-8') as f:
+        with open(filepath, encoding="utf-8") as f:
             json.load(f)
         return {"valid": True, "error": None}
     except json.JSONDecodeError as e:
@@ -35,14 +35,14 @@ def main():
     errors = []
 
     if os.path.isfile(target):
-        if target.endswith('.json'):
+        if target.endswith(".json"):
             result = validate_json_file(target)
             if not result["valid"]:
                 errors.append(f"{target}: {result['error']}")
     elif os.path.isdir(target):
         for root, dirs, files in os.walk(target):
             for file in files:
-                if file.endswith('.json'):
+                if file.endswith(".json"):
                     filepath = os.path.join(root, file)
                     result = validate_json_file(filepath)
                     if not result["valid"]:

@@ -54,7 +54,12 @@ class CheckResourceStage(CustomRecognition):
     """检测资源收集关卡"""
 
     def _check_locked(
-        self, context: Context, image: Any, stage_roi: list[int], lock_template: str, lock_threshold: float
+        self,
+        context: Context,
+        image: Any,
+        stage_roi: list[int],
+        lock_template: str,
+        lock_threshold: float,
     ) -> bool:
         """在关卡识别区域内检测锁定图标"""
         if not lock_template:
@@ -99,7 +104,9 @@ class CheckResourceStage(CustomRecognition):
         image = argv.image
 
         # 检测关卡是否锁定（第一关默认开放，跳过检测）
-        if stage_index > 1 and self._check_locked(context, image, stage_roi, lock_template, lock_threshold):
+        if stage_index > 1 and self._check_locked(
+            context, image, stage_roi, lock_template, lock_threshold
+        ):
             logger.warning(f"[资源刷取] {stage_name} 关卡被锁定")
             context.override_next(argv.node_name, ["FarmResources.StageLocked"])
             return CustomRecognition.AnalyzeResult(box=(0, 0, 1, 1), detail={"status": "locked"})
@@ -108,7 +115,10 @@ class CheckResourceStage(CustomRecognition):
         stage_name_no_dash = stage_name.replace("-", "")
         ocr_detail = context.run_recognition_direct(
             JRecognitionType.OCR,
-            JOCR(expected=[stage_name, stage_name_no_dash], roi=(stage_roi[0], stage_roi[1], stage_roi[2], stage_roi[3])),
+            JOCR(
+                expected=[stage_name, stage_name_no_dash],
+                roi=(stage_roi[0], stage_roi[1], stage_roi[2], stage_roi[3]),
+            ),
             image,
         )
 
@@ -116,12 +126,15 @@ class CheckResourceStage(CustomRecognition):
             return None
 
         # 检查高级账号标志干扰
-        if hasattr(ocr_detail, 'text') and '奖励' in ocr_detail.text:  # pyright: ignore[reportAttributeAccessIssue]
+        if hasattr(ocr_detail, "text") and "奖励" in ocr_detail.text:  # pyright: ignore[reportAttributeAccessIssue]
             x, y, w, h = stage_roi
             adjusted_roi = [x, y, int(w * 0.7), h]
             ocr_detail = context.run_recognition_direct(
                 JRecognitionType.OCR,
-                JOCR(expected=[stage_name, stage_name_no_dash], roi=(adjusted_roi[0], adjusted_roi[1], adjusted_roi[2], adjusted_roi[3])),
+                JOCR(
+                    expected=[stage_name, stage_name_no_dash],
+                    roi=(adjusted_roi[0], adjusted_roi[1], adjusted_roi[2], adjusted_roi[3]),
+                ),
                 image,
             )
             if not ocr_detail or not ocr_detail.box:
@@ -143,9 +156,7 @@ class SetBattleCount(CustomAction):
     - max_template: 最大按钮模板路径
     """
 
-    def run(
-        self, context: Context, argv: CustomAction.RunArg
-    ) -> CustomAction.RunResult:
+    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
         # 获取参数
         params = parse_params(argv.custom_action_param)
 
@@ -154,7 +165,9 @@ class SetBattleCount(CustomAction):
         plus_x, plus_y = params.get("plus_button", PLUS_BUTTON)
         max_template = params.get("max_template", MAX_BUTTON_TEMPLATE)
 
-        logger.info(f"[SetBattleCount] 参数: target_count={target_count}, type={type(target_count)}")
+        logger.info(
+            f"[SetBattleCount] 参数: target_count={target_count}, type={type(target_count)}"
+        )
 
         # 获取当前截图
         image = context.tasker.controller.cached_image
@@ -204,7 +217,9 @@ class SetBattleCount(CustomAction):
         elif clicks_needed < 0:
             # 需要减少次数，点击减号按钮
             minus_x, minus_y = params.get("minus_button", MINUS_BUTTON)
-            logger.info(f"[SetBattleCount] 当前次数 {current_count} > 目标 {target_count}，点击减号 {abs(clicks_needed)} 次")
+            logger.info(
+                f"[SetBattleCount] 当前次数 {current_count} > 目标 {target_count}，点击减号 {abs(clicks_needed)} 次"
+            )
             for _ in range(abs(clicks_needed)):
                 context.run_action_direct(
                     JActionType.Click,
@@ -223,7 +238,6 @@ _current_target_count: int | None = None
 _current_run_epoch = 0
 
 
-
 @AgentServer.custom_action("ReduceBattleCount")
 class ReduceBattleCount(CustomAction):
     """
@@ -234,9 +248,7 @@ class ReduceBattleCount(CustomAction):
     - count_roi: 次数显示区域 [x, y, w, h]
     """
 
-    def run(
-        self, context: Context, argv: CustomAction.RunArg
-    ) -> CustomAction.RunResult:
+    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
         global _current_target_count
         try:
             # 获取参数
@@ -267,13 +279,19 @@ class ReduceBattleCount(CustomAction):
 
             # 如果目标次数已经小于等于1，返回失败
             if _current_target_count <= 1:
-                logger.warning("[ReduceBattleCount] 目标次数已到最小({}≤1)，无法继续", _current_target_count)
+                logger.warning(
+                    "[ReduceBattleCount] 目标次数已到最小({}≤1)，无法继续", _current_target_count
+                )
                 _current_target_count = None  # 重置，让下次重新初始化
                 return CustomAction.RunResult(success=False)
 
             # 减少目标次数（每次减少1）
             _current_target_count -= 1
-            logger.info("[ReduceBattleCount] 当前次数: {}, 新目标次数: {}", current_count, _current_target_count)
+            logger.info(
+                "[ReduceBattleCount] 当前次数: {}, 新目标次数: {}",
+                current_count,
+                _current_target_count,
+            )
 
             # 点击减号按钮1次
             logger.info("[ReduceBattleCount] 点击减号按钮")
@@ -297,9 +315,7 @@ class ResetBattleCountTarget(CustomAction):
     重置目标次数为6（调用ReduceBattleCount前需要调用）
     """
 
-    def run(
-        self, context: Context, argv: CustomAction.RunArg
-    ) -> CustomAction.RunResult:
+    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
         global _current_target_count
         _current_target_count = 6
         logger.info("[ResetBattleCountTarget] 目标次数重置为: {}", _current_target_count)

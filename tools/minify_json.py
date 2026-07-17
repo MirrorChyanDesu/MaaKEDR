@@ -20,14 +20,14 @@ def minify_json_file(input_path: str, output_path: str = None) -> bool:
         是否成功
     """
     try:
-        with open(input_path, encoding='utf-8') as f:
+        with open(input_path, encoding="utf-8") as f:
             data = json.load(f)
 
         if output_path is None:
             output_path = input_path
 
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
 
         return True
     except Exception as e:
@@ -43,13 +43,13 @@ def main():
     target = sys.argv[1]
 
     if os.path.isfile(target):
-        if target.endswith('.json'):
+        if target.endswith(".json"):
             if minify_json_file(target):
                 print(f"Minified: {target}")
     elif os.path.isdir(target):
         for root, dirs, files in os.walk(target):
             for file in files:
-                if file.endswith('.json'):
+                if file.endswith(".json"):
                     filepath = os.path.join(root, file)
                     if minify_json_file(filepath):
                         print(f"Minified: {filepath}")
