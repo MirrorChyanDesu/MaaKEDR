@@ -8,7 +8,7 @@ dir:
 
 # Protocol Docs
 
-Task, resource, and UI-flow conventions for MaaKEDR (_Cedar_). For MaaFramework itself, see the [MaaFramework docs](https://maaframework.github.io/).
+Task, resource, and UI-flow conventions for MaaKEDR (*Cedar*). For the shared project interface, see [Project Interface V2](https://maafw.com/docs/3.3-ProjectInterfaceV2).
 
 ## Contents
 

@@ -10,7 +10,7 @@ dir:
 
 本目录描述 MaaKEDR 在《雪松》中的**任务约定、资源路径与界面流程约定**，供编写 / 修改 Pipeline 与 Custom 时对照。
 
-不是 MaaFramework 通用协议；通用协议请见 [MaaFramework 文档](https://maaframework.github.io/)。
+不是 MaaFramework 通用协议；通用协议请见 [Project Interface V2](https://maafw.com/docs/3.3-ProjectInterfaceV2)。
 
 ## 导航
 
