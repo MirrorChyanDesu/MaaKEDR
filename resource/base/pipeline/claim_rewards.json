@@ -59,6 +59,8 @@
                 ]
             }
         },
+        "repeat": 2,
+        "repeat_delay": 500,
         "next": [
             "ClaimRewards.MainHub"
         ]

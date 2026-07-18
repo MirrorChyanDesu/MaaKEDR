@@ -52,12 +52,12 @@
                 ]
             }
         },
+        "repeat": 2,
+        "repeat_delay": 500,
         "timeout": 5000,
         "next": [
+            "[JumpBack]ReturnMain",
             "PVP.Entry"
-        ],
-        "on_error": [
-            "ReturnMain"
         ]
     },
     "PVP.Entry": {
