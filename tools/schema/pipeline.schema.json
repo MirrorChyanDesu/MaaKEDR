@@ -2114,9 +2114,6 @@
                     "$ref": "#/$defs/jsonInt32",
                     "markdownDescription": "*int*\n\n触点力度。可选，默认 1 。",
                     "default": 1
-                },
-                "target_count": {
-                    "$ref": "#/$defs/jsonNInt64"
                 }
             }
         },
