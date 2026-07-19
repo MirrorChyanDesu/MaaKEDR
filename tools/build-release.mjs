@@ -379,9 +379,16 @@ function smokeReleasePackage(gui, root, packagePaths, runtimePlatform) {
         if (!existsSync(join(root, "maafw"))) {
             throw new Error("release package smoke failed: MXU package is missing maafw");
         }
-        if (!existsSync(join(root, "maafw", "MaaFramework.dll"))) {
+        const maafwCore = mxuMaafwCoreLibrary(runtimePlatform);
+        if (!existsSync(join(root, "maafw", maafwCore))) {
             throw new Error(
-                "release package smoke failed: MXU maafw is missing MaaFramework.dll (expected flat layout)",
+                `release package smoke failed: MXU maafw is missing ${maafwCore} (expected flat layout under maafw/)`,
+            );
+        }
+        // Nested win-x64/native layout means prepareMxuMaafwRuntime copied the wrong tree.
+        if (existsSync(join(root, "maafw", "win-x64")) || existsSync(join(root, "maafw", "linux-x64"))) {
+            throw new Error(
+                "release package smoke failed: MXU maafw has nested platform dirs (expected flat native files)",
             );
         }
         for (const path of [
@@ -508,6 +515,12 @@ function isMxuMaafwExcludedName(name) {
         lower.endsWith(".node") ||
         lower.endsWith(".pdb")
     );
+}
+
+function mxuMaafwCoreLibrary(runtimePlatform) {
+    if (runtimePlatform.startsWith("win-")) return "MaaFramework.dll";
+    if (runtimePlatform.startsWith("osx-")) return "libMaaFramework.dylib";
+    return "libMaaFramework.so";
 }
 
 function ensureUnixExecutablePermissions(root, runtimePlatform) {
