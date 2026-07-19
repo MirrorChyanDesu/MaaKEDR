@@ -5,6 +5,8 @@
     "version": "v1.1.0",
     "icon": "logo.ico",
     "github": "https://github.com/APPLe-DF/MaaKEDR",
+    "mirrorchyan_rid": "MaaKEDR",
+    "mirrorchyan_multiplatform": true,
     "title": "MaaKEDR v1.1.0",
     "contact": "CONTACT",
     "license": "LICENSE",

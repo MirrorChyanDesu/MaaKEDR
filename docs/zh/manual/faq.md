@@ -114,6 +114,9 @@ GitHub 下载速度受网络环境影响，可尝试：
 
 ### 如何更新 MaaKEDR？
 
-MaaKEDR 支持软件内更新。在软件设置中将更新源选择为 **GitHub**，点击检查更新即可自动下载并安装最新版本。
+**MXU：** 设置中会出现「更新」相关选项（依赖 `interface.json` 中的 `mirrorchyan_rid`）。  
+点击检查更新后，会优先尝试 Mirror 酱；若未购买 CDK 或资源未在 Mirror 登记，一般会回退到 **GitHub Releases**（需能访问 GitHub；可选填 Token 提高限额）。
+
+**MFAAvalonia：** 在软件设置中配置更新源后检查更新即可。
 
 如需手动更新：下载最新版本压缩包，解压到新目录，将旧版本的 `config/` 目录复制到新目录即可保留配置。

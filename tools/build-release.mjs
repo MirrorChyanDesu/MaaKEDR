@@ -86,7 +86,13 @@ const GUI_TYPES = {
         flatLayout: false,
         modifyInterface(iface, slug, ver, platform) {
             const modified = {...iface};
-            modified.title = `${slug} ${ver} | MXU`;
+            const displayName =
+                typeof modified.label === "string" && modified.label.trim() ? modified.label.trim() : slug;
+            modified.title = `${displayName} ${ver} | MXU`;
+            // MXU 设置页的「更新」依赖 mirrorchyan_rid；占位 rid 用于展示 UI 并通过 github 回退下载。
+            // 正式接入 Mirror 酱后可在平台登记同名/专用 rid。
+            modified.mirrorchyan_rid = "MaaKEDR-MXU";
+            modified.mirrorchyan_multiplatform = true;
             if (Array.isArray(modified.agent) && modified.agent[0]) {
                 modified.agent = modified.agent.map((agent) =>
                     isRecord(agent)

@@ -114,6 +114,9 @@ Logs: `debug/maafw.log`. Screenshots: `debug/` directory. Include these files wh
 
 ### How to update MaaKEDR?
 
-MaaKEDR supports in-app updates. In the software settings, select **GitHub** as the update source, then click "Check for Updates" to automatically download and install the latest version.
+**MXU:** An Update section appears in Settings when `mirrorchyan_rid` is set in `interface.json`.  
+Check for updates will try MirrorChyan first; without a CDK or if the resource is not registered on Mirror, it usually falls back to **GitHub Releases** (network access required; optional GitHub Token helps with rate limits).
+
+**MFAAvalonia:** Configure the update source in settings, then check for updates.
 
 For manual updates: download the latest release, extract to a new directory, then copy your old `config/` folder to the new directory to keep your settings.
