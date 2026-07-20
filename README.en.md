@@ -7,7 +7,8 @@
 
 Cedar Automation Assistant. Image recognition + simulated control, free your hands!  
 Powered by [MaaFramework](https://github.com/MaaXYZ/MaaFramework)!  
-<a href="https://github.com/APPLe-DF/MaaKEDR" target="_blank" style="font-weight: bold;">🔗 GitHub Repository</a>
+<a href="https://github.com/APPLe-DF/MaaKEDR" target="_blank" style="font-weight: bold;">🔗 GitHub Repository</a><br>
+🌟 Star us on the top-right of the repo if you like this project! 🌟
 
 </div>
 
@@ -17,6 +18,7 @@ Powered by [MaaFramework](https://github.com/MaaXYZ/MaaFramework)!
   <img alt="license" src="https://img.shields.io/github/license/APPLe-DF/MaaKEDR">
   <br>
   <img alt="commit" src="https://img.shields.io/github/commit-activity/m/APPLe-DF/MaaKEDR">
+  <img alt="stars" src="https://img.shields.io/github/stars/APPLe-DF/MaaKEDR?style=social">
 </p>
 
 <div align="center">
@@ -24,6 +26,12 @@ Powered by [MaaFramework](https://github.com/MaaXYZ/MaaFramework)!
 [English](./README.en.md) | [简体中文](./README.md)
 
 </div>
+
+## Join Us
+
+- MaaKEDR QQ Group: [1051890489](https://qm.qq.com/q/clvWu1RoWI)
+
+---
 
 > ℹ️ **Project Status: Maintenance Mode**
 >
@@ -154,12 +162,6 @@ See [docs/](docs/README.md) for detailed development documentation:
 
 - [create-maa-project](https://github.com/Windsland52/create-maa-project) — Project scaffolding
 - [MaaMCP](https://github.com/MAA-AI/MaaMCP) — MaaFramework MCP server
-
----
-
-## Join Us
-
-- MaaKEDR Community QQ Group: 1051890489
 
 ---
 

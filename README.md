@@ -7,7 +7,8 @@
 
 《雪松》小助手。图像技术 + 模拟控制，解放双手！  
 由 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 强力驱动！  
-<a href="https://github.com/APPLe-DF/MaaKEDR" target="_blank" style="font-weight: bold;">🔗 本项目 GitHub 仓库</a>
+<a href="https://github.com/APPLe-DF/MaaKEDR" target="_blank" style="font-weight: bold;">🔗 本项目 GitHub 仓库</a><br>
+🌟 喜欢本项目就在仓库右上角点个星星吧 🌟
 
 </div>
 
@@ -17,6 +18,7 @@
   <img alt="license" src="https://img.shields.io/github/license/APPLe-DF/MaaKEDR">
   <br>
   <img alt="commit" src="https://img.shields.io/github/commit-activity/m/APPLe-DF/MaaKEDR">
+  <img alt="stars" src="https://img.shields.io/github/stars/APPLe-DF/MaaKEDR?style=social">
 </p>
 
 <div align="center">
@@ -24,6 +26,12 @@
 [English](./README.en.md) | [简体中文](./README.md)
 
 </div>
+
+## 加入我们
+
+- MaaKEDR 交流群 QQ：[1051890489](https://qm.qq.com/q/clvWu1RoWI)
+
+---
 
 > ✅ **项目状态：维护模式**
 >
@@ -171,12 +179,6 @@ MaaKEDR/
 
 - [create-maa-project](https://github.com/Windsland52/create-maa-project) — 项目脚手架
 - [MaaMCP](https://github.com/MAA-AI/MaaMCP) — MaaFramework MCP 服务器
-
----
-
-## 加入我们
-
-- MaaKEDR 交流群 QQ 群：1051890489
 
 ---
 
