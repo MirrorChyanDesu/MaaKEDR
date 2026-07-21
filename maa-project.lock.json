@@ -135,7 +135,7 @@
             "templateHash": "1c475f27cd91987b4a8e82a99ee2054f673fe5c344c2c2facc0c4c80778317bc"
         },
         ".github/dependabot.yml": {
-            "hash": "146fc4a7e29026507034652f344d0f100f70fd1a61e2a9cfa74bbabe38281b43",
+            "hash": "54dc740a86af3d119829d9e144700a1a6891d3a755a52132c66df05b1349076b",
             "templateHash": "146fc4a7e29026507034652f344d0f100f70fd1a61e2a9cfa74bbabe38281b43"
         },
         ".github/workflows/format.yml": {
@@ -171,7 +171,7 @@
             "templateHash": "7fd7683a60d650f1a3625faaa8a71010a18eba226a28ee6c4ccbbeab64a4b8a2"
         },
         "tools/check-project.mjs": {
-            "hash": "064d87915d7b877ca6ccfadb143f3e3d77a4cfcf29cf65952fb031f12a4cbe6d",
+            "hash": "38d0273a43d1726c109f2874cb9593bd0424f116d7ada7e061172a4c8d9c727b",
             "templateHash": "064d87915d7b877ca6ccfadb143f3e3d77a4cfcf29cf65952fb031f12a4cbe6d"
         },
         "tools/optimize-images.mjs": {
