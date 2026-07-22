@@ -22,7 +22,7 @@ icon: "ri:robot-fill"
 
 ### AGENTS.md
 
-[AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md) 是本项目的 AI 行为指南文件。它定义了 AI 助手在开发过程中的行为规范和约束条件，包括项目结构说明、文档指引、构建命令、编码规范、常用开发场景的应对策略等。AI 在开发过程中通过学习该文件了解项目约定，确保生成代码的风格和规范与项目保持一致。
+[AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/main/AGENTS.md) 是本项目的 AI 行为指南文件。它定义了 AI 助手在开发过程中的行为规范和约束条件，包括项目结构说明、文档指引、构建命令、编码规范、常用开发场景的应对策略等。AI 在开发过程中通过学习该文件了解项目约定，确保生成代码的风格和规范与项目保持一致。
 
 ## 参考仓库
 

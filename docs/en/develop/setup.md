@@ -179,7 +179,7 @@ Create a JSON file in `tasks/` to make it selectable:
 
 ### 6. Run and Verify
 
-This project does **not** ship a standalone MaaPiCli package. Use the **MFAAvalonia / MXU** GUI from the release package to run tasks, or start the Agent in a local dev setup as described in [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md).
+This project does **not** ship a standalone MaaPiCli package. Use the **MFAAvalonia / MXU** GUI from the release package to run tasks, or start the Agent in a local dev setup as described in [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/main/AGENTS.md).
 
 > Make sure your emulator is running and the game is on the correct screen.
 
@@ -198,12 +198,12 @@ Each iteration:
 ## Contributing & Pull Requests
 
 1. Fork and clone your fork
-2. Branch from latest `master` (`feat/…`, `fix/…`, `docs/…`)
+2. Branch from latest `main` (`feat/…`, `fix/…`, `docs/…`)
 3. Pass `pnpm check` (and `pnpm check:py` when touching Python)
 4. Open a focused PR (one concern per PR)
 5. Describe motivation, scope, and how you tested
 
-See [CONTRIBUTING.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/CONTRIBUTING.md) and [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md).
+See [CONTRIBUTING.md](https://github.com/APPLe-DF/MaaKEDR/blob/main/CONTRIBUTING.md) and [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/main/AGENTS.md).
 
 **Release**: before tagging `vX.Y.Z`, manually update `interface.json` `version` and `title`.
 
@@ -216,4 +216,4 @@ See [CONTRIBUTING.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/CONTRIBUTI
 - [Formatting Guide](./formatting.md)
 - [Writing Docs](./doc.md)
 - [Protocol](../protocol/)
-- [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md)
+- [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/main/AGENTS.md)

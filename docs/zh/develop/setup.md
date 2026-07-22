@@ -183,7 +183,7 @@ resource/base/image/start_button.png
 
 ### 6. 运行验证
 
-本项目**不提供**独立 MaaPiCli 发行包。请使用发布包中的 **MFAAvalonia / MXU** 图形界面勾选任务运行，或按 [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md) 在开发环境中启动 Agent 后调试。
+本项目**不提供**独立 MaaPiCli 发行包。请使用发布包中的 **MFAAvalonia / MXU** 图形界面勾选任务运行，或按 [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/main/AGENTS.md) 在开发环境中启动 Agent 后调试。
 
 > 运行前请确保模拟器已启动且游戏在正确界面。
 
@@ -202,12 +202,12 @@ resource/base/image/start_button.png
 ## 贡献与 PR
 
 1. Fork 仓库并克隆自己的 fork
-2. 从最新 `master` 拉出分支，例如 `feat/xxx`、`fix/xxx`、`docs/xxx`
+2. 从最新 `main` 拉出分支，例如 `feat/xxx`、`fix/xxx`、`docs/xxx`
 3. 本地通过 `pnpm check`（及 Python 相关时的 `pnpm check:py`）
 4. 推送并打开 Pull Request；一个 PR 只解决一个问题
 5. 描述写清改动动机、影响范围与自测方式；识别/流程类问题请附截图或日志
 
-完整约定见仓库 [CONTRIBUTING.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/CONTRIBUTING.md) 与 [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md)。
+完整约定见仓库 [CONTRIBUTING.md](https://github.com/APPLe-DF/MaaKEDR/blob/main/CONTRIBUTING.md) 与 [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/main/AGENTS.md)。
 
 **发版**：打 `vX.Y.Z` 标签前，须手动更新 `interface.json` 的 `version` 与 `title`（不会随 tag 自动同步）。
 
@@ -220,4 +220,4 @@ resource/base/image/start_button.png
 - [格式化规范](./formatting.md)
 - [文档编写](./doc.md)
 - [协议文档](../protocol/)
-- [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/master/AGENTS.md)
+- [AGENTS.md](https://github.com/APPLe-DF/MaaKEDR/blob/main/AGENTS.md)

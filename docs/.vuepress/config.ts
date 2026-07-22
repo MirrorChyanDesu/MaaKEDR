@@ -30,7 +30,7 @@ export default defineUserConfig({
 
     docsRepo: 'APPLe-DF/MaaKEDR',
     docsDir: 'docs',
-    docsBranch: 'master',
+    docsBranch: 'main',
 
     editLink: true,
     lastUpdated: false,
