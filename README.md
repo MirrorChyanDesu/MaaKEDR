@@ -40,7 +40,7 @@
 >
 > - ✅ 核心流程已完整覆盖
 > - 🔧 后续仅进行 **Bug 修复**、**游戏版本适配**、**依赖更新** 等维护性工作
-> - ❌ 不再主动开发新功能、新任务、新流程
+> - ❌ 不再积极开发新功能、新任务、新流程
 >
 > 如需更完善的功能、更积极的迭代，建议关注同类活跃项目：
 > [MaaAssistantKedrgame (MAK)](https://github.com/Hollow-YK/MaaAssistantKedrgame)。
